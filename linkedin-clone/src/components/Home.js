@@ -1,9 +1,41 @@
 import React from "react";
-import styled from 'style-components';
+import styled from "styled-components";
+import Leftside from "./Leftside";
+import Rightside from "./Rightside";
+import Main from "./Main";
+import Header from "./Header";
 
 const Home = (props) => {
-    return <div>Home</div>
-    
-}
+  return (
+    <Container>
+      <Header />
+      <Layout>
+        <Leftside />
+        <Main />
+        <Rightside />
+      </Layout>
+    </Container>
+  );
+};
 
-export default Home
+const Container = styled.div`
+  padding-top: 52px;
+  max-width: 100%;
+`;
+
+const Layout = styled.div`
+  display: grid;
+  grid-template-areas: "leftside main rightside";
+  grid-template-columns: minmax(0, 5fr) minmax(0, 12fr) minmax(300px, 7fr);
+  column-gap: 25px;
+  row-gap: 25px;
+  /* grid-template-row: auto; */
+  margin: 25px 0;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
+  }
+`;
+
+export default Home;
