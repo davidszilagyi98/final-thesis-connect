@@ -21,13 +21,13 @@ const Rightside = (props) => {
 
               <div>
                 <h4>
-                  Rasmus Andersen <img src="./images/danish-flag.svg" />
-                  <img src="./images/german-flag.svg" />
+                  Rasmus Andersen <img src="./images/danish-flag.svg" alat=""/>
+                  <img src="./images/german-flag.svg" alt="" />
                 </h4>
 
                 <IconConnections />
                 <p>
-                  <img src="./images/connect-icon.svg" />
+                  <img src="./images/connect-icon.svg" alt=""/>
                   mutual connections
                 </p>
               </div>

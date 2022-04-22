@@ -98,6 +98,7 @@ const GuideButton = styled.button`
   width: 100%;
   font-size: 16px;
   padding: 1rem;
+  border: none;
   border-radius: 12px;
   text-decoration: none;
   &:hover {
