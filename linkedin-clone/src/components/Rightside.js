@@ -21,7 +21,7 @@ const Rightside = (props) => {
 
               <div>
                 <h4>
-                  Rasmus Andersen <img src="./images/danish-flag.svg" alat=""/>
+                  Rasmus Andersen <img src="./images/danish-flag.svg" alt=""/>
                   <img src="./images/german-flag.svg" alt="" />
                 </h4>
 
