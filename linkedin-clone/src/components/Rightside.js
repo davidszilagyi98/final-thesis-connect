@@ -102,8 +102,8 @@ const FeedList = styled.ul`
 `;
 
 const RightSideExploreCard = styled.div`
-  //   background-color: #fff;
-  background: linear-gradient(to left, white 97%, yellow 3%);
+  background-color: #fff;
+  background: linear-gradient(to left, white 97%, #D9B233 3%);
   border-radius: 12px;
   width: 120%;
   display: flex;
@@ -113,10 +113,12 @@ const RightSideExploreCard = styled.div`
 `;
 
 const Avatar = styled.img`
-  background-image: url("./images/volunteer-placeholder-image.svg");
-  background-size: contain;
+  background-image: url("./images/rasmus2.jpg");
+  background-size: cover;
+  border: none;
   width: 55px;
   height: 55px;
+  border-radius: 50%;
   margin-left: 15px;
 `;
 

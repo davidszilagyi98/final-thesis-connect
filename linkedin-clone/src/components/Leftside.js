@@ -9,10 +9,16 @@ const Leftside = (props) => {
           <CardBackground />
           <a>
             <Photo />
-            <Link>Welcome There</Link>
+            <Link>Rasmus Larsen</Link>
+            <img src="./images/danish-flag.svg" alt=""/>
+                  <img src="./images/german-flag.svg" alt="" />
           </a>
           <a>
-            <AddPhotoText>Add a photo</AddPhotoText>
+            <AddPhotoText>
+              Add a photo
+              <img src="images/icons/add-a-photo.svg" alt=""/>
+            </AddPhotoText>
+
           </a>
         </UserInfo>
       </ArtCard>
@@ -61,14 +67,14 @@ const CardBackground = styled.div`
 
 const Photo = styled.div`
   box-shadow: none;
-  background-image: url("/images/volunteer-placeholder-image.svg");
+  background-image: url("/images/rasmus.jpg");
   width: 72px;
   height: 72px;
   box-sizing: border-box;
   background-clip: content-box;
   background-color: white;
   background-position: center;
-  background-size: 60%;
+  background-size: cover;
   background-repeat: no-repeat;
   border: 2px solid white;
   margin: -38px auto 12px;
@@ -83,11 +89,16 @@ const Link = styled.div`
 `;
 
 const AddPhotoText = styled.div`
-  color: #0a66c2;
+  color: #1F5B87;
   margin-top: 4px;
   font-size: 12px;
   line-height: 1.33;
   font-weight: 400;
+
+  img {
+    width: 18px;
+    margin-left: 2px;
+  }
 `;
 
 const GuideButton = styled.button`
@@ -100,9 +111,12 @@ const GuideButton = styled.button`
   padding: 1rem;
   border: none;
   border-radius: 12px;
-  text-decoration: none;
+  text-decoration: none;7box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
   &:hover {
     cursor: pointer;
+    background-color: #164466;
   }
 `;
 

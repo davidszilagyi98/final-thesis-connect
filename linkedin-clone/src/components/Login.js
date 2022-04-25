@@ -7,7 +7,7 @@ const Login = (props) => {
     <Container>
       <Nav>
         <a href="/">
-          <img src="/images/login-logo.svg" alt=""/>
+          <img src="/images/connect-logo-thick-dot.svg" alt=""/>
         </a>
         <div>
           <Join>Join now</Join>
@@ -16,8 +16,8 @@ const Login = (props) => {
       </Nav>
        <Section>
         <Hero>
-          <h1>Welcome to your professional community</h1>
-          <img src="/images/login-hero.svg" alt="" />
+          <h1>Welcome in our community of organizatios and volunteers</h1>
+          <img src="/images/hero-loginpage.svg" alt="" />
         </Hero>
         <Form>
           <Google>
@@ -55,33 +55,41 @@ const Nav = styled.nav`
 
 const Join = styled.a`
   font-size: 16px;
-  padding: 10px 12px;
+  padding: 10px 45px;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 24px;
+  width: 200px;
   color: rgba(0, 0, 0, 0.6);
   margin-right: 12px;
+  box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
-    color: rgba(0, 0, 0, 0.9);
+    background-color: #ECECEC;
+    color: #333;
     text-decoration: none;
+    cursor: pointer;
   }
 `;
 
 const SignIn = styled.a`
-  box-shadow: inset 0 0 0 1px #0a66c2;
-  color: #0a66c2;
+  border: 1px solid #1F5B87;
+  color: #1F5B87;
   border-radius: 24px;
   transition-duration: 167ms;
   font-size: 16px;
-  font-weight: 600;
   line-height: 40px;
-  padding: 10px 24px;
+  padding: 10px 45px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0);
+  box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
   &:hover {
     background-color: rgba(112, 181, 249, 0.15);
-    color: #0a66c2;
+    color: #1F5B87;
     text-decoration: none;
+    cursor: pointer;
   }
 `;
 
@@ -108,9 +116,10 @@ const Hero = styled.div`
   width: 100%;
   h1 {
     padding-bottom: 0;
+    margin-top: 100px;
     width: 55%;
     font-size: 56px;
-    color: #2977c9;
+    color: #1F5B87;
     font-weight: 200;
     line-height: 70px;
     @media (max-width: 768px) {
@@ -121,12 +130,11 @@ const Hero = styled.div`
     }
   }
   img {
-    /* z-index: -1; */
-    width: 700px;
+    width: 750px;
     height: 670px;
     position: absolute;
-    bottom: -2px;
-    right: -150px;
+    top: 40px;
+    right: -170px;
     @media (max-width: 768px) {
       top: 230px;
       width: initial;
@@ -151,10 +159,11 @@ const Google = styled.button`
   align-items: center;
   height: 56px;
   width: 100%;
-  border-radius: 28px;
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 60%),
-    inset 0 0 0 2px rgb(0 0 0 / 0%) inset 0 0 0 1px rgb(0 0 0 / 0);
-  vertical-align: middle;
+  border-radius: 24px;
+  border: none;
+  box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
   z-index: 0;
   transition-duration: 167ms;
   font-size: 20px;
@@ -162,6 +171,7 @@ const Google = styled.button`
   &:hover {
     background-color: rgba(207, 207, 207, 0.25);
     color: rgba(0, 0, 0, 0.75);
+    cursor: pointer;
   }
 `;
 

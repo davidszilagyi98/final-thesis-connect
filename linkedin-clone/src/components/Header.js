@@ -7,7 +7,7 @@ const Header = (props) => {
       <Content>
         <Logo>
           <a href="/home">
-            <img src="/images/home-logo.svg" alt="" />
+            <img src="/images/connect-logo-thick.dot.svg" alt="" />
           </a>
         </Logo>
         <Search>
@@ -122,6 +122,9 @@ const SearchIcon = styled.div`
 const Nav = styled.nav`
   margin-left: auto;
   display: block;
+  height: 50px;
+  align-items: center;
+  
   @media (max-width: 768px) {
     position: fixed;
     left: 0;
@@ -135,25 +138,26 @@ const NavListWrap = styled.ul`
   display: flex;
   flex-wrap: no-wrap;
   list-style-type: none;
+  margin-top: 3px;
 
   .active {
     span:after {
       content: "";
-      transform: scaleX(1);
-      border-bottom: 2px solid var(--white, #fff);
+      border-bottom: 1px solid #333;
       bottom: 0;
       left: 0;
       position: absolute;
       transition: transform 0.2s ease-in-out;
       width: 100%;
-      border-color: rgba(0, 0, 0, 0.9);
+      border-color: #333;
     }
   }
 `;
 
 const NavList = styled.li`
   display: flex;
-  align-items: center;
+  align-items: center; 
+  
   a {
     align-items: center;
     background: transparent;
@@ -161,18 +165,20 @@ const NavList = styled.li`
     flex-direction: column;
     font-size: 12px;
     font-weight: 400;
-    justify-content: center;
-    line-height: 1.5;
+    justify-content:end;
     min-height: 42px;
-    min-width: 80px;
+    min-width: 90px;
     position: relative;
     text-decoration: none;
 
     span {
-      color: rgba(0, 0, 0, 0.6);
+      color: #C3C3C3;
       display: flex;
-      align-items: center;
+      align-items: baseline;
+      margin-bottom: 3px;
     }
+
+
     @media (max-width: 768px) {
       min-width: 70px;
     }
@@ -180,8 +186,13 @@ const NavList = styled.li`
   &:hover,
   &:active {
     a {
+      cursor: pointer;
       span {
-        color: rgba(0, 0, 0, 0.9);
+        color: #333;
+      }
+      img {
+        fill: red;
+        
       }
     }
   }
