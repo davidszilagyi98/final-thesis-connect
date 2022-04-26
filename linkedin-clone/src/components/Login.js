@@ -1,8 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from 'react-redux';
+import { authentication } from "../firebase-config";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+
 
 const Login = (props) => {
+  
+const singInWithGoogle = () => {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(authentication, provider)
+      .then((re) => {
+        console.log(re);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
+
+
   return (
     <Container>
       <Nav>
@@ -16,14 +32,19 @@ const Login = (props) => {
       </Nav>
        <Section>
         <Hero>
-          <h1>Welcome in our community of organizatios and volunteers</h1>
+          <h1>A place for volunteers and organizations</h1>
           <img src="/images/hero-loginpage.svg" alt="" />
         </Hero>
         <Form>
-          <Google>
+          <Email>
+            <img src="/images/icons/email-icon.svg" alt="" />
+            <span>Sign in with Email</span>
+          </Email>
+          <Google onClick={singInWithGoogle}>
             <img src="/images/google.svg" alt="" />
-            Sign in with Google
+           <span> Sign in with Google</span>
           </Google>
+          
         </Form>
       </Section>
     </Container>
@@ -116,7 +137,7 @@ const Hero = styled.div`
   width: 100%;
   h1 {
     padding-bottom: 0;
-    margin-top: 100px;
+    margin-top: 0px;
     width: 55%;
     font-size: 56px;
     color: #1F5B87;
@@ -145,20 +166,31 @@ const Hero = styled.div`
 `;
 
 const Form = styled.div`
-  margin-top: 100px;
-  width: 408px;
-  @media (max-width: 768px) {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: auto;
+    background-color: #fff;
+    border-radius: 24px;
+    box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+    -webkit-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+    -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+    @media (max-width: 768px) {
     margin-top: 20px;
   }
 `;
 
 const Google = styled.button`
   display: flex;
-  justify-content: center;
   background-color: #fff;
+  padding: 0 50px;
   align-items: center;
-  height: 56px;
+  height: 40px;
   width: 100%;
+  margin-bottom: 20px;
   border-radius: 24px;
   border: none;
   box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
@@ -166,8 +198,13 @@ const Google = styled.button`
   -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
   z-index: 0;
   transition-duration: 167ms;
-  font-size: 20px;
+  font-size: 14px;
   color: rgba(0, 0, 0, 0.6);
+
+  span{
+    margin: 0 0 0 20px;
+  }
+
   &:hover {
     background-color: rgba(207, 207, 207, 0.25);
     color: rgba(0, 0, 0, 0.75);
@@ -175,11 +212,38 @@ const Google = styled.button`
   }
 `;
 
-const mapStateToProps = (state) => {
-  return {}
-};
+const Email = styled.button`
+  display: flex;
+  background-color: #D0021B;
+  padding: 0 50px;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 24px;
+  border: none;
+  box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  z-index: 0;
+  transition-duration: 167ms;
+  font-size: 14px;
+  color: #fff;
 
-const mapDispatchToProps = (dispactch) => ({});
+  span{
+    margin: 0 0 0 22px;
+  }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+  img {
+    width: 22px;
+  }
+
+  &:hover {
+    background-color: #A50216;
+    color: #fff;
+    cursor: pointer;
+  }
+`;
+
+export default Login;
 
