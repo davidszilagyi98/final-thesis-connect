@@ -50,6 +50,7 @@ const Header = (props) => {
                 <span>Notifications</span>
               </a>
             </NavList>
+            
           </NavListWrap>
         </Nav>
       </Content>

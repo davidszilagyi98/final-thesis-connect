@@ -1,15 +1,15 @@
 import React from "react";
+import Auth from "../components/Auth";
 import styled from "styled-components";
-import { authentication } from "../firebase-config";
+import { auth } from "../firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-
 
 
 const Login = (props) => {
   
 const singInWithGoogle = () => {
       const provider = new GoogleAuthProvider();
-      signInWithPopup(authentication, provider)
+      signInWithPopup(auth, provider)
       .then((re) => {
         console.log(re);
       })
@@ -36,6 +36,8 @@ const singInWithGoogle = () => {
           <img src="/images/hero-loginpage.svg" alt="" />
         </Hero>
         <Form>
+          <Auth/>
+           
           <Email>
             <img src="/images/icons/email-icon.svg" alt="" />
             <span>Sign in with Email</span>

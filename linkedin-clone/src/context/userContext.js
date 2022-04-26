@@ -46,7 +46,7 @@ useState(() => {
         })
       )
       .then((res) => console.log(res))
-      .catch((err) => setError(err.message))
+      
       .finally(() => setLoading(false));
     };
 

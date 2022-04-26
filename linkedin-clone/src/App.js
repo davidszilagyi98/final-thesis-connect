@@ -1,9 +1,8 @@
 import React from "react";
-import Login from "./components/Login"
 import "./App.css";
 import { useUserContext } from "./context/userContext";
-import Auth from "./components/auth";
-import Dashboard from "./components/dashboard";
+import Home from "./pages/Home";
+import Login from "./pages/Login"
 
 
 
@@ -12,9 +11,8 @@ function App() {
 
   return (
     <div className="App">
-      <Login/>
       {error && <p className="error">{error}</p>}
-      {loading ? <h2>Loading...</h2> : <> {user ? <Dashboard /> : <Auth />} </>}
+      {loading ? <h2>Loading...</h2> : <> {user ? <Home /> : <Login />} </>}
     </div>
   );
 }
