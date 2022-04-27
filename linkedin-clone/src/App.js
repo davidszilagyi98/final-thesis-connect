@@ -1,19 +1,30 @@
-import React from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import { useUserContext } from "./context/userContext";
 import Home from "./pages/Home";
-import Login from "./pages/Login"
-
-
+import Login from "./pages/Login";
+import Explore from "./pages/Explore";
+import Mynetwork from "./pages/Mynetwork";
+import Organizations from "./pages/Organizations";
+import Profile from "./pages/Profile";
+import Signup from "./components/Signup";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { UserAuthContextProvider } from "./context/userContext";
 
 function App() {
-  const { user, loading, error } = useUserContext();  
-
   return (
-    <div className="App">
-      {error && <p className="error">{error}</p>}
-      {loading ? <h2>Loading...</h2> : <> {user ? <Home /> : <Login />} </>}
-    </div>
+    
+          <UserAuthContextProvider>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/home"element={<ProtectedRoute><Home /></ProtectedRoute>}/>
+              <Route path="/explore" element={<ProtectedRoute><Explore /></ProtectedRoute>} />
+              <Route path="/mynetwork" element={<ProtectedRoute><Mynetwork /></ProtectedRoute>} />
+              <Route path="/organizations" element={<ProtectedRoute><Organizations /></ProtectedRoute>} />
+              <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+            </Routes>
+          </UserAuthContextProvider>
+       
   );
 }
 

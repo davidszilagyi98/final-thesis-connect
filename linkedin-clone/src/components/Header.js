@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const Header = (props) => {
   return (
@@ -21,25 +23,25 @@ const Header = (props) => {
         <Nav>
           <NavListWrap>
             <NavList className="active">
-              <a>
+              <a href="/home">
                 <img src="/images/icons/home-icon.svg" alt="" />
                 <span>Home</span>
               </a>
             </NavList>
             <NavList>
-              <a>
+              <a href="/organizations">
                 <img src="/images/icons/ngo-icon.svg" alt="" />
                 <span>Organisations</span>
               </a>
             </NavList>
             <NavList>
-              <a>
+              <a href="/explore">
                 <img src="/images/icons/explore-icon.svg" alt="" />
                 <span>Explore</span>
               </a>
             </NavList>
             <NavList>
-              <a>
+              <a href="/mynetwork">
                 <img src="/images/icons/mynetwork-icon.svg" alt="" />
                 <span>My network</span>
               </a>

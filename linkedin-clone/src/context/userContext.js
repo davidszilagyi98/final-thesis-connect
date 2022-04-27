@@ -1,82 +1,49 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
-  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
-  updateProfile,
-  sendPasswordResetEmail,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase";
 
-export const UserContext = createContext({});
+const userAuthContext = createContext();
 
-export const useUserContext = () => {
-  return useContext(UserContext);
-};
+export function UserAuthContextProvider({ children }) {
+  const [user, setUser] = useState({});
 
+  function logIn(email, password) {
+    return signInWithEmailAndPassword(auth, email, password);
+  }
+  function signUp(email, password) {
+    return createUserWithEmailAndPassword(auth, email, password);
+  }
+  function logOut() {
+    return signOut(auth);
+  }
+  function googleSignIn() {
+    const googleAuthProvider = new GoogleAuthProvider();
+    return signInWithPopup(auth, googleAuthProvider);
+  }
 
-export const UserContextProvider = ({children}) => {
-
-const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-useState(() => {
-    setLoading(true);
-    const unsubscribe = onAuthStateChanged(auth, (res) => {
-      if (res) {
-        setUser(res);
-      } else {
-        setUser(null);
-      }
-      setError("");
-      setLoading(false);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
+      console.log("Auth", currentuser);
+      setUser(currentuser);
     });
-    return unsubscribe;
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
-
-    const registerUser = (email, name, password) => {
-        setLoading(true);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(() =>
-        updateProfile(auth.currentUser, {
-          displayName: name,
-        })
-      )
-      .then((res) => console.log(res))
-      
-      .finally(() => setLoading(false));
-    };
-
-      const signInUser = (email, password) => {
-        setLoading(true);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((res) => console.log(res))
-      .catch((err) => setError(err.code))
-      .finally(() => setLoading(false));
-  };
-
-
-      const logoutUser = () => {
-        signOut(auth);
-    };
-
-      const forgotPassword = (email) => {
-        return sendPasswordResetEmail(auth, email);
-    };
-
-    const contextValue = { user,
-    loading,
-    error,
-    signInUser,
-    registerUser,
-    logoutUser,
-    forgotPassword,
-};
-
-    return (
-    <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
+  return (
+    <userAuthContext.Provider value={{ user, logIn, signUp, logOut, googleSignIn }}> {children}</userAuthContext.Provider>
   );
-};
+}
+
+export function useUserAuth() {
+  return useContext(userAuthContext);
+}

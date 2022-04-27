@@ -1,22 +1,38 @@
-import React from "react";
-import Auth from "../components/Auth";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUserAuth } from "../context/userContext"
 import styled from "styled-components";
-import { auth } from "../firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 
 
 const Login = (props) => {
   
-const singInWithGoogle = () => {
-      const provider = new GoogleAuthProvider();
-      signInWithPopup(auth, provider)
-      .then((re) => {
-        console.log(re);
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { logIn, googleSignIn } = useUserAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await logIn(email, password);
+      navigate("/home");
+    } catch (err) {
+      setError(err.message);
     }
+  };
+
+  const handleGoogleSignIn = async (e) => {
+    e.preventDefault();
+    try {
+      await googleSignIn();
+      navigate("/home");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
 
   return (
@@ -36,13 +52,21 @@ const singInWithGoogle = () => {
           <img src="/images/hero-loginpage.svg" alt="" />
         </Hero>
         <Form>
-          <Auth/>
+          <div className="form">
+      <h2> Login </h2>
+      <form onSubmit={handleSubmit} >
+        <input placeholder="Email" type="email"  onChange={(e) => setEmail(e.target.value)}/>
+        <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
+        <button type="submit" >Sign In</button>
+       
+      </form>
+    </div>
            
           <Email>
             <img src="/images/icons/email-icon.svg" alt="" />
             <span>Sign in with Email</span>
           </Email>
-          <Google onClick={singInWithGoogle}>
+          <Google  onClick={handleGoogleSignIn}>
             <img src="/images/google.svg" alt="" />
            <span> Sign in with Google</span>
           </Google>

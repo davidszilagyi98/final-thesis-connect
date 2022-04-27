@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { useUserContext } from "../context/userContext";
+import { UserAuthContextProvider, useUserAuth } from "../context/userContext";
 
 
 const Leftside = (props) => {
-  const { user, logoutUser } = useUserContext();
+  const { user, logOut } = useUserAuth();
   return (
     <Container>
       <ArtCard>
@@ -18,7 +18,7 @@ const Leftside = (props) => {
           </a>
           <h2>Name : {user.displayName}</h2>
           <h2>Email : {user.email}</h2>
-          <button onClick={logoutUser}>Log out</button>
+          <button onClick={logOut}>Log out</button>
           <a>
             <AddPhotoText>
               Add a photo

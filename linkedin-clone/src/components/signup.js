@@ -1,31 +1,40 @@
-import React, { useRef } from "react";
-import { useUserContext } from "../context/userContext";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useUserAuth } from "../context/userContext"
 
-const Signup = () => {
-  const emailRef = useRef();
-  const nameRef = useRef();
-  const psdRef = useRef();
-  const { registerUser } = useUserContext();
 
-  const onSubmit = (e) => {
+const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [password, setPassword] = useState("");
+  const { SignUp } = useUserAuth();
+  let navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const email = emailRef.current.value;
-    const name = nameRef.current.value;
-    const password = psdRef.current.value;
-    if (email && password && name) registerUser(email, password, name);
+    setError("");
+    try {
+      await SignUp(email, password);
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
-    <div className="form">
+    <>
+     <div className="form">
       <h2> New User</h2>
-      <form onSubmit={onSubmit}>
-        <input placeholder="Email" type="email" ref={emailRef} />
-        <input placeholder="Name" type="name" ref={nameRef} />
-        <input placeholder="Password" type="password" ref={psdRef} />
-        <button type="submit">Register</button>
+      <form onSubmit={handleSubmit}>
+        <input placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
+        <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
+        <button type="submit" >Sign up</button>
       </form>
+      Already have an account? <Link to="/">Log In</Link>
     </div>
+
+    </>
   );
 };
 
-export default Signup;
+export default SignUp;
