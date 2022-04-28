@@ -21,7 +21,8 @@ export default function SignUp({ showLoader }) {
     event.preventDefault();
     const mail = event.target.mail.value; // mail value from inout field in sign in form
     const password = event.target.password.value; // password value from inout field in sign in form
-  
+    const name = event.target.name.value;
+
     // read the docs: https://firebase.google.com/docs/auth/web/password-auth#create_a_password-based_account
     createUserWithEmailAndPassword(auth, mail, password)
       .then((userCredential) => {

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, onSnapshot } from "@firebase/firestore";
 
-
 const Dot = ({ user }) => {
   const style = {
     height: 25,
@@ -15,27 +14,19 @@ const Dot = ({ user }) => {
 };
 
 const Mynetwork = () => {
-const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
   console.log(users);
-  useEffect(
-    () =>  
-    onSnapshot(collection(db, "users"), (snapshot) => 
-      setUsers(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    ),
-    []
-  );
+  useEffect(() => onSnapshot(collection(db, "users"), (snapshot) => setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))), []);
 
   return (
     <ul>
-    {users.map((user) => (
-    <li key={user.id}>
-       <a href="#"></a> <Dot user={user.value} /> {user.name}: {user.nationality} 
-   
-    </li>
-    ))}
+      {users.map((user) => (
+        <li key={user.id}>
+          <a href="#"></a> <Dot user={user.value} /> {user.name}: {user.nationality}
+        </li>
+      ))}
     </ul>
-  )
+  );
 };
-
 
 export default Mynetwork;

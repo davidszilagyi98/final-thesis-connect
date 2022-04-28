@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { UserAuthContextProvider, useUserAuth } from "../context/userContext";
 
-
 const Leftside = (props) => {
   const { user, logOut } = useUserAuth();
   return (
@@ -12,19 +11,17 @@ const Leftside = (props) => {
           <CardBackground />
           <a>
             <Photo />
-            <Link>
-            {user.displayName}
-            </Link>
-            <img src="./images/danish-flag.svg" alt=""/>
-                  <img src="./images/german-flag.svg" alt="" />
-          </a><br/>
+            <Link>{user.displayName}</Link>
+            <img src="./images/danish-flag.svg" alt="" />
+            <img src="./images/german-flag.svg" alt="" />
+          </a>
+          <br />
           <button onClick={logOut}>Log out</button>
           <a>
             <AddPhotoText>
               Add a photo
-              <img src="images/icons/add-a-photo.svg" alt=""/>
+              <img src="images/icons/add-a-photo.svg" alt="" />
             </AddPhotoText>
-
           </a>
         </UserInfo>
       </ArtCard>
@@ -95,7 +92,7 @@ const Link = styled.div`
 `;
 
 const AddPhotoText = styled.div`
-  color: #1F5B87;
+  color: #1f5b87;
   margin-top: 4px;
   font-size: 12px;
   line-height: 1.33;
@@ -117,9 +114,10 @@ const GuideButton = styled.button`
   padding: 1rem;
   border: none;
   border-radius: 12px;
-  text-decoration: none;7box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-  -webkit-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-  -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  text-decoration: none;
+  7box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   &:hover {
     cursor: pointer;
     background-color: #164466;
