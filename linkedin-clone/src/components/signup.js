@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { doc, setDoc } from "@firebase/firestore";
 import { usersRef } from "../firebase/index";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import styled from "styled-components";
 
 // const SignUp = () => {
 //   const [email, setEmail] = useState("");
@@ -74,19 +75,62 @@ export default function SignUp({ showLoader }) {
 
   return (
     <section className="page">
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSignUp}>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Type your name" />
-        <input type="email" name="mail" placeholder="Type your mail" />
-        <input type="password" name="password" placeholder="Type your password" />
-        <p className="text-error">{errorMessage}</p>
-        <button>Sign Up</button>
-      </form>
-      <p className="text-center">
-        Already have an account? <Link to="/sign-in">Sign In</Link>
-      </p>
+      <SingUpForm>
+        <h1>Sign Up</h1>
+        <form onSubmit={handleSignUp}>
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Type your name" />
+          <input type="email" name="mail" placeholder="Type your mail" />
+          <input type="text" name="password" placeholder="Type your password" />
+          <input type="text" name="residency" placeholder="Country of residency" />
+          <input type="text" name="nationality" placeholder="Nationality" />
+          <input type="text" name="interests" placeholder="Interests 'traveling,cooking,languages'" />
+          <input type="text" name="bio" placeholder="Bio" />
+          <p className="text-error">{errorMessage}</p>
+          <button>Sign Up</button>
+        </form>
+        <p className="text-center">
+          Already have an account? <Link to="/sign-in">Sign In</Link>
+        </p>
+      </SingUpForm>
     </section>
   );
 }
+
+const SingUpForm = styled.div`
+  /* display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 0 auto; */
+
+  h1 {
+    margin: 3rem;
+    text-align: center;
+  }
+
+  .text-center {
+    text-align: center;
+    margin: 2rem;
+  }
+
+  form {
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+  }
+
+  input {
+    margin: 0.5rem;
+    padding: 0.7rem;
+  }
+
+  button {
+    width: 96%;
+    margin: auto;
+    margin: 0.5rem;
+    padding: 0.7rem;
+  }
+`;
 
 // export default SignUp;

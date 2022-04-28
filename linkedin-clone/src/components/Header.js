@@ -2,14 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 
-
 const Header = (props) => {
   return (
     <Container>
       <Content>
         <Logo>
           <a href="/home">
-            <img src="/images/connect-logo-thick.dot.svg" alt="" />
+            <img src="/images/connect-logo-thick-dot.svg" alt="" />
           </a>
         </Logo>
         <Search>
@@ -52,7 +51,12 @@ const Header = (props) => {
                 <span>Notifications</span>
               </a>
             </NavList>
-            
+            <NavList>
+              <a>
+                <img src="/images/icons/messages-icon.svg" alt="" />
+                <span>Messages</span>
+              </a>
+            </NavList>
           </NavListWrap>
         </Nav>
       </Content>
@@ -69,6 +73,7 @@ position: fixed;
 top: 0;
 width: 100vw;
 z-index: 100;
+height: 4rem;
 `;
 
 const Content = styled.div`
@@ -80,8 +85,9 @@ const Content = styled.div`
 `;
 
 const Logo = styled.span`
-  margin-right: 8px;
+  margin-right: 1rem;
   font-size: 0px;
+  width: 140px;
 `;
 
 const Search = styled.div`
@@ -127,7 +133,7 @@ const Nav = styled.nav`
   display: block;
   height: 50px;
   align-items: center;
-  
+
   @media (max-width: 768px) {
     position: fixed;
     left: 0;
@@ -159,8 +165,14 @@ const NavListWrap = styled.ul`
 
 const NavList = styled.li`
   display: flex;
-  align-items: center; 
-  
+  align-items: center;
+  margin-top: 0.3rem;
+
+  img {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
   a {
     align-items: center;
     background: transparent;
@@ -168,19 +180,18 @@ const NavList = styled.li`
     flex-direction: column;
     font-size: 12px;
     font-weight: 400;
-    justify-content:end;
+    justify-content: end;
     min-height: 42px;
     min-width: 90px;
     position: relative;
     text-decoration: none;
 
     span {
-      color: #C3C3C3;
+      color: #c3c3c3;
       display: flex;
       align-items: baseline;
       margin-bottom: 3px;
     }
-
 
     @media (max-width: 768px) {
       min-width: 70px;
@@ -195,7 +206,6 @@ const NavList = styled.li`
       }
       img {
         fill: red;
-        
       }
     }
   }
