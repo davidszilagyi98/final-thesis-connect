@@ -7,7 +7,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import styled from "styled-components";
 
 export default function SignUp({ showLoader }) {
-  const [name, setName] = useState("");
+  const [name, setName, residency, setResidency] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   let navigate = useNavigate();
 
@@ -22,14 +22,15 @@ export default function SignUp({ showLoader }) {
     const mail = event.target.mail.value; // mail value from inout field in sign in form
     const password = event.target.password.value; // password value from inout field in sign in form
     const name = event.target.name.value;
+    const residency = event.target.residency.value;
 
     // read the docs: https://firebase.google.com/docs/auth/web/password-auth#create_a_password-based_account
-    createUserWithEmailAndPassword(auth, mail, password)
+    createUserWithEmailAndPassword(auth, mail, password, name, residency)
       .then((userCredential) => {
         // Created and signed in
         const user = userCredential.user;
         const docRef = doc(usersRef, user.uid); // create reference to the user in firestore
-        setDoc(docRef, { name }); // set/update the user in firestore with the values from userToUpdate/values from input fields
+        setDoc(docRef, { name, residency }); // set/update the user in firestore with the values from userToUpdate/values from input fields
         navigate("/");
       })
       .catch((error) => {
@@ -49,7 +50,7 @@ export default function SignUp({ showLoader }) {
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Type your name" />
           <input type="email" name="mail" placeholder="Type your mail" />
           <input type="text" name="password" placeholder="Type your password" />
-          <input type="text" name="residency" placeholder="Country of residency" />
+          <input type="text" value={residency} onChange={(e) => setResidency(e.target.value)} name="residency" placeholder="Country of residency" />
           <input type="text" name="nationality" placeholder="Nationality" />
           <input type="text" name="interests" placeholder="Interests 'traveling,cooking,languages'" />
           <input type="text" name="bio" placeholder="Bio" />
