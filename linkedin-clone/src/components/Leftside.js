@@ -12,12 +12,12 @@ const Leftside = (props) => {
           <CardBackground />
           <a>
             <Photo />
-            <Link>Rasmus Larsen</Link>
+            <Link>
+            {user.displayName}
+            </Link>
             <img src="./images/danish-flag.svg" alt=""/>
                   <img src="./images/german-flag.svg" alt="" />
-          </a>
-          <h2>Name : {user.displayName}</h2>
-          <h2>Email : {user.email}</h2>
+          </a><br/>
           <button onClick={logOut}>Log out</button>
           <a>
             <AddPhotoText>
