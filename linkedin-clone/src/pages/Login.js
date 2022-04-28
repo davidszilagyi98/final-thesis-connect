@@ -42,7 +42,9 @@ const Login = (props) => {
           <img src="/images/connect-logo-thick-dot.svg" alt=""/>
         </a>
         <div>
-          <Join>Join now</Join>
+          <a href="/signup">
+          <Join > Join now</Join>
+          </a>
           <SignIn>Sign in</SignIn>
         </div>
       </Nav>
@@ -51,26 +53,22 @@ const Login = (props) => {
           <h1>A place for volunteers and organizations</h1>
           <img src="/images/hero-loginpage.svg" alt="" />
         </Hero>
-        <Form>
-          <div className="form">
+      <Form>
       <h2> Login </h2>
-      <form onSubmit={handleSubmit} >
+      <Email onSubmit={handleSubmit}>
         <input placeholder="Email" type="email"  onChange={(e) => setEmail(e.target.value)}/>
         <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
-        <button type="submit" >Sign In</button>
+        <button type="submit" >Sign in</button>
+      </Email>
        
-      </form>
-    </div>
-           
-          <Email>
-            <img src="/images/icons/email-icon.svg" alt="" />
-            <span>Sign in with Email</span>
-          </Email>
           <Google  onClick={handleGoogleSignIn}>
             <img src="/images/google.svg" alt="" />
            <span> Sign in with Google</span>
           </Google>
-          
+      
+            <p>Don't have an account?</p>
+            <a href="/signup">Sign up now</a>
+      
         </Form>
       </Section>
     </Container>
@@ -198,7 +196,7 @@ const Form = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-    width: auto;
+    width: 35%;
     background-color: #fff;
     border-radius: 24px;
     box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
@@ -206,14 +204,53 @@ const Form = styled.div`
     -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
     @media (max-width: 768px) {
     margin-top: 20px;
+    }
   }
 `;
+
+const Email = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  margin-top: 20px;
+  height: auto;
+  width: 100%;
+  justify-content: space-evenly;
+
+  input {
+    line-height: 2.3;
+    padding: 3px 10px;
+    background-color: #ECECEC;
+    border: none;
+    margin-bottom: 8px;
+  }
+
+  button {
+  display: block;
+  background-color: #D0021B;
+  padding: 0 50px;
+  height: 40px;
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 24px;
+  border: none;
+  color: #fff;
+  text-align: center;
+
+   &:hover {
+    background-color: #b80017;
+    cursor: pointer;
+  }
+  }
+
+`
 
 const Google = styled.button`
   display: flex;
   background-color: #fff;
   padding: 0 50px;
   align-items: center;
+  justify-content: center;
   height: 40px;
   width: 100%;
   margin-bottom: 20px;
@@ -238,38 +275,6 @@ const Google = styled.button`
   }
 `;
 
-const Email = styled.button`
-  display: flex;
-  background-color: #D0021B;
-  padding: 0 50px;
-  align-items: center;
-  height: 40px;
-  width: 100%;
-  margin-bottom: 20px;
-  border-radius: 24px;
-  border: none;
-  box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-  -webkit-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-  -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-  z-index: 0;
-  transition-duration: 167ms;
-  font-size: 14px;
-  color: #fff;
-
-  span{
-    margin: 0 0 0 22px;
-  }
-
-  img {
-    width: 22px;
-  }
-
-  &:hover {
-    background-color: #A50216;
-    color: #fff;
-    cursor: pointer;
-  }
-`;
 
 export default Login;
 

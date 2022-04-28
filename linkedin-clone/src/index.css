@@ -41,3 +41,7 @@ body {
   font-family: Poppins, sans-serif;
   color: #333;
 }
+
+a {
+  text-decoration: none;
+}
