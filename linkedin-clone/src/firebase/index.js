@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyAyk2gPbH2CuTwthdZmn6HXbkfW3xjPWZw",
@@ -12,7 +13,11 @@ const firebaseConfig = {
   measurementId: "G-JLPFYYEV23",
 };
 
+
+
+
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const usersRef = collection(db, "users"); // reference to users collection i firestore
+
