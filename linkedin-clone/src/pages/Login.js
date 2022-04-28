@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUserAuth } from "../context/userContext"
+import { useUserAuth } from "../context/userContext";
 import styled from "styled-components";
 
-
-
 const Login = (props) => {
-  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -34,49 +31,47 @@ const Login = (props) => {
     }
   };
 
-
   return (
     <Container>
       <Nav>
         <a href="/">
-          <img src="/images/connect-logo-thick-dot.svg" alt=""/>
+          <img src="/images/connect-logo-thick-dot.svg" alt="" />
         </a>
         <div>
           <a href="/signup">
-          <Join > Join now</Join>
+            <Join> Join now</Join>
           </a>
           <SignIn>Sign in</SignIn>
         </div>
       </Nav>
-       <Section>
+      <Section>
         <Hero>
           <h1>A place for volunteers and organizations</h1>
           <img src="/images/hero-loginpage.svg" alt="" />
         </Hero>
-      <Form>
-      <h2> Login </h2>
-      <Email onSubmit={handleSubmit}>
-        <input placeholder="Email" type="email"  onChange={(e) => setEmail(e.target.value)}/>
-        <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
-        <button type="submit" >Sign in</button>
-      </Email>
-       
-          <Google  onClick={handleGoogleSignIn}>
+        <Form>
+          <h2> Login </h2>
+          <Email onSubmit={handleSubmit}>
+            <input placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
+            <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
+            <button type="submit">Sign in</button>
+          </Email>
+
+          <Google onClick={handleGoogleSignIn}>
             <img src="/images/google.svg" alt="" />
-           <span> Sign in with Google</span>
+            <span> Sign in with Google</span>
           </Google>
-      
-            <p>Don't have an account?</p>
-            <a href="/signup">Sign up now</a>
-      
+
+          <p>Don't have an account?</p>
+          <a href="/signup">Sign up now</a>
         </Form>
       </Section>
     </Container>
-  )
+  );
 };
 
 const Container = styled.div`
-  padding = 0px;
+  padding: 0px;
 `;
 
 const Nav = styled.nav`
@@ -94,7 +89,7 @@ const Nav = styled.nav`
     height: 34px;
     @media (max-width: 768px) {
       padding: 0 5px;
-    };
+    }
   }
 `;
 
@@ -106,11 +101,11 @@ const Join = styled.a`
   width: 200px;
   color: rgba(0, 0, 0, 0.6);
   margin-right: 12px;
-  box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-  -webkit-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-  -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   &:hover {
-    background-color: #ECECEC;
+    background-color: #ececec;
     color: #333;
     text-decoration: none;
     cursor: pointer;
@@ -118,8 +113,8 @@ const Join = styled.a`
 `;
 
 const SignIn = styled.a`
-  border: 1px solid #1F5B87;
-  color: #1F5B87;
+  border: 1px solid #1f5b87;
+  color: #1f5b87;
   border-radius: 24px;
   transition-duration: 167ms;
   font-size: 16px;
@@ -127,12 +122,12 @@ const SignIn = styled.a`
   padding: 10px 45px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0);
-  box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-  -webkit-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-  -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   &:hover {
     background-color: rgba(112, 181, 249, 0.15);
-    color: #1F5B87;
+    color: #1f5b87;
     text-decoration: none;
     cursor: pointer;
   }
@@ -164,7 +159,7 @@ const Hero = styled.div`
     margin-top: 0px;
     width: 55%;
     font-size: 56px;
-    color: #1F5B87;
+    color: #1f5b87;
     font-weight: 200;
     line-height: 70px;
     @media (max-width: 768px) {
@@ -190,21 +185,20 @@ const Hero = styled.div`
 `;
 
 const Form = styled.div`
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-    width: 35%;
-    background-color: #fff;
-    border-radius: 24px;
-    box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-    -webkit-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-    -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-    @media (max-width: 768px) {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  width: 35%;
+  background-color: #fff;
+  border-radius: 24px;
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  @media (max-width: 768px) {
     margin-top: 20px;
-    }
   }
 `;
 
@@ -220,30 +214,29 @@ const Email = styled.form`
   input {
     line-height: 2.3;
     padding: 3px 10px;
-    background-color: #ECECEC;
+    background-color: #ececec;
     border: none;
     margin-bottom: 8px;
   }
 
   button {
-  display: block;
-  background-color: #D0021B;
-  padding: 0 50px;
-  height: 40px;
-  width: 100%;
-  margin: 20px auto;
-  border-radius: 24px;
-  border: none;
-  color: #fff;
-  text-align: center;
+    display: block;
+    background-color: #d0021b;
+    padding: 0 50px;
+    height: 40px;
+    width: 100%;
+    margin: 20px auto;
+    border-radius: 24px;
+    border: none;
+    color: #fff;
+    text-align: center;
 
-   &:hover {
-    background-color: #b80017;
-    cursor: pointer;
+    &:hover {
+      background-color: #b80017;
+      cursor: pointer;
+    }
   }
-  }
-
-`
+`;
 
 const Google = styled.button`
   display: flex;
@@ -256,15 +249,15 @@ const Google = styled.button`
   margin-bottom: 20px;
   border-radius: 24px;
   border: none;
-  box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-  -webkit-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
-  -moz-box-shadow: 0px 3px 6px 2px rgba(207,207,207,0.4);
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   z-index: 0;
   transition-duration: 167ms;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.6);
 
-  span{
+  span {
     margin: 0 0 0 20px;
   }
 
@@ -275,6 +268,4 @@ const Google = styled.button`
   }
 `;
 
-
 export default Login;
-
