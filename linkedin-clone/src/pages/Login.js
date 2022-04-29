@@ -126,9 +126,9 @@ const Join = styled.a`
 const Section = styled.section`
   display: flex;
   align-content: start;
-  min-height: 700px;
+  min-height: 650px;
   padding-bottom: 138px;
-  padding-top: 60px;
+  padding-top: 40px;
   position: relative;
   flex-wrap: wrap;
   width: 100%;
@@ -212,6 +212,7 @@ const Email = styled.form`
     margin-bottom: 20px;
     font-size: 28px;
     font-weight: 400;
+    color: #333;
   }
 
   input {

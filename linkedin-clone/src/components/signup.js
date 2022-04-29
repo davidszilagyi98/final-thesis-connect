@@ -46,63 +46,150 @@ export default function SignUp({ showLoader }) {
   }
 
   return (
-    <section className="page">
+    <SignUpPage>
+      <Nav>
+        <a href="/">
+          <img src="/images/connect-logo-thick-dot.svg" alt="" />
+        </a>
+      </Nav>
       <SingUpForm>
-        <h1>Sign Up</h1>
+       
         <form onSubmit={handleSignUp}>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Type your name" />
-          <input type="email" name="mail" placeholder="Type your mail" />
-          <input type="text" name="password" placeholder="Type your password" />
+           <h2>Sign Up</h2>
+          <input required type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Name" />
+          <input required type="email" name="mail" placeholder="Email" />
+          <input required type="text" name="password" placeholder="Password" />
+          <input required type="text" value={nationality} onChange={(e) => setNationality(e.target.value)} name="nationality" placeholder="Nationality" />
           <input type="text" value={residency} onChange={(e) => setResidency(e.target.value)} name="residency" placeholder="Country of residency" />
-          <input type="text" value={nationality} onChange={(e) => setNationality(e.target.value)} name="nationality" placeholder="Nationality" />
-          <input type="text" value={interests} onChange={(e) => setInterests(e.target.value)} name="interests" placeholder="Interests 'traveling,cooking,languages'" />
-          <input type="text" value={bio} onChange={(e) => setBio(e.target.value)} name="bio" placeholder="Bio" />
+          <input type="text" value={interests} onChange={(e) => setInterests(e.target.value)} name="interests" placeholder="Interests (e.g. traveling, cooking, languages)" />
+          <input type="text" value={bio} onChange={(e) => setBio(e.target.value)} name="bio" placeholder="Tell us about yourself" />
           <p className="text-error">{errorMessage}</p>
           <button>Sign Up</button>
+           <AlreadyUser>
+          <p>Already have an account? <a href="/">Sign in</a></p>
+          </AlreadyUser>
         </form>
-        <p className="text-center">
-          Already have an account? <Link to="/sign-in">Sign In</Link>
-        </p>
+           <SignUpImage>
+          <img src="/images/signup-hello.svg" alt="" />
+          </SignUpImage>
       </SingUpForm>
-    </section>
+     
+    </SignUpPage>
   );
 }
 
+const SignUpPage = styled.div`
+  background-color: #f5f5f5;
+  
+   @media (max-width: 768px) {
+    margin: 0 auto;
+    
+  }
+`
+
+const Nav = styled.nav`
+  max-width: 70%;
+  margin: auto;
+  padding: 12px 0 16px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+
+  & > a {
+    width: 135px;
+    height: 34px;
+    @media (max-width: 768px) {
+      padding: 0 5px;
+    }
+  }
+`;
+
+
 const SingUpForm = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  width: 30%;
-  margin: 0 auto; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding: 30px;
+  margin: 50px auto 0 auto;
+  width: 70%;
+  background-color: #fff;
+  border-radius: 24px;
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
 
-  h1 {
-    margin: 3rem;
-    text-align: center;
+  @media (max-width: 768px) {
+    margin: 20px auto;
+    width: 80%;
+    grid-template-columns: 1fr;
+    
   }
 
-  .text-center {
-    text-align: center;
-    margin: 2rem;
+  h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 400;
+    text-align: left;
   }
 
+  
   form {
     margin: auto;
-    text-align: center;
     display: flex;
     flex-direction: column;
-    max-width: 400px;
+    width: 80%;
   }
 
-  input {
-    margin: 0.5rem;
-    padding: 0.7rem;
+ input {
+    line-height: 2.3;
+    padding: 5px 10px;
+    background-color: #ececec;
+    border: none;
+    margin-bottom: 8px;
   }
 
   button {
-    width: 96%;
-    margin: auto;
-    margin: 0.5rem;
-    padding: 0.7rem;
+    display: block;
+    font-size: 1rem;
+    background-color: #1F5B87;
+    padding: 0 50px;
+    height: 40px;
+    width: 100%;
+    margin: 20px auto 0 auto;
+    border-radius: 24px;
+    border: none;
+    color: #fff;
+    text-align: center;
+
+    &:hover {
+      background-color: #063A54;
+      cursor: pointer;
+    }
   }
 `;
+
+const AlreadyUser = styled.div`
+  margin-top: 30px;
+  font-size: 0.8rem;
+  color: #555;
+  text-align: center;
+
+  a {
+    text-decoration: underline;
+    color: #1f5b87;
+  }
+`
+
+const SignUpImage = styled.div`
+  width: 100%;
+  @media (max-width: 768px) {
+    order: -1;
+    width: 58%;
+    margin: 0 auto;
+  }
+`
 
 // export default SignUp;
