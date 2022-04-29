@@ -119,7 +119,7 @@ const GuideButton = styled.button`
   border: none;
   border-radius: 12px;
   text-decoration: none;
-  7box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   &:hover {
