@@ -9,16 +9,13 @@ const Leftside = (props) => {
       <ArtCard>
         <UserInfo>
           <CardBackground />
-          <a>
+        
             <Photo />
-            <Link>
-              {user.displayName}
-              {user.email}
-              {user.name}
-            </Link>
+            <Link>{user.displayName} </Link>
+            <p>{user.email} </p>
             <img src="./images/danish-flag.svg" alt="" />
             <img src="./images/german-flag.svg" alt="" />
-          </a>
+         
           <br />
           <button onClick={logOut}>Log out</button>
           <a>
