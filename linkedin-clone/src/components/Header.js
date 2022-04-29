@@ -74,6 +74,9 @@ top: 0;
 width: 100vw;
 z-index: 100;
 height: 4rem;
+-webkit-box-shadow: 0px 3px 6px 1px rgba(51,51,51,0.1); 
+box-shadow: 0px 3px 6px 1px rgba(51,51,51,0.1);
+
 `;
 
 const Content = styled.div`

@@ -49,9 +49,9 @@ const Login = (props) => {
           <h1>A place for volunteers and organizations</h1>
           <img src="/images/hero-loginpage.svg" alt="" />
         </Hero>
-        <Form>
-          <h2> Login </h2>
+        <Form> 
           <Email onSubmit={handleSubmit}>
+            <h2> Login </h2>
             <input placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
             <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
             <button type="submit">Sign in</button>
@@ -62,8 +62,8 @@ const Login = (props) => {
             <span> Sign in with Google</span>
           </Google>
 
-          <p>Don't have an account?</p>
-          <a href="/signup">Sign up now</a>
+          <p>New user? <a href="/signup">Create an account</a></p>
+          
         </Form>
       </Section>
     </Container>
@@ -197,9 +197,12 @@ const Form = styled.div`
   box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+
   @media (max-width: 768px) {
     margin-top: 20px;
   }
+
+
 `;
 
 const Email = styled.form`
@@ -210,6 +213,12 @@ const Email = styled.form`
   height: auto;
   width: 100%;
   justify-content: space-evenly;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 400;
+  }
 
   input {
     line-height: 2.3;
