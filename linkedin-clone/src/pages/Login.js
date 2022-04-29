@@ -41,7 +41,6 @@ const Login = (props) => {
           <a href="/signup">
             <Join> Join now</Join>
           </a>
-          <SignIn>Sign in</SignIn>
         </div>
       </Nav>
       <Section>
@@ -56,14 +55,18 @@ const Login = (props) => {
             <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
             <button type="submit">Sign in</button>
           </Email>
-
+          <Hr>
+          <div></div>
+         <div>or</div>
+          <div></div>
+          </Hr>
           <Google onClick={handleGoogleSignIn}>
             <img src="/images/google.svg" alt="" />
             <span> Sign in with Google</span>
           </Google>
-
+          <Register>
           <p>New user? <a href="/signup">Create an account</a></p>
-          
+          </Register>
         </Form>
       </Section>
     </Container>
@@ -94,25 +97,6 @@ const Nav = styled.nav`
 `;
 
 const Join = styled.a`
-  font-size: 16px;
-  padding: 10px 45px;
-  text-decoration: none;
-  border-radius: 24px;
-  width: 200px;
-  color: rgba(0, 0, 0, 0.6);
-  margin-right: 12px;
-  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-  &:hover {
-    background-color: #ececec;
-    color: #333;
-    text-decoration: none;
-    cursor: pointer;
-  }
-`;
-
-const SignIn = styled.a`
   border: 1px solid #1f5b87;
   color: #1f5b87;
   border-radius: 24px;
@@ -131,15 +115,20 @@ const SignIn = styled.a`
     text-decoration: none;
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    fon-size: 14px;
+    padding: 8px 30px;
+  }
 `;
+
 
 const Section = styled.section`
   display: flex;
   align-content: start;
   min-height: 700px;
   padding-bottom: 138px;
-  padding-top: 40px;
-  padding: 60px 0;
+  padding-top: 60px;
   position: relative;
   flex-wrap: wrap;
   width: 100%;
@@ -170,11 +159,17 @@ const Hero = styled.div`
     }
   }
   img {
-    width: 750px;
-    height: 670px;
+    width: 67%;
+    height: 700px;
     position: absolute;
-    top: 40px;
-    right: -170px;
+    top: 70px;
+    right: -150px;
+
+     @media (max-width: 1291px) {
+      width: 50%;
+      right: 0px;
+    }
+
     @media (max-width: 768px) {
       top: 230px;
       width: initial;
@@ -185,7 +180,7 @@ const Hero = styled.div`
 `;
 
 const Form = styled.div`
-  padding: 50px;
+  padding:  50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -199,7 +194,8 @@ const Form = styled.div`
   -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
 
   @media (max-width: 768px) {
-    margin-top: 20px;
+    margin: 20px auto;
+    width: 80%;
   }
 
 
@@ -208,8 +204,6 @@ const Form = styled.div`
 const Email = styled.form`
   display: flex;
   flex-direction: column;
-  margin-bottom: 5px;
-  margin-top: 20px;
   height: auto;
   width: 100%;
   justify-content: space-evenly;
@@ -230,11 +224,12 @@ const Email = styled.form`
 
   button {
     display: block;
+    font-size: 1rem;
     background-color: #d0021b;
     padding: 0 50px;
     height: 40px;
     width: 100%;
-    margin: 20px auto;
+    margin: 20px auto 0 auto;
     border-radius: 24px;
     border: none;
     color: #fff;
@@ -246,6 +241,46 @@ const Email = styled.form`
     }
   }
 `;
+
+const Hr = styled.div`
+    display: flex;
+    width: 100%;
+    margin: 20px 0;
+
+    div {  
+      font-size: 0.8rem;;
+      color: #555;
+      
+      &:first-child, &:last-child {
+        -webkit-flex: 1;
+        -moz-flex: 1;
+        flex: 1;
+        position: relative;
+        
+        &:before {
+          content: ' ';
+          position: absolute;
+          top: 50%;
+          left: 0px;
+          right: 0px;
+          height: 1px;
+          background-color: #555;
+       
+        }
+      }
+      
+      &:first-child {
+        margin-right: 20px;
+      }
+      
+      &:last-child {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+`
 
 const Google = styled.button`
   display: flex;
@@ -268,6 +303,7 @@ const Google = styled.button`
 
   span {
     margin: 0 0 0 20px;
+    font-size: 1rem;
   }
 
   &:hover {
@@ -276,5 +312,16 @@ const Google = styled.button`
     cursor: pointer;
   }
 `;
+
+const Register = styled.div`
+  margin-top: 30px;
+  font-size: 0.8rem;
+  color: #555;
+
+  a {
+    text-decoration: underline;
+    color: #1f5b87;
+  }
+`
 
 export default Login;
