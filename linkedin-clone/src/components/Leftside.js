@@ -11,7 +11,11 @@ const Leftside = (props) => {
           <CardBackground />
           <a>
             <Photo />
-            <Link>{user.displayName}</Link>
+            <Link>
+              {user.displayName}
+              {user.email}
+              {user.name}
+            </Link>
             <img src="./images/danish-flag.svg" alt="" />
             <img src="./images/german-flag.svg" alt="" />
           </a>

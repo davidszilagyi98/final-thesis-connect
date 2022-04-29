@@ -22,7 +22,7 @@ const Mynetwork = () => {
     <ul>
       {users.map((user) => (
         <li key={user.id}>
-          <a href="#"></a> <Dot user={user.value} /> {user.name}: {user.nationality}
+          <a href="#"></a> <Dot user={user.value} /> {user.name}: {user.nationality} {user.residency} {user.interests} {user.bio}
         </li>
       ))}
     </ul>
