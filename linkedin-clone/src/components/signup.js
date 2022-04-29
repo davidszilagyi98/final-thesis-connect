@@ -7,7 +7,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import styled from "styled-components";
 
 export default function SignUp({ showLoader }) {
-  const [name, setName, residency, setResidency] = useState("");
+  const [name, setName, residency, setResidency, nationality, setNationality, interests, setInterests, bio, setBio] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   let navigate = useNavigate();
 
@@ -23,6 +23,9 @@ export default function SignUp({ showLoader }) {
     const password = event.target.password.value; // password value from inout field in sign in form
     const name = event.target.name.value;
     const residency = event.target.residency.value;
+    const nationality = event.target.nationality.value;
+    const interests = event.target.interests.value;
+    const bio = event.target.bio.value;
 
     // read the docs: https://firebase.google.com/docs/auth/web/password-auth#create_a_password-based_account
     createUserWithEmailAndPassword(auth, mail, password, name, residency)
@@ -30,7 +33,7 @@ export default function SignUp({ showLoader }) {
         // Created and signed in
         const user = userCredential.user;
         const docRef = doc(usersRef, user.uid); // create reference to the user in firestore
-        setDoc(docRef, { name, residency }); // set/update the user in firestore with the values from userToUpdate/values from input fields
+        setDoc(docRef, { name, residency, nationality, interests, bio }); // set/update the user in firestore with the values from userToUpdate/values from input fields
         navigate("/");
       })
       .catch((error) => {
@@ -51,9 +54,9 @@ export default function SignUp({ showLoader }) {
           <input type="email" name="mail" placeholder="Type your mail" />
           <input type="text" name="password" placeholder="Type your password" />
           <input type="text" value={residency} onChange={(e) => setResidency(e.target.value)} name="residency" placeholder="Country of residency" />
-          <input type="text" name="nationality" placeholder="Nationality" />
-          <input type="text" name="interests" placeholder="Interests 'traveling,cooking,languages'" />
-          <input type="text" name="bio" placeholder="Bio" />
+          <input type="text" value={nationality} onChange={(e) => setNationality(e.target.value)} name="nationality" placeholder="Nationality" />
+          <input type="text" value={interests} onChange={(e) => setInterests(e.target.value)} name="interests" placeholder="Interests 'traveling,cooking,languages'" />
+          <input type="text" value={bio} onChange={(e) => setBio(e.target.value)} name="bio" placeholder="Bio" />
           <p className="text-error">{errorMessage}</p>
           <button>Sign Up</button>
         </form>
