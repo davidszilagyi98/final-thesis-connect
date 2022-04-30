@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
+import { Home } from "./pages/Home";
 import Login from "./pages/Login";
 import Explore from "./pages/Explore";
 import Mynetwork from "./pages/Mynetwork";
@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import Signup from "./components/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/userContext";
+import Messages from "./pages/Messages";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/explore" element={<ProtectedRoute><Explore /></ProtectedRoute>} />
               <Route path="/mynetwork" element={<ProtectedRoute><Mynetwork /></ProtectedRoute>} />
               <Route path="/organizations" element={<ProtectedRoute><Organizations /></ProtectedRoute>} />
+              <Route path="/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
               <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
             </Routes>
           </UserAuthContextProvider>

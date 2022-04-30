@@ -46,13 +46,13 @@ const Header = (props) => {
               </a>
             </NavList>
             <NavList>
-              <a>
+              <a href="/notifications">
                 <img src="/images/icons/notifications-icon.svg" alt="" />
                 <span>Notifications</span>
               </a>
             </NavList>
             <NavList>
-              <a>
+              <a href="/messages">
                 <img src="/images/icons/messages-icon.svg" alt="" />
                 <span>Messages</span>
               </a>

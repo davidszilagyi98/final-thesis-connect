@@ -75,9 +75,9 @@ const FeedList = styled.ul`
     button {
       color: #333;
       background-color: #ececec;
-      box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-      -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-      -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+      box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+      -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+      -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
       border: none;
       border-radius: 12px;
       position: absolute;
@@ -103,9 +103,9 @@ const FeedList = styled.ul`
 const RightSideExploreCard = styled.div`
   background-color: #fff;
   background: linear-gradient(to left, white 97%, #D9B233 3%);
-  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
   border-radius: 12px;
   display: flex;
   width: 95%;

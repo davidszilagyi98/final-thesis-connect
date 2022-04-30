@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { UserAuthContextProvider, useUserAuth } from "../context/userContext";
 
-const Leftside = (props) => {
+const LeftsideOrganizations = (props) => {
   const { user, logOut } = useUserAuth();
   return (
     <Container>
@@ -30,12 +30,14 @@ const Leftside = (props) => {
       <a href="/guide">
         <GuideButton>Guide</GuideButton>
       </a>
+
+     <CountryFilterButton>Counrty <img src="./images/icons/downarrow-icon.svg" alt="" /></CountryFilterButton>
     </Container>
   );
 };
 
 const Container = styled.div`
-  grid-area: leftside;
+  grid-area: leftsideorganizations;
 
   a {
     text-decoration: none;
@@ -152,4 +154,33 @@ const GuideButton = styled.button`
   }
 `;
 
-export default Leftside;
+const CountryFilterButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  color: #333;
+  background-color: #fff;
+  width: 100%;
+  font-size: 14px;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+
+  img {
+    display: block;
+    width: 8px;
+    padding-left: 3px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #EBEBEB;
+  }
+`
+
+export default LeftsideOrganizations;

@@ -38,4 +38,4 @@ const Layout = styled.div`
   }
 `;
 
-export default Home;
+export { Home, Container, Layout }
