@@ -53,9 +53,12 @@ export default function SignUp({ showLoader }) {
         </a>
       </Nav>
       <SingUpForm>
+    
+         
        
-        <form onSubmit={handleSignUp}>
-           <h2>Sign Up</h2>
+        <form onSubmit={handleSignUp} id="signupvolunteers">
+           <h2><a href="signupvolunteers" className="tab active">Register as a volunteer</a>/<a href="signuporganizations" className="tab">Register as an organization</a></h2>
+         
           <input required type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Name" />
           <input required type="email" name="mail" placeholder="Email" />
           <input required type="text" name="password" placeholder="Password" />
@@ -72,6 +75,27 @@ export default function SignUp({ showLoader }) {
            <SignUpImage>
           <img src="/images/signup-hello.svg" alt="" />
           </SignUpImage>
+      </SingUpForm>
+
+      <SingUpForm>
+       <SignUpImage>
+          <img src="/images/signup-hello.svg" alt="" />
+          </SignUpImage>
+        <form onSubmit={handleSignUp} id="signuporganizations">
+           <h2><a href="signupvolunteers" className="tab active">Register as a volunteer</a> / <a href="signuporganizations" className="tab">Register as an organization</a></h2>
+          
+          <input required type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Name of the organization" />
+          <input required type="email" name="mail" placeholder="Email" />
+          <input required type="text" name="password" placeholder="Password" />
+          <input required type="text" name="country" placeholder="Country" />
+          <input required type="text" value={bio} onChange={(e) => setBio(e.target.value)} name="bio" placeholder="Tell us about the organization" />
+          <p className="text-error">{errorMessage}</p>
+          <button>Sign Up</button>
+           <AlreadyUser>
+          <p>Already have an account? <a href="/">Sign in</a></p>
+          </AlreadyUser>
+        </form>
+           
       </SingUpForm>
      
     </SignUpPage>
@@ -130,7 +154,7 @@ const SingUpForm = styled.div`
 
   h2 {
     margin-bottom: 20px;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 400;
     text-align: left;
   }
