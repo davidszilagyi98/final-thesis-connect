@@ -3,13 +3,13 @@ import { getAuth } from "firebase/auth";
 import { getFirestore, collection } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAyk2gPbH2CuTwthdZmn6HXbkfW3xjPWZw",
-  authDomain: "final-thesis-connect.firebaseapp.com",
-  projectId: "final-thesis-connect",
-  storageBucket: "final-thesis-connect.appspot.com",
-  messagingSenderId: "377854198077",
-  appId: "1:377854198077:web:ea6b55d46a248155bac554",
-  measurementId: "G-JLPFYYEV23",
+  apiKey: "AIzaSyCgfayhW4vLZTx1DL11q1Pkvb6qCqqaTZc",
+  authDomain: "connect-final-thesis.firebaseapp.com",
+  projectId: "connect-final-thesis",
+  storageBucket: "connect-final-thesis.appspot.com",
+  messagingSenderId: "1008887317744",
+  appId: "1:1008887317744:web:eeae8b09486bfa0a5aae35",
+  measurementId: "G-JZLMXDYP1K",
 };
 
 export const app = initializeApp(firebaseConfig);
