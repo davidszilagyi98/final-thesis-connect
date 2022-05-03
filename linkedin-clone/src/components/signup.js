@@ -13,10 +13,6 @@ export default function SignUp({ showLoader }) {
 
   const auth = getAuth();
 
-  // useEffect(() => {
-  //     showLoader(false);
-  // }, [showLoader]);
-
   function handleSignUp(event) {
     event.preventDefault();
     const mail = event.target.mail.value; // mail value from inout field in sign in form

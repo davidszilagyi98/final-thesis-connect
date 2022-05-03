@@ -3,7 +3,7 @@ import { useUserAuth } from "../context/userContext";
 import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { usersRef } from "../firebase/index";
-import { doc, getDoc } from "@firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 const Leftside = (props) => {
   const { user, logOut } = useUserAuth();

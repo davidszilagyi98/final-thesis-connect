@@ -1,14 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { addDoc, serverTimestamp, onSnapshot, query, orderBy } from "firebase/firestore";
+import { postsRef } from "../firebase/index";
+import { useNavigate } from "react-router-dom";
+import CreatePost from "../components/CreatePost";
+import PostCard from "./PostCard";
+import { getAuth } from "firebase/auth";
 
 
 const Main = (props) => {
+  const navigate = useNavigate();
+    const auth = getAuth();
+     const [posts, setPosts] = useState([]);
+
+    async function handleSubmit(newPost) {
+   
+        newPost.createdAt = serverTimestamp(); // timestamp (now)
+        newPost.uid = auth.currentUser.uid; // uid of auth user / signed in user
+        await addDoc(postsRef, newPost); // add new doc - new post object
+        navigate("/home");
+    }
+
+    useEffect(() => {
+        const q = query(postsRef, orderBy("createdAt", "desc")); // order by: lastest post first
+        const unsubscribe = onSnapshot(q, data => {
+            const postsData = data.docs.map(doc => {
+                // map through all docs (object) from post collection
+                return { ...doc.data(), id: doc.id }; // changing the data structure so it's all gathered in one object
+            });
+            setPosts(postsData);
+          
+        });
+        return () => unsubscribe(); // tell the post component to unsubscribe from listen on changes from firestore
+    },[] );
+
+
   return (
     <Container>
       <ShareBox>
         <div>
           <ShareBoxPhoto/>
-          <button>What's in your mind?</button>
+          <CreatePost savePost={handleSubmit} />
         </div>
         <div>
           <button>
@@ -29,7 +61,14 @@ const Main = (props) => {
         </div>
       </ShareBox>
       <div>
+        <section className="grid-container">
+                {posts.map(post => (
+                    <PostCard post={post} key={post.id} />
+                ))}
+            </section>
         <Article>
+
+           
           <SharedActor>
             <SharedActorInfo>
             <a>
@@ -327,5 +366,6 @@ img {
   width: 18px;
 }
 `;
+
 
 export default Main;
