@@ -1,23 +1,51 @@
-import React from "react";
 import styled from "styled-components";
-import { UserAuthContextProvider, useUserAuth } from "../context/userContext";
+import { useUserAuth } from "../context/userContext";
+import React, { useEffect, useState } from "react";
+import { getAuth } from "firebase/auth";
+import { usersRef } from "../firebase/index";
+import { doc, getDoc } from "@firebase/firestore";
 
 const Leftside = (props) => {
   const { user, logOut } = useUserAuth();
+  const [name, setName] = useState("");
+  const [bio, setBio] = useState("");
+  const [email, setEmail] = useState("");
+  const auth = getAuth();
+  useEffect(() => {
+    async function getUser() {
+      if (auth.currentUser) {
+        setEmail(auth.currentUser.email); // set the email state from the auth user objects email property
+        // get more info about the user from users collection
+        const docRef = doc(usersRef, auth.currentUser.uid); // use auth users uid to get user data from users collection
+        const userData = (await getDoc(docRef)).data();
+        if (userData) {
+          // if userData exists set states with values from userData (data from firestore)
+          setName(userData.name);
+          setEmail(userData.email);
+          setBio(userData.bio);
+        }
+      }
+    }
+
+    getUser();
+  }, [auth.currentUser]); // dependencies: useEffect is executed when auth.currentUser changes
+
   return (
     <Container>
       <ArtCard>
         <UserInfo>
           <CardBackground />
-        
-            <Photo />
-            <Link>{user.displayName} </Link>
-            <p>{user.email} </p>
-            <img src="./images/danish-flag.svg" alt="" />
-            <img src="./images/german-flag.svg" alt="" />
-         
-          <br />
+
+          <Photo />
+          <Link>{user.displayName} </Link>
           
+          <p> {name} </p>
+          <p> {bio} </p>
+          <img src="./images/danish-flag.svg" alt="" />
+          <img src="./images/german-flag.svg" alt="" />
+
+          <br />
+
           <a>
             <AddPhotoText>
               Add a photo
@@ -80,11 +108,11 @@ const UserInfo = styled.div`
     max-width: 480px;
     text-align: center;
 
-      &:hover {
+    &:hover {
       cursor: pointer;
       color: #fff;
       background-color: #b80017;
-      }
+    }
   }
 `;
 
