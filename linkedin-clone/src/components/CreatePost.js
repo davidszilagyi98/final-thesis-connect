@@ -11,6 +11,7 @@ export default function CreatePost({ savePost, post }) {
   }, [post]); // useEffect is called every time post changes.
 
   function handleSubmit(event) {
+      
     event.preventDefault();
     const formData = {
       body: body,
@@ -24,6 +25,7 @@ export default function CreatePost({ savePost, post }) {
       // if not, set errorMessage state.
       setErrorMessage("Please, fill in all fields.");
     }
+    setBody("");
   }
 
   return (
