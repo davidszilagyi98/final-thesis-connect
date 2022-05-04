@@ -8,21 +8,16 @@ import { doc, getDoc } from "firebase/firestore";
 const Leftside = (props) => {
   const { user, logOut } = useUserAuth();
   const [name, setName] = useState("");
-  const [bio, setBio] = useState("");
-  const [email, setEmail] = useState("");
   const auth = getAuth();
   useEffect(() => {
     async function getUser() {
       if (auth.currentUser) {
-        setEmail(auth.currentUser.email); // set the email state from the auth user objects email property
         // get more info about the user from users collection
         const docRef = doc(usersRef, auth.currentUser.uid); // use auth users uid to get user data from users collection
         const userData = (await getDoc(docRef)).data();
         if (userData) {
           // if userData exists set states with values from userData (data from firestore)
           setName(userData.name);
-          setEmail(userData.email);
-          setBio(userData.bio);
         }
       }
     }
@@ -37,10 +32,11 @@ const Leftside = (props) => {
           <CardBackground />
 
           <Photo />
-          <Link>{user.displayName} </Link>
-          
-          <p> {name} </p>
-          <p> {bio} </p>
+          <Link>
+            <a href="/profile">{user.displayName}</a>
+            <a href="/profile"> {name} </a>
+          </Link>
+
           <img src="./images/danish-flag.svg" alt="" />
           <img src="./images/german-flag.svg" alt="" />
 
@@ -145,6 +141,9 @@ const Link = styled.div`
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.9);
   font-weight: 600;
+  a {
+    color: black;
+  }
 `;
 
 const AddPhotoText = styled.div`
