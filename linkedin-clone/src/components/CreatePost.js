@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 
 export default function CreatePost({ savePost, post }) {
   const [body, setBody] = useState("");
@@ -29,13 +30,20 @@ export default function CreatePost({ savePost, post }) {
   }
 
   return (
+      <PostBoxContainer>
     <form onSubmit={handleSubmit}>
       <label>
-        Body
-        <input type="text" value={body} placeholder="Type a body text" onChange={(e) => setBody(e.target.value)} />
+        <input type="text" value={body} placeholder="What's in your mind?" onChange={(e) => setBody(e.target.value)} />
       </label>
       <p className="text-error">{errorMessage}</p>
-      <button type="submit">Save</button>
+      <button type="submit">Post</button>
     </form>
+     </PostBoxContainer>
   );
 }
+
+const PostBoxContainer = styled.div`
+   input {
+       width: 80%;
+   }
+`

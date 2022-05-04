@@ -15,23 +15,22 @@ const Main = (props) => {
 
     async function handleSubmit(newPost) {
    
-        newPost.createdAt = serverTimestamp(); // timestamp (now)
-        newPost.uid = auth.currentUser.uid; // uid of auth user / signed in user
-        await addDoc(postsRef, newPost); // add new doc - new post object
+        newPost.createdAt = serverTimestamp(); 
+        newPost.uid = auth.currentUser.uid; 
+        await addDoc(postsRef, newPost); 
         navigate("/home");
     }
 
     useEffect(() => {
-        const q = query(postsRef, orderBy("createdAt", "desc")); // order by: lastest post first
+        const q = query(postsRef, orderBy("createdAt", "desc")); 
         const unsubscribe = onSnapshot(q, data => {
             const postsData = data.docs.map(doc => {
-                // map through all docs (object) from post collection
-                return { ...doc.data(), id: doc.id }; // changing the data structure so it's all gathered in one object
+                return { ...doc.data(), id: doc.id }; 
             });
             setPosts(postsData);
           
         });
-        return () => unsubscribe(); // tell the post component to unsubscribe from listen on changes from firestore
+        return () => unsubscribe(); 
     },[] );
 
 
@@ -65,8 +64,8 @@ const Main = (props) => {
                 {posts.map(post => (
                     <PostCard post={post} key={post.id} />
                 ))}
-            </section>
-        <Article>
+        </section>
+      {/*   <Article>
 
            
           <SharedActor>
@@ -115,7 +114,7 @@ const Main = (props) => {
               <span>Share</span>
             </button>
           </SocialActions>
-        </Article>
+        </Article> */}
       </div>
     </Container>
   );
@@ -214,7 +213,7 @@ box-shadow: none;
   border-radius: 50%;
 `
 
-const Article = styled(CommonCard)`
+/* const Article = styled(CommonCard)`
   padding: 0;
   margin: 0 0 8px;
   overflow: visible;
@@ -365,7 +364,7 @@ button{
 img {
   width: 18px;
 }
-`;
+`; */
 
 
 export default Main;
