@@ -2,7 +2,7 @@ import styled from "styled-components";
 import UserInfo from "./UserInfo"
 
 export default function PostCard({ post }) {
-    
+
    
     return (
      <Container>

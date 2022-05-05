@@ -1,42 +1,27 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { storage, db } from "../firebase";
-import { collection, getDoc, doc, onSnapshot } from "@firebase/firestore";
-import { useParams } from "react-router-dom";
-import { async } from "@firebase/util";
+import { db } from "../firebase";
+import { collection, onSnapshot } from "@firebase/firestore";
+import { Link } from "react-router-dom";
 
-const initialState = {
-  name: "",
-};
 
-const MainOrganizations = (props) => {
-  const { id } = useParams();
-  const [data, setData] = useState(initialState);
-  useEffect(() => {
-    id && getSingleUser();
-  }, [id]);
+const MainOrganizations = ({ name }) => {
 
-  const getSingleUser = async () => {
-    const docRef = doc(db, "users", id);
-    const snapshot = await getDoc(docRef);
-    if (snapshot.exists()) {
-      setData({ ...snapshot.data() });
-    }
-  };
   const [users, setUsers] = useState([]);
-
   useEffect(() => onSnapshot(collection(db, "users"), (snapshot) => setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))), []);
 
+  
   return (
     <Container>
       <OrganizationsList>
         <ul>
+          <h2>Titel</h2>
           {users.map((user) => (
+            <Link to={`/userprofile/${user.id}`}>
             <li key={user.id}>
-              <a href={`/userprofile/${user.id}`} user={user.value}>
-                {user.name}
-              </a>
+                <p>{user.name}</p>
             </li>
+              </Link>
           ))}
         </ul>
       </OrganizationsList>
