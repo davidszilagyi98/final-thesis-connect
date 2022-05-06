@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import placeholder from "../volunteer-placeholder-image.svg";
+import PopupProject from "./Popup";
 
 export default function CreatePost({ savePost, post }) {
   const [image, setImage] = useState("");
@@ -59,6 +60,7 @@ function handleImageChange(event) {
                 <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
                 <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src = placeholder)} />
             </label>
+            <PopupProject/>
       <p className="text-error">{errorMessage}</p>
       <button type="submit">Post</button>
     </form>

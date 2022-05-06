@@ -6,7 +6,7 @@ import Explore from "./pages/Explore";
 import Mynetwork from "./pages/Mynetwork";
 import Organizations from "./pages/Organizations";
 import Profile from "./pages/Profile";
-import Signup from "./components/Signup";
+import Signup from "./components/Singup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/userContext";
 import Messages from "./pages/Messages";
