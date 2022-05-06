@@ -10,7 +10,7 @@ export default function PostCard({ post }) {
           <SharedActor>
              <UserInfo uid={post.uid} />
                 <p>{post.body}</p>
-               
+                <img src={post.image} alt=""/>
           </SharedActor>
     
           <SocialCounts>

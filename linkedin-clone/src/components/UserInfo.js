@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { usersRef } from "../firebase/index";
-import placerholder from "../volunteer-placeholder-image.svg";
+import placeholder from "../volunteer-placeholder-image.svg";
 
 export default function UserInfo({ uid }) {
   const [user, setUser] = useState({
-    image: placerholder,
+    image: placeholder,
     name: "User's Name",
   });
 

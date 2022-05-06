@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { doc, setDoc } from "@firebase/firestore";
 import { usersRef } from "../firebase/index";
@@ -7,7 +7,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import styled from "styled-components";
 
 export default function SignUp({ showLoader }) {
-  const [name, setName, residency, setResidency, nationality, setNationality, interests, setInterests, bio, setBio] = useState("");
+  const [name, setName, mail, setMail, residency, setResidency, nationality, setNationality, interests, setInterests, bio, setBio] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   let navigate = useNavigate();
 
@@ -29,7 +29,7 @@ export default function SignUp({ showLoader }) {
         // Created and signed in
         const user = userCredential.user;
         const docRef = doc(usersRef, user.uid); // create reference to the user in firestore
-        setDoc(docRef, { name, residency, nationality, interests, bio }); // set/update the user in firestore with the values from userToUpdate/values from input fields
+        setDoc(docRef, { name, mail, residency, nationality, interests, bio }); // set/update the user in firestore with the values from userToUpdate/values from input fields
         navigate("/");
       })
       .catch((error) => {
@@ -56,7 +56,7 @@ export default function SignUp({ showLoader }) {
            <h2><a href="signupvolunteers" className="tab active">Register as a volunteer</a>/<a href="signuporganizations" className="tab">Register as an organization</a></h2>
          
           <input required type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Name" />
-          <input required type="email" name="mail" placeholder="Email" />
+          <input required type="email" value={mail} onChange={(e) => setMail(e.target.value)} name="mail" placeholder="Email" />
           <input required type="text" name="password" placeholder="Password" />
           <input required type="text" value={nationality} onChange={(e) => setNationality(e.target.value)} name="nationality" placeholder="Nationality" />
           <input type="text" value={residency} onChange={(e) => setResidency(e.target.value)} name="residency" placeholder="Country of residency" />
@@ -81,7 +81,7 @@ export default function SignUp({ showLoader }) {
            <h2><a href="signupvolunteers" className="tab active">Register as a volunteer</a> / <a href="signuporganizations" className="tab">Register as an organization</a></h2>
           
           <input required type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Name of the organization" />
-          <input required type="email" name="mail" placeholder="Email" />
+          <input required type="email" value={mail} onChange={(e) => setMail(e.target.value)} name="mail" placeholder="Email" />
           <input required type="text" name="password" placeholder="Password" />
           <input required type="text" name="country" placeholder="Country" />
           <input required type="text" value={bio} onChange={(e) => setBio(e.target.value)} name="bio" placeholder="Tell us about the organization" />
