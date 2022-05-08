@@ -8,6 +8,7 @@ import { doc, getDoc } from "firebase/firestore";
 const Profile = () => {
   const { user } = useUserAuth();
   const [name, setName] = useState("");
+  const [image, setImage] = useState("");
   const [nationality, setNationality] = useState("");
   const [residency, setResdidency] = useState("");
   const [bio, setBio] = useState("");
@@ -24,6 +25,7 @@ const Profile = () => {
         if (userData) {
           // if userData exists set states with values from userData (data from firestore)
           setName(userData.name);
+          setImage(userData.image);
           setNationality(userData.nationality);
           setResdidency(userData.residency);
           setBio(userData.bio);
@@ -38,31 +40,34 @@ const Profile = () => {
   }, [auth.currentUser]); // dependencies: useEffect is executed when auth.currentUser changes
   return (
     <div>
+      {/* <Span /> */}
       <ProfileTop>
-        <div>
-          <img></img>
+        <div className="profiletop-center">
+          <img src={image} className="profile-picture" alt=""></img>
           <h3> {user.displayName} </h3>
           <h3> {name} </h3>
           <a>
-            <img></img>
+            <img src="/images/icons/facebook-logo-icon.svg"></img>
           </a>
           <a>
-            <img></img>
+            <img src="/images/icons/instagram-logo-icon.svg"></img>
           </a>
         </div>
       </ProfileTop>
       <InfoHolder>
         <About>
-          <h3>About</h3>
-          <p>Nationality {nationality} </p>
-          <p>Country of residency {residency} </p>
+          <div className="countries">
+            <h3>About</h3>
+            <p>Nationality: {nationality} </p>
+            <p>Country of residency: {residency} </p>
+          </div>
           <p>{bio}</p>
         </About>
       </InfoHolder>
       <InfoHolder>
         <Interests>
-          <h3>Interests</h3>
-          <p>{interests}</p>
+          <h3 className="interests-heading">Interests</h3>
+          <p className="interests">{interests}</p>
         </Interests>
       </InfoHolder>
       <InfoHolder>
@@ -79,12 +84,57 @@ const Profile = () => {
     </div>
   );
 };
-const ProfileTop = styled.div``;
 
-const InfoHolder = styled.div``;
+// const Span = styled.div`
+//   /* background-color: #d9b233;
+//   width: 80%;
+//   height: 159px;
+//   margin: 0 auto;
+//   border-radius: 12px 12px 0 0; */
+// `;
+const ProfileTop = styled.div`
+  background: linear-gradient(to top, #f5f5f5 50%, #d9b233 50%);
+  border-radius: 12px 12px 0 0;
+  width: 80%;
+  margin: 0 auto;
+  .profile-picture {
+    width: 180px;
+    height: 180px;
+    border-radius: 360px;
+    margin-top: 3rem;
+  }
 
-const About = styled.div``;
-const Interests = styled.div``;
+  .profiletop-center {
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+`;
+
+const InfoHolder = styled.div`
+  background-color: white;
+  border-radius: 12px;
+  width: 75%;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  padding: 2rem;
+`;
+
+const About = styled.div`
+  .countries {
+    margin-bottom: 2rem;
+  }
+`;
+const Interests = styled.div`
+  .interests-heading {
+    margin-bottom: 1rem;
+  }
+  .interests {
+    border: 1px solid #d9b233;
+    text-align: center;
+    padding: 0.5rem;
+    width: 10%;
+  }
+`;
 const Projects = styled.div``;
 const Photos = styled.div``;
 
