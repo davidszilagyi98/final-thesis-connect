@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { usersRef } from "../firebase/index";
 import placeholder from "../volunteer-placeholder-image.svg";
-
+import styled from "styled-components";
 export default function UserInfo({ uid }) {
   const [user, setUser] = useState({
     image: placeholder,
@@ -21,11 +21,28 @@ export default function UserInfo({ uid }) {
   }, [uid]);
 
   return (
-    <div className="avatar">
-      <img src={user.image} alt={user.id} />
-      <span>
-        <h3>{user.name}</h3>
-      </span>
-    </div>
+    <Avatar>
+      <div className="avatar">
+        <img src={user.image} alt={user.id} />
+        <span>
+          <h2>{user.name}</h2>
+        </span>
+      </div>
+    </Avatar>
   );
 }
+
+const Avatar = styled.div`
+  img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 1rem;
+  }
+
+  .avatar {
+    display: flex;
+    align-items: center;
+  }
+`;

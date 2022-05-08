@@ -151,7 +151,12 @@ const NavListWrap = styled.ul`
   flex-wrap: no-wrap;
   list-style-type: none;
   margin-top: 3px;
-
+  @media (max-width: 768px) {
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
   .active {
     span:after {
       content: "";

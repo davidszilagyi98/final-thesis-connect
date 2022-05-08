@@ -8,6 +8,7 @@ import { doc, getDoc } from "firebase/firestore";
 const Leftside = (props) => {
   const { user, logOut } = useUserAuth();
   const [name, setName] = useState("");
+  const [image, setImage] = useState("");
   const auth = getAuth();
   useEffect(() => {
     async function getUser() {
@@ -18,6 +19,7 @@ const Leftside = (props) => {
         if (userData) {
           // if userData exists set states with values from userData (data from firestore)
           setName(userData.name);
+          setImage(userData.image);
         }
       }
     }
@@ -31,7 +33,9 @@ const Leftside = (props) => {
         <UserInfo>
           <CardBackground />
 
-          <Photo />
+          <Photo>
+            <img className="user-image" src={image}></img>
+          </Photo>
           <Link>
             <a href="/profile">{user.displayName}</a>
             <a href="/profile"> {name} </a>
@@ -61,6 +65,9 @@ const Leftside = (props) => {
 const Container = styled.div`
   grid-area: leftside;
 
+  @media (max-width: 768px) {
+    display: none;
+  }
   a {
     text-decoration: none;
     color: #fff;
@@ -121,19 +128,30 @@ const CardBackground = styled.div`
 `;
 
 const Photo = styled.div`
-  box-shadow: none;
-  background-image: url("/images/rasmus.jpg");
-  width: 72px;
-  height: 72px;
-  box-sizing: border-box;
-  background-clip: content-box;
-  background-color: white;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border: 2px solid white;
-  margin: -38px auto 12px;
-  border-radius: 50%;
+  /* img {
+    box-shadow: none;
+    /* background-image: url("/images/rasmus.jpg"); */
+  /* width: 72px;
+    height: 72px;
+    box-sizing: border-box;
+    background-clip: content-box;
+    background-color: white;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 2px solid white;
+    margin: -38px auto 12px;
+    border-radius: 50%;
+  }  */
+
+  .user-image {
+    border-radius: 360px;
+    object-fit: cover;
+    width: 7rem;
+    height: 7rem;
+    margin: -38px auto 12px;
+    border: 2px solid white;
+  }
 `;
 
 const Link = styled.div`

@@ -5,7 +5,7 @@ import "reactjs-popup/dist/index.css";
 const PopupProject = () => {
   return (
     <div>
-      <Popup trigger={<button> Trigger</button>} position="right center">
+      <Popup trigger={<button>Project</button>} position="right center">
         <div>
           Popup content here !!
           <form>

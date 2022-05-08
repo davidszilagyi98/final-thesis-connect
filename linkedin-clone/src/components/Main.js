@@ -1,44 +1,60 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { addDoc, serverTimestamp, onSnapshot, query, orderBy } from "firebase/firestore";
-import { postsRef } from "../firebase/index";
+import { postsRef, usersRef } from "../firebase/index";
 import { useNavigate } from "react-router-dom";
 import CreatePost from "../components/CreatePost";
 import PostCard from "./PostCard";
 import { getAuth } from "firebase/auth";
-
+import { doc, getDoc } from "firebase/firestore";
 
 const Main = (props) => {
   const navigate = useNavigate();
-    const auth = getAuth();
-     const [posts, setPosts] = useState([]);
+  const auth = getAuth();
+  const [posts, setPosts] = useState([]);
+  const [image, setImage] = useState("");
 
-    async function handleSubmit(newPost) {
-   
-        newPost.createdAt = serverTimestamp(); 
-        newPost.uid = auth.currentUser.uid; 
-        await addDoc(postsRef, newPost); 
-        navigate("/home");
+  useEffect(() => {
+    async function getUser() {
+      if (auth.currentUser) {
+        // get more info about the user from users collection
+        const docRef = doc(usersRef, auth.currentUser.uid); // use auth users uid to get user data from users collection
+        const userData = (await getDoc(docRef)).data();
+        if (userData) {
+          // if userData exists set states with values from userData (data from firestore)
+
+          setImage(userData.image);
+        }
+      }
     }
 
-    useEffect(() => {
-        const q = query(postsRef, orderBy("createdAt", "desc")); 
-        const unsubscribe = onSnapshot(q, data => {
-            const postsData = data.docs.map(doc => {
-                return { ...doc.data(), id: doc.id }; 
-            });
-            setPosts(postsData);
-          
-        });
-        return () => unsubscribe(); 
-    },[] );
+    getUser();
+  }, [auth.currentUser]); // dependencies: useEffect is executed when auth.currentUser changes
 
+  async function handleSubmit(newPost) {
+    newPost.createdAt = serverTimestamp();
+    newPost.uid = auth.currentUser.uid;
+    await addDoc(postsRef, newPost);
+    navigate("/home");
+  }
 
+  useEffect(() => {
+    const q = query(postsRef, orderBy("createdAt", "desc"));
+    const unsubscribe = onSnapshot(q, (data) => {
+      const postsData = data.docs.map((doc) => {
+        return { ...doc.data(), id: doc.id };
+      });
+      setPosts(postsData);
+    });
+    return () => unsubscribe();
+  }, []);
   return (
     <Container>
       <ShareBox>
         <div>
-          <ShareBoxPhoto/>
+          <ShareBoxPhoto>
+            <img className="post-user-image" src={image}></img>
+          </ShareBoxPhoto>
           <CreatePost savePost={handleSubmit} />
         </div>
         <div>
@@ -56,16 +72,15 @@ const Main = (props) => {
             <img src="./images/icons/project-icon.svg" alt="event-icon" />
             <span>Project</span>
           </button>
-
         </div>
       </ShareBox>
       <div>
         <section className="grid-container">
-                {posts.map(post => (
-                    <PostCard post={post} key={post.id} />
-                ))}
+          {posts.map((post) => (
+            <PostCard post={post} key={post.id} />
+          ))}
         </section>
-      {/*   <Article>
+        {/*   <Article>
 
            
           <SharedActor>
@@ -143,7 +158,6 @@ const ShareBox = styled(CommonCard)`
   background: white;
 
   div {
-
     button {
       outline: none;
       color: rgba(0, 0, 0, 0.6);
@@ -160,8 +174,8 @@ const ShareBox = styled(CommonCard)`
       display: flex;
       align-items: center;
       margin: 8px;
-      img{
-        width:48px;
+      img {
+        width: 48px;
         height: 48px;
         border-radius: 50%;
         margin-right: 8px;
@@ -170,17 +184,17 @@ const ShareBox = styled(CommonCard)`
       button {
         margin: 4px 0;
         flex-grow: 1;
-        border-radius 35px;
+        border-radius: 35px;
         padding-left: 16px;
         border: none;
         border-radius: 35px;
         background-color: #ededed;
-        text-align:left;
+        text-align: left;
         color: #333;
       }
     }
     &:nth-child(2) {
-      display:flex;
+      display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
       padding-bottom: 4px;
@@ -191,17 +205,17 @@ const ShareBox = styled(CommonCard)`
           height: 20px;
         }
         span {
-          color: #1F5B87;
+          color: #1f5b87;
         }
       }
     }
   }
 `;
 
-const ShareBoxPhoto = styled.div `
-box-shadow: none;
-  background-image: url("/images/rasmus.jpg");
-  width: 48px;
+const ShareBoxPhoto = styled.div`
+  /* box-shadow: none;
+  /* background-image: url("/images/rasmus.jpg"); */
+  /* width: 48px;
   height: 48px;
   box-sizing: border-box;
   background-clip: content-box;
@@ -210,8 +224,12 @@ box-shadow: none;
   background-size: cover;
   background-repeat: no-repeat;
   border: 2px solid white;
-  border-radius: 50%;
-`
+  border-radius: 50%; */
+  .post-user-image {
+    border-radius: 360px;
+    object-fit: cover;
+  }
+`;
 
 /* const Article = styled(CommonCard)`
   padding: 0;
@@ -365,6 +383,5 @@ img {
   width: 18px;
 }
 `; */
-
 
 export default Main;
