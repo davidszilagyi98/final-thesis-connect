@@ -53,25 +53,9 @@ const Main = (props) => {
       <ShareBox>
         <div>
           <ShareBoxPhoto>
-            <img className="post-user-image" src={image}></img>
+            <img className="post-user-image" src={image} alt=""></img>
           </ShareBoxPhoto>
           <CreatePost savePost={handleSubmit} />
-        </div>
-        <div>
-          <button>
-            <img src="./images/icons/photo-icon.svg" alt="" />
-            <span>Photo</span>
-          </button>
-
-          <button>
-            <img src="./images/icons/video-icon.svg" alt="video-icon" />
-            <span>Video</span>
-          </button>
-
-          <button>
-            <img src="./images/icons/project-icon.svg" alt="event-icon" />
-            <span>Project</span>
-          </button>
         </div>
       </ShareBox>
       <div>
@@ -80,56 +64,6 @@ const Main = (props) => {
             <PostCard post={post} key={post.id} />
           ))}
         </section>
-        {/*   <Article>
-
-           
-          <SharedActor>
-            <SharedActorInfo>
-            <a>
-              <img src="./images/natalia.jpg" alt="" />
-              <div>
-                <span>Natalia Plop <img src="./images/danish-flag.svg" alt=""/> <img src="./images/romanian-flag.svg" alt=""/></span>
-                <span>Info</span>
-                <span>Date</span>
-              </div>
-            </a>
-            </SharedActorInfo>
-            <button>
-              <img src="./images/icons/ellipsis-icon.svg" alt="" />
-            </button>
-          </SharedActor>
-          <Description>Description</Description>
-          <SharedImg>
-            <a>
-              <img src="./images/shared-image.jpg" alt="" />
-            </a>
-          </SharedImg>
-          <SocialCounts>
-            <li>
-              <button>
-                <img src="./images/icons/like-counter-icon.svg" alt="like-button" />
-                <span>75</span>
-              </button>
-            </li>
-            <li>
-              <a>2 comments</a>
-            </li>
-          </SocialCounts>
-          <SocialActions>
-            <button>
-              <img src="./images/icons/like-icon.svg" alt="like" />
-              <span>Like</span>
-            </button>
-            <button>
-              <img src="./images/icons/comment-icon.svg" alt="comments" />
-              <span>Comments</span>
-            </button>
-            <button>
-              <img src="./images/icons/share-icon.svg" alt="share" />
-              <span>Share</span>
-            </button>
-          </SocialActions>
-        </Article> */}
       </div>
     </Container>
   );
@@ -157,24 +91,7 @@ const ShareBox = styled(CommonCard)`
   margin: 0 0 8px;
   background: white;
 
-  div {
-    button {
-      outline: none;
-      color: rgba(0, 0, 0, 0.6);
-      font-size: 14px;
-      line-height: 1.5;
-      min-height: 48px;
-      background: transparent;
-      border: none;
-      display: flex;
-      align-items: center;
-      font-weight: 600;
-    }
-    &:first-child {
-      display: flex;
-      align-items: center;
-      margin: 8px;
-      img {
+  img {
         width: 48px;
         height: 48px;
         border-radius: 50%;
@@ -192,24 +109,7 @@ const ShareBox = styled(CommonCard)`
         text-align: left;
         color: #333;
       }
-    }
-    &:nth-child(2) {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      padding-bottom: 4px;
-
-      button {
-        img {
-          margin: 0 4px 0 -2px;
-          height: 20px;
-        }
-        span {
-          color: #1f5b87;
-        }
-      }
-    }
-  }
+    
 `;
 
 const ShareBoxPhoto = styled.div`

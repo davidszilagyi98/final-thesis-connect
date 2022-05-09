@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import placeholder from "../volunteer-placeholder-image.svg";
+import placeholder from "../photo-icon.svg";
 import PopupProject from "./Popup";
 
 export default function CreatePost({ savePost, post }) {
@@ -13,23 +13,23 @@ export default function CreatePost({ savePost, post }) {
       setBody(post.body);
       setImage(post.image);
     }
-  }, [post]); // useEffect is called every time post changes.
+  }, [post]); // 
 
   function handleImageChange(event) {
     const file = event.target.files[0];
-    if (file.size < 5000000) {
-      // image file size must be below 0,5MB
+    if (file.size < 500000) {
       const reader = new FileReader();
       reader.onload = (event) => {
         setImage(event.target.result);
       };
       reader.readAsDataURL(file);
-      setErrorMessage(""); // reset errorMessage state
+      setErrorMessage(""); 
     } else {
-      // if not below 0.5MB display an error message using the errorMessage state
-      setErrorMessage("The image file is too big!");
+      setErrorMessage("The file is too big!");
     }
   }
+  
+
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -38,56 +38,98 @@ export default function CreatePost({ savePost, post }) {
       image: image,
     };
 
-    const validForm = formData.body && formData.image; // will return false if one of the properties doesn't have a value
+    const validForm = formData.body || formData.image; 
     if (validForm) {
-      // if all fields/ properties are filled, then call savePost
       savePost(formData);
     } else {
-      // if not, set errorMessage state.
-      setErrorMessage("Please, fill in all fields.");
+      setErrorMessage("Please, write something.");
     }
-
     setBody('');
+     setImage(event.target.src = placeholder);
   }
 
   return (
     <PostBoxContainer>
       <form onSubmit={handleSubmit}>
-
+        <div className="textpost">
         <label>
-          <input className="woym" type="text" value={body} placeholder="What's in your mind?" onChange={(e) => setBody(e.target.value)} />
+          <input className="posttextinput" type="text" value={body} placeholder="What's in your mind?" onChange={(e) => setBody(e.target.value)} />
         </label>
-
         <p className="text-error">{errorMessage}</p>
         <button type="submit">Post</button>
-        
-      </form>
+         </div>
+       
+        <div>
 
-      <label>
-        <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
-        {/* <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src)} /> */}
-      </label>
-      <label>
-         Image
-        <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
-        <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src = placeholder)} />
-      </label>
-            <PopupProject/>
-      <p className="text-error">{errorMessage}</p>
-      <button type="submit">Post</button>
- 
+            <div className="sharebuttons">
+              <div className="upload-button">
+              <label for="file-input">
+              <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src = placeholder)} />
+               <span>Photo</span>
+              </label>
+              <input id="file-input" type="file" accept="image/*" onChange={handleImageChange} />
+              </div>
+
+              <div className="upload-button">
+              <label for="file-input">
+              <img src="./images/icons/video-icon.svg" alt="" />
+              <span>Video</span>
+              </label>
+              </div>
+
+              <div className="upload-button">
+              <label for="file-input">
+              <img src="./images/icons/project-icon.svg" alt="" />
+                 <span>Project</span>
+              </label>
+              <PopupProject/>
+              <p className="text-error">{errorMessage}</p>
+              </div>
+          </div>
+        </div>
+       </form> 
      </PostBoxContainer>
   );
 }
 
 const PostBoxContainer = styled.div`
-  label {
+  .sharebuttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+    label {
+      display: flex;
+      justify-content: center;
+    
+
+    &:hover {
+      cursor: pointer;
+    }
   }
-  .woym {
-    background-color: #e5e5e7;
-    margin: 0 auto;
-    border: none;
-    border-radius: 12px;
-    padding: 1rem;
+
+    img {
+      display: block;
+      margin-right: 0;
+      height: 20px;
+      width: 100%;
+      margin-right: 5px;
+      border-radius: 0;
+    }
+
+    span {
+          color: #1f5b87;
+          font-size: 14px;
+          align-items: center;
+          font-weight: 600;
+        }
   }
+
+  .upload-button {
+    display: flex;
+  }
+  .upload-button>input {
+  display: none;
+}
 `;
