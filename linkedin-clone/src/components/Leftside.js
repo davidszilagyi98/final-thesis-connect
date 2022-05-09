@@ -8,46 +8,37 @@ import { doc, getDoc } from "firebase/firestore";
 const Leftside = (props) => {
   const { user, logOut } = useUserAuth();
   const [name, setName] = useState("");
+  const [image, setImage] = useState("");
   const auth = getAuth();
   useEffect(() => {
     async function getUser() {
       if (auth.currentUser) {
-        // get more info about the user from users collection
-        const docRef = doc(usersRef, auth.currentUser.uid); // use auth users uid to get user data from users collection
+        const docRef = doc(usersRef, auth.currentUser.uid); 
         const userData = (await getDoc(docRef)).data();
         if (userData) {
-          // if userData exists set states with values from userData (data from firestore)
           setName(userData.name);
+          setImage(userData.image)
         }
       }
     }
-
     getUser();
-  }, [auth.currentUser]); // dependencies: useEffect is executed when auth.currentUser changes
+  }, [auth.currentUser]); 
 
   return (
     <Container>
       <ArtCard>
         <UserInfo>
           <CardBackground />
-
-          <Photo />
+          <Photo>
+              <img src={image} alt=""/>
+            </Photo>
           <Link>
             <a href="/profile">{user.displayName}</a>
             <a href="/profile"> {name} </a>
           </Link>
-
           <img src="./images/danish-flag.svg" alt="" />
           <img src="./images/german-flag.svg" alt="" />
-
           <br />
-
-          <a>
-            <AddPhotoText>
-              Add a photo
-              <img src="images/icons/add-a-photo.svg" alt="" />
-            </AddPhotoText>
-          </a>
           <button onClick={logOut}>Log out</button>
         </UserInfo>
       </ArtCard>
@@ -60,11 +51,6 @@ const Leftside = (props) => {
 
 const Container = styled.div`
   grid-area: leftside;
-
-  a {
-    text-decoration: none;
-    color: #fff;
-  }
 `;
 
 const ArtCard = styled.div`
@@ -72,21 +58,21 @@ const ArtCard = styled.div`
   overflow: hidden;
   margin-bottom: 8px;
   background-color: #fff;
-  border-radius: 5px;
-  transitions: box-shadow 83ms;
+  border-radius: 15px;
   position: relative;
   border: none;
-  box-shadow: 0 0 0 1px rgba(0 0 0 / 15%), rgba(0 0 0 / 20%);
+  box-shadow: 0px 3px 3px 2px rgba(207, 207, 207, 0.2);
+  -webkit-box-shadow: 0px 3px 3px 2px rgba(207, 207, 207, 0.2);
+  -moz-box-shadow: 0px 3px 3px 2px rgba(207, 207, 207, 0.2);
 `;
 
 const UserInfo = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 12px 12px 24px;
-  word-wrap: break-word;
-  word-break: break-word;
+  padding-bottom: 30px;
+
 
   button {
-    margin-top: 40px;
+    margin-top: 20px;
     color: #333;
     background-color: #fff;
     box-shadow: 0px 3px 3px 2px rgba(207, 207, 207, 0.2);
@@ -113,27 +99,19 @@ const UserInfo = styled.div`
 `;
 
 const CardBackground = styled.div`
-  background: url("/images/volunteer-background.svg");
-  background-position: center;
-  background-size: 462px;
+  background: #D9B233;
   height: 54px;
-  margin: -12px -12px 0;
 `;
 
 const Photo = styled.div`
-  box-shadow: none;
-  background-image: url("/images/rasmus.jpg");
+  img {
   width: 72px;
-  height: 72px;
-  box-sizing: border-box;
-  background-clip: content-box;
-  background-color: white;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  height: 72px; 
   border: 2px solid white;
-  margin: -38px auto 12px;
+  margin: -38px auto 0;
   border-radius: 50%;
+  object-fit: cover;
+}
 `;
 
 const Link = styled.div`
@@ -142,20 +120,7 @@ const Link = styled.div`
   color: rgba(0, 0, 0, 0.9);
   font-weight: 600;
   a {
-    color: black;
-  }
-`;
-
-const AddPhotoText = styled.div`
-  color: #1f5b87;
-  margin-top: 4px;
-  font-size: 12px;
-  line-height: 1.33;
-  font-weight: 400;
-
-  img {
-    width: 18px;
-    margin-left: 2px;
+    color: #333;
   }
 `;
 
@@ -163,7 +128,7 @@ const GuideButton = styled.button`
   display: block;
   margin-top: 1rem;
   color: #fff;
-  background-color: #1f5b87;
+  background-image: linear-gradient(to right top, #114265, #15486d, #184e76, #1c557e, #1f5b87);
   width: 100%;
   font-size: 16px;
   padding: 1rem;

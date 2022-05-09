@@ -47,6 +47,8 @@ function handleImageChange(event) {
       // if not, set errorMessage state.
       setErrorMessage("Please, fill in all fields.");
     }
+
+    setBody('');
   }
 
   return (
@@ -56,10 +58,10 @@ function handleImageChange(event) {
         <input type="text" value={body} placeholder="What's in your mind?" onChange={(e) => setBody(e.target.value)} />
       </label>
       <label>
-                Image
-                <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
-                <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src = placeholder)} />
-            </label>
+         Image
+        <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
+        <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src = placeholder)} />
+      </label>
             <PopupProject/>
       <p className="text-error">{errorMessage}</p>
       <button type="submit">Post</button>

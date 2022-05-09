@@ -10,8 +10,10 @@ const MainOrganizations = ({ name }) => {
 
   return (
     <Container>
+      <h2>Titel</h2>
       <OrganizationsList>
         <ul>
+          
           {users.map((user) => (
             <Link to={`/userprofile/${user.id}`}>
               <li key={user.id}>
@@ -30,16 +32,21 @@ const Container = styled.div`
 `;
 
 const OrganizationsList = styled.div`
-  ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 2rem;
+    ul {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(2, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+
 
     @media (max-width: 768px) {
       margin: 20px auto;
       grid-template-columns: 1fr;
     }
-  }
+  
   li {
     list-style-type: none;
     background-color: #fff;

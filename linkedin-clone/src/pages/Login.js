@@ -278,8 +278,6 @@ const Hr = styled.div`
         margin-left: 20px;
       }
     }
-  }
-}
 
 `
 

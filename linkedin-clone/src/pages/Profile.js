@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { usersRef } from "../firebase/index";
 import { doc, getDoc } from "firebase/firestore";
+import Header from "../components/Header";
 
 const Profile = () => {
   const { user } = useUserAuth();
@@ -41,16 +42,17 @@ const Profile = () => {
   return (
     <div>
       {/* <Span /> */}
+      <Header />
       <ProfileTop>
         <div className="profiletop-center">
           <img src={image} className="profile-picture" alt=""></img>
           <h3> {user.displayName} </h3>
           <h3> {name} </h3>
-          <a>
-            <img src="/images/icons/facebook-logo-icon.svg"></img>
+          <a href="#">
+            <img src="/images/icons/facebook-logo-icon.svg" alt=""></img>
           </a>
           <a>
-            <img src="/images/icons/instagram-logo-icon.svg"></img>
+            <img src="/images/icons/instagram-logo-icon.svg" alt=""></img>
           </a>
         </div>
       </ProfileTop>
@@ -78,7 +80,7 @@ const Profile = () => {
       <InfoHolder>
         <Photos>
           <h3>Photos</h3>
-          <img></img>
+          
         </Photos>
       </InfoHolder>
     </div>
@@ -97,6 +99,7 @@ const ProfileTop = styled.div`
   border-radius: 12px 12px 0 0;
   width: 80%;
   margin: 0 auto;
+  margin-top: 5rem;
   .profile-picture {
     width: 180px;
     height: 180px;

@@ -8,27 +8,92 @@ const Rightside = (props) => {
         <Title>
           <h2>Explore</h2>
         </Title>
-
         <FeedList>
           <li>
             <RightSideExploreCard>
-              <a href="#">
-              <Avatar />
-              </a> 
+              <Avatar>  <img src="./images/rasmus2.jpg" alt=""/></Avatar>
                 <div>
                   <div className="namewithflag">
-                    <a href="#">Rasmus Andersen  </a>
+                    
+                    <h5>Rasmus Andersen  </h5>
                     <img src="./images/danish-flag.svg" alt=""/>
                     <img src="./images/german-flag.svg" alt="" />
                   </div>
-    
                   <IconConnections>
                   <img src="./images/connect-icon.svg" alt=""/>
-                  <span> mutual connections</span>
+                  <span> 5 mutual connections</span>
                   </IconConnections>
                </div>
               <button>connect</button>
             </RightSideExploreCard>
+
+                <RightSideExploreCardOrganization>
+              <Avatar>  <img src="./images/Nextgeneration.png" alt=""/></Avatar>
+                <div>
+                  <div className="namewithflag">
+                    
+                    <h5>Next Generation</h5>
+                    <img src="./images/macedonian-flag.svg" alt=""/>
+                  </div>
+                  <IconConnections>
+                  <img src="./images/connect-icon.svg" alt=""/>
+                  <span> 11 mutual connections</span>
+                  </IconConnections>
+               </div>
+              <button>connect</button>
+            </RightSideExploreCardOrganization>
+
+            <RightSideExploreCardOrganization>
+              <Avatar>  <img src="./images/gdoce.png" alt=""/></Avatar>
+                <div>
+                  <div className="namewithflag">
+                    
+                    <h5>GDOCE</h5>
+                    <img src="./images/spanish-flag.svg" alt=""/>
+                  </div>
+                  <IconConnections>
+                  <img src="./images/connect-icon.svg" alt=""/>
+                  <span> 15 mutual connections</span>
+                  </IconConnections>
+               </div>
+              <button>connect</button>
+            </RightSideExploreCardOrganization>
+
+            <RightSideExploreCard>
+              <Avatar>  <img src="./images/tereza.jpg" alt=""/></Avatar>
+                <div>
+                  <div className="namewithflag">
+                    
+                    <h5>Tereza Ceczh</h5>
+                    <img src="./images/danish-flag.svg" alt=""/>
+                    <img src="./images/czech-flag.svg" alt="" />
+                  </div>
+                  <IconConnections>
+                  <img src="./images/connect-icon.svg" alt=""/>
+                  <span> 4 mutual connections</span>
+                  </IconConnections>
+               </div>
+              <button>connect</button>
+            </RightSideExploreCard>
+
+            <RightSideExploreCardOrganization>
+              <Avatar>  <img src="./images/a4action.png" alt=""/></Avatar>
+                <div>
+                  <div className="namewithflag">
+                    
+                    <h5>A4ACTION</h5>
+                    <img src="./images/romanian-flag.svg" alt=""/>
+                  </div>
+                  <IconConnections>
+                  <img src="./images/connect-icon.svg" alt=""/>
+                  <span> 9 mutual connections</span>
+                  </IconConnections>
+               </div>
+              <button>connect</button>
+            </RightSideExploreCardOrganization>
+
+      
+            
           </li>
         </FeedList>
 
@@ -66,6 +131,7 @@ const FeedList = styled.ul`
   margin-top: 16px;
   li {
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin: 12px 0;
     position: relative;
@@ -100,6 +166,31 @@ const FeedList = styled.ul`
   }
 `;
 
+const RightSideExploreCardOrganization = styled.div`
+  background-color: #fff;
+  background: linear-gradient(to left, white 97%, #063A54 3%);
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  border-radius: 12px;
+  display: flex;
+  width: 95%;
+  text-align: left;
+  margin: 5px auto;
+  align-items: center;
+  
+  padding: 10px;
+
+  .namewithflag {
+    display: flex;
+    flex-direction: row;
+
+    h5 {
+      margin-right: 3px;
+    }
+  }
+`;
+
 const RightSideExploreCard = styled.div`
   background-color: #fff;
   background: linear-gradient(to left, white 97%, #D9B233 3%);
@@ -110,7 +201,7 @@ const RightSideExploreCard = styled.div`
   display: flex;
   width: 95%;
   text-align: left;
-  margin: 0 auto;
+  margin: 5px auto;
   align-items: center;
   
   padding: 10px;
@@ -119,22 +210,26 @@ const RightSideExploreCard = styled.div`
     display: flex;
     flex-direction: row;
 
-    a {
+    h5 {
       margin-right: 3px;
     }
   }
 `;
 
-const Avatar = styled.img`
-display: flex;
-  background-image: url("./images/rasmus2.jpg");
-  background-size: cover;
+const Avatar = styled.div`
+img {
+  display: flex;
+  object-fit: cover;
   border: none;
   width: 55px;
   height: 55px;
   border-radius: 50%;
   margin-left: 10px;
   margin-right: 10px;
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+}
 `;
 
 const IconConnections = styled.div`
