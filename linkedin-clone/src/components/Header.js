@@ -65,7 +65,7 @@ const Header = (props) => {
 
 const Container = styled.div`
 background-color: white;
-border-bottom: 1px; solid rgba(0,0,0,0.08);
+border-bottom: 1px solid rgba(0,0,0,0.08);
 left: 0;
 padding: 0 24px;
 position: fixed;
@@ -107,7 +107,7 @@ const Search = styled.div`
       width: 218px;
       padding: 0 8px 0 40px;
       line-height: 1.75;
-      font_weight: 400;
+      font-weight: 400;
       font-size: 14px;
       height: 34px;
       border-color: #dce6f1;

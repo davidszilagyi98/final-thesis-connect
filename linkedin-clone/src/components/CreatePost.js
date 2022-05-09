@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import placeholder from "../photo-icon.svg";
-import PopupProject from "./Popup";
 import { usersRef } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -13,6 +12,9 @@ export default function CreatePost({ savePost, post }) {
 
   const [userImage, setUserImage] = useState("");
   const auth = getAuth();
+
+  const [show, setShow] = useState(false);
+
 
   useEffect(() => {
     async function getUser() {
@@ -55,6 +57,7 @@ export default function CreatePost({ savePost, post }) {
     const formData = {
       body: body,
       image: image,
+
     };
 
     const validForm = formData.body || formData.image; 
@@ -64,8 +67,10 @@ export default function CreatePost({ savePost, post }) {
       setErrorMessage("Please, write something.");
     }
     setBody('');
-     setImage(event.target.src = placeholder);
+    setImage(event.target.src = placeholder);
   }
+
+
 
   return (
     <PostBoxContainer>
@@ -98,15 +103,24 @@ export default function CreatePost({ savePost, post }) {
               </label>
               </div>
 
-              <div className="upload-button">
-              <label for="file-input">
+              <div className="upload-button" >
+              <button onClick={() => setShow(!show)}>
               <img src="./images/icons/project-icon.svg" alt="" />
-                 <span>Project</span>
-              </label>
-              <PopupProject/>
-              <p className="text-error">{errorMessage}</p>
+              <span>Project</span>
+              </button>
               </div>
           </div>
+
+          {show?
+          <form className="projectform">
+          <input type="text" name="Project name" placeholder="Project name" />
+          <input type="text" name="place" placeholder="Place" />
+          <input type="date" name="datefrom" placeholder="Project starting date"/>
+          <input type="date" name="dateto" placeholder="Project ending date"/>
+          <input type="text" name="countires" placeholder="Volunteers from"/>
+          <input type="text" name="topic" placeholder="Topic"/>
+          <input type="text" name="description" placeholder="Description"/>
+          </form>:null}
         </div>
        </form> 
      </PostBoxContainer>
@@ -122,7 +136,8 @@ const PostBoxContainer = styled.div`
   gap: 0px 0px; 
   grid-template-areas: "image label label button"; 
   align-items: center;
-  margin: 0 10px 30px 10px;
+  margin: 0 10px 20px 10px;
+
    
     img {
       grid-area: image;
@@ -132,7 +147,7 @@ const PostBoxContainer = styled.div`
     }
 
     label {
-      width: 95%;
+      width: 100%;
       grid-area: label; 
       margin: 0 auto;
 
@@ -144,6 +159,7 @@ const PostBoxContainer = styled.div`
         line-height: 2rem;
         border-radius: 12px;
         padding: 4px 12px;
+        margin: 0;
         
         ::placeholder {
           color: #333;
@@ -178,6 +194,11 @@ const PostBoxContainer = styled.div`
     }
   }
 
+  .text-error {
+    color: #333;
+    margin: 20px;
+  }
+
   .sharebuttons {
     display: flex;
     flex-wrap: wrap;
@@ -192,6 +213,18 @@ const PostBoxContainer = styled.div`
     
 
     &:hover {
+      cursor: pointer;
+    }
+  }
+
+  button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      border: none;   
+      
+      &:hover {
       cursor: pointer;
     }
   }
@@ -214,10 +247,23 @@ const PostBoxContainer = styled.div`
         }
   }
 
-  .upload-button {
-    display: flex;
-  }
+
   .upload-button>input {
   display: none;
 }
+
+  .projectform {
+    margin: 30px auto 10px auto;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+
+    input {
+    line-height: 1.5;
+    padding: 5px 10px;
+    background-color: #ececec;
+    border: none;
+    margin-bottom: 8px;
+  }
 `;

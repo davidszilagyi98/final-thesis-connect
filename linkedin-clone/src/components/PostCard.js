@@ -5,14 +5,12 @@ export default function PostCard({ post }) {
   return (
     <Container>
       <Article>
+        <UserInfo uid={post.uid} />
         <SharedActor>
-          <div className="post-details">
-            <UserInfo uid={post.uid} />
-            <div className="text-image-post">
-              <p className="post-body">{post.body}</p>
-              <img className="post-image" src={post.image} alt="" />
+            <div>
+              <p>{post.body}</p>
+              <img src={post.image} alt="" />
             </div>
-          </div>
         </SharedActor>
 
         <SocialCounts>
@@ -23,7 +21,7 @@ export default function PostCard({ post }) {
             </button>
           </li>
           <li>
-            <a>2 comments</a>
+            <span>2 comments</span>
           </li>
         </SocialCounts>
 
@@ -53,97 +51,51 @@ const Container = styled.div`
 const CommonCard = styled.div`
   text-align: center;
   overflow: hidden;
-  margin-bottom: 8px;
+  margin: 30px 0;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 12px;
   position: relative;
   border: none;
-  box-shadow: 0 0 0 2px rgb(0 0 0 /15%), rgb(0 0 0 /15%);
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
 `;
 
 const Article = styled(CommonCard)`
-  padding: 0;
-  margin: 0 0 8px;
+  padding: 40px;
   overflow: visible;
   background: linear-gradient(to left, white 97%, #d9b233 3%);
-  margin-bottom: 2rem;
 `;
 
 const SharedActor = styled.div`
-  padding-right: 40px;
-  flex-wrap: nowrap;
-  padding: 20px 16px 0;
-  margin-bottom: 8px;
-  margin-left: 40px;
-  align-items: center;
-  display: flex;
+  display: grid; 
+  grid-template-columns: 0.3fr 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". postbody postbody"; 
+  padding: 10px 20px;
+  text-align: left;
   color: #333;
+  
 
-  .post-image {
-    width: 20rem;
+  div {
+    grid-area: postbody;
+   
+    
+  p {
+    padding: 0 10px;
   }
-
-  .post-details {
-    display: flex;
-    flex-direction: column;
-  }
-  .post-body {
-    width: 80%;
-    margin: 0 auto;
-    text-align: left;
-  }
-  .text-image-post {
-    padding-left: 2rem;
-  }
-  a {
-    margin-right: 12px;
-    flex-grow: 1;
-    overflow: hidden;
-    display: flex;
-    text-decoration: none;
 
     img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    & > div {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      flex-basis: 0;
-      margin-left: 8px;
-      overflow: hidden;
-
-      span {
-        text-align: left;
-        &:first-child {
-          font-size: 14px;
-          font-weight: 700;
-          color: #333;
-
-          & > img {
-            width: 12px;
-            height: 12px;
-          }
-        }
-        &:nth-child(n + 1) {
-          font-size: 12px;
-        }
-      }
+      display: block;
+      padding: 20px 10px;
+      max-width: 100%;
+      margin: 0 auto;
     }
   }
+ 
 
-  button {
-    position: absolute;
-    right: 12px;
-    top: 20px;
-    background: transparent;
-    border: none;
-    outline: none;
-  }
 `;
 
 const SocialCounts = styled.ul`

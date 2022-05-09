@@ -221,6 +221,10 @@ const Email = styled.form`
     background-color: #ececec;
     border: none;
     margin-bottom: 8px;
+
+    :focus {
+      outline: 1px solid #1F5B87;
+    }
   }
 
   button {

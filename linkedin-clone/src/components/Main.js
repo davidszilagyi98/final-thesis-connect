@@ -38,7 +38,7 @@ const Main = (props) => {
           <CreatePost savePost={handleSubmit} />
       </ShareBox>
       <div>
-        <section className="grid-container">
+        <section>
           {posts.map((post) => (
             <PostCard post={post} key={post.id} />
           ))}
