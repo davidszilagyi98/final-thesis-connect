@@ -105,6 +105,7 @@ const ProfileTop = styled.div`
     height: 180px;
     border-radius: 360px;
     margin-top: 3rem;
+    object-fit: cover;
   }
 
   .profiletop-center {

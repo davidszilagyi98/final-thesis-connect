@@ -15,24 +15,23 @@ export default function CreatePost({ savePost, post }) {
     }
   }, [post]); // useEffect is called every time post changes.
 
-function handleImageChange(event) {
-        const file = event.target.files[0];
-        if (file.size < 5000000) {
-            // image file size must be below 0,5MB
-            const reader = new FileReader();
-            reader.onload = event => {
-                setImage(event.target.result);
-            };
-            reader.readAsDataURL(file);
-            setErrorMessage(""); // reset errorMessage state
-        } else {
-            // if not below 0.5MB display an error message using the errorMessage state
-            setErrorMessage("The image file is too big!");
-        }
+  function handleImageChange(event) {
+    const file = event.target.files[0];
+    if (file.size < 5000000) {
+      // image file size must be below 0,5MB
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setImage(event.target.result);
+      };
+      reader.readAsDataURL(file);
+      setErrorMessage(""); // reset errorMessage state
+    } else {
+      // if not below 0.5MB display an error message using the errorMessage state
+      setErrorMessage("The image file is too big!");
     }
+  }
 
   function handleSubmit(event) {
-      
     event.preventDefault();
     const formData = {
       body: body,
@@ -52,10 +51,21 @@ function handleImageChange(event) {
   }
 
   return (
-      <PostBoxContainer>
-    <form onSubmit={handleSubmit}>
+    <PostBoxContainer>
+      <form onSubmit={handleSubmit}>
+
+        <label>
+          <input className="woym" type="text" value={body} placeholder="What's in your mind?" onChange={(e) => setBody(e.target.value)} />
+        </label>
+
+        <p className="text-error">{errorMessage}</p>
+        <button type="submit">Post</button>
+        
+      </form>
+
       <label>
-        <input type="text" value={body} placeholder="What's in your mind?" onChange={(e) => setBody(e.target.value)} />
+        <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
+        {/* <img className="image-preview" src={image} alt="Choose" onError={event => (event.target.src)} /> */}
       </label>
       <label>
          Image
@@ -65,13 +75,19 @@ function handleImageChange(event) {
             <PopupProject/>
       <p className="text-error">{errorMessage}</p>
       <button type="submit">Post</button>
-    </form>
+ 
      </PostBoxContainer>
   );
 }
 
 const PostBoxContainer = styled.div`
-   input {
-       width: 80%;
-   }
-`
+  label {
+  }
+  .woym {
+    background-color: #e5e5e7;
+    margin: 0 auto;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem;
+  }
+`;

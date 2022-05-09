@@ -1,47 +1,49 @@
 import styled from "styled-components";
-import UserInfo from "./UserInfo"
+import UserInfo from "./UserInfo";
 
 export default function PostCard({ post }) {
+  return (
+    <Container>
+      <Article>
+        <SharedActor>
+          <div className="post-details">
+            <UserInfo uid={post.uid} />
+            <div className="text-image-post">
+              <p className="post-body">{post.body}</p>
+              <img className="post-image" src={post.image} alt="" />
+            </div>
+          </div>
+        </SharedActor>
 
-   
-    return (
-     <Container>
-        <Article>
-          <SharedActor>
-             <UserInfo uid={post.uid} />
-                <p>{post.body}</p>
-                <img src={post.image} alt=""/>
-          </SharedActor>
-    
-          <SocialCounts>
-            <li>
-              <button>
-                <img src="./images/icons/like-counter-icon.svg" alt="like-button" />
-                <span>75</span>
-              </button>
-            </li>
-            <li>
-              <a>2 comments</a>
-            </li>
-          </SocialCounts>
+        <SocialCounts>
+          <li>
+            <button>
+              <img src="./images/icons/like-counter-icon.svg" alt="like-button" />
+              <span>75</span>
+            </button>
+          </li>
+          <li>
+            <a>2 comments</a>
+          </li>
+        </SocialCounts>
 
-          <SocialActions>
-            <button>
-              <img src="./images/icons/like-icon.svg" alt="like" />
-              <span>Like</span>
-            </button>
-            <button>
-              <img src="./images/icons/comment-icon.svg" alt="comments" />
-              <span>Comments</span>
-            </button>
-            <button>
-              <img src="./images/icons/share-icon.svg" alt="share" />
-              <span>Share</span>
-            </button>
-          </SocialActions>
-        </Article>
-    </Container> 
-    );
+        <SocialActions>
+          <button>
+            <img src="./images/icons/like-icon.svg" alt="like" />
+            <span>Like</span>
+          </button>
+          <button>
+            <img src="./images/icons/comment-icon.svg" alt="comments" />
+            <span>Comments</span>
+          </button>
+          <button>
+            <img src="./images/icons/share-icon.svg" alt="share" />
+            <span>Share</span>
+          </button>
+        </SocialActions>
+      </Article>
+    </Container>
+  );
 }
 
 const Container = styled.div`
@@ -63,7 +65,8 @@ const Article = styled(CommonCard)`
   padding: 0;
   margin: 0 0 8px;
   overflow: visible;
-   background: linear-gradient(to left, white 97%, #D9B233 3%);
+  background: linear-gradient(to left, white 97%, #d9b233 3%);
+  margin-bottom: 2rem;
 `;
 
 const SharedActor = styled.div`
@@ -75,6 +78,23 @@ const SharedActor = styled.div`
   align-items: center;
   display: flex;
   color: #333;
+
+  .post-image {
+    width: 20rem;
+  }
+
+  .post-details {
+    display: flex;
+    flex-direction: column;
+  }
+  .post-body {
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .text-image-post {
+    padding-left: 2rem;
+  }
   a {
     margin-right: 12px;
     flex-grow: 1;
@@ -82,9 +102,9 @@ const SharedActor = styled.div`
     display: flex;
     text-decoration: none;
 
-    img{
+    img {
       width: 48px;
-      height:48px;
+      height: 48px;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -97,10 +117,10 @@ const SharedActor = styled.div`
       margin-left: 8px;
       overflow: hidden;
 
-      span{
-        text.align:left;
-        &:first-child{
-          font-size 14px;
+      span {
+        text-align: left;
+        &:first-child {
+          font-size: 14px;
           font-weight: 700;
           color: #333;
 
@@ -109,26 +129,22 @@ const SharedActor = styled.div`
             height: 12px;
           }
         }
-        &:nth-child(n+1){
-          font-size:12px;
-
+        &:nth-child(n + 1) {
+          font-size: 12px;
         }
       }
     }
-
   }
 
-  button{
+  button {
     position: absolute;
     right: 12px;
     top: 20px;
     background: transparent;
     border: none;
     outline: none;
-
   }
 `;
-
 
 const SocialCounts = styled.ul`
   line-height: 1.3;
@@ -150,7 +166,7 @@ const SocialCounts = styled.ul`
       border: none;
       background-color: white;
       align-items: self-end;
-      
+
       img {
         width: 18px;
         margin-right: 4px;
@@ -160,28 +176,27 @@ const SocialCounts = styled.ul`
 `;
 
 const SocialActions = styled.div`
-align-items: center;
-display: flex;
-justify-content: space-between;
-margin: 0 auto;
-min-height: 40px;
-width: 60%;
-padding: 4px 8px;
-button{
-  display: inline-flex;
-  align-items:center;
-  padding:8px;
-  color: #919191;
-  border: none;
-  background-color: #fff;
-  @media (min-width:768px){
-    span{
-      margin-left: 8px;
-      
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  min-height: 40px;
+  width: 60%;
+  padding: 4px 8px;
+  button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px;
+    color: #919191;
+    border: none;
+    background-color: #fff;
+    @media (min-width: 768px) {
+      span {
+        margin-left: 8px;
+      }
     }
   }
-}
-img {
-  width: 18px;
-}
+  img {
+    width: 18px;
+  }
 `;
