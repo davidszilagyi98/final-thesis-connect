@@ -48,12 +48,14 @@ const Profile = () => {
           <img src={image} className="profile-picture" alt=""></img>
           <h3> {user.displayName} </h3>
           <h3> {name} </h3>
-          <a href="#">
-            <img src="/images/icons/facebook-logo-icon.svg" alt=""></img>
-          </a>
-          <a>
-            <img src="/images/icons/instagram-logo-icon.svg" alt=""></img>
-          </a>
+          <div>
+            <a href="#" className="profile-social-icons">
+              <img src="/images/icons/facebook-logo-icon.svg" alt=""></img>
+            </a>
+            <a className="profile-social-icons">
+              <img src="/images/icons/instagram-logo-icon.svg" alt=""></img>
+            </a>
+          </div>
         </div>
       </ProfileTop>
       <InfoHolder>
@@ -80,7 +82,6 @@ const Profile = () => {
       <InfoHolder>
         <Photos>
           <h3>Photos</h3>
-          
         </Photos>
       </InfoHolder>
     </div>
@@ -111,6 +112,9 @@ const ProfileTop = styled.div`
   .profiletop-center {
     text-align: center;
     padding-bottom: 2rem;
+  }
+  .profile-social-icons {
+    margin: 1rem;
   }
 `;
 
