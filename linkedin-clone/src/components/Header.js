@@ -207,15 +207,15 @@ const NavList = styled.li`
   &:hover {
     a {
       path {
-        fill: #063A54;
+        fill: #1F5B87;
       }
 
       text {
-        fill: #063A54;
+        fill: #1F5B87;
       }
       cursor: pointer;
       span {
-        color: #063A54;
+        color: #1F5B87;
       }
     }
   }
