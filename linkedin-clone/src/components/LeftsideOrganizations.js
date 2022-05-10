@@ -45,4 +45,4 @@ const CountryFilterButton = styled.button`
   }
 `
 
-export default LeftsideOrganizations;
+export { LeftsideOrganizations, CountryFilterButton };

@@ -12,7 +12,8 @@ import { UserAuthContextProvider } from "./context/userContext";
 import Messages from "./pages/Messages";
 import UserProfile from "./pages/UserProfile";
 import Notifications from "./pages/Notifications";
-import Guide from "./pages/Guide"
+import Guide from "./pages/Guide";
+import ExploreProjects from "./pages/ExploreProjects";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>}/>
         <Route path="/explore" element={<ProtectedRoute><Explore /></ProtectedRoute>}/>
+        <Route path="/explore/projects" element={<ProtectedRoute><ExploreProjects /></ProtectedRoute>}/>
         <Route path="/mynetwork" element={<ProtectedRoute><Mynetwork /></ProtectedRoute>}/>
         <Route path="/organizations" element={<ProtectedRoute><Organizations /></ProtectedRoute>}/>
         <Route path="/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />

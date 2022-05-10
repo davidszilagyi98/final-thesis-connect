@@ -98,6 +98,12 @@ const InfoGuide = styled.div`
     grid-template-areas: "text image";
     width: 70%;
     margin: 20px auto;
+
+    @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
+  }
     
     div {
     grid-area: text;
@@ -143,6 +149,12 @@ const InfoGuide2 = styled.div`
     grid-template-areas: "image2 text2";
     width: 70%;
     margin: 20px auto;
+
+    @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
+  }
     
     div {
     grid-area: text2;

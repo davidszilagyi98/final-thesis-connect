@@ -4,7 +4,7 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
-import LeftsideOrganizations from "../components/LeftsideOrganizations";
+import { LeftsideOrganizations } from "../components/LeftsideOrganizations";
 import Rightside from "../components/Rightside";
 import MainOrganizations from "../components/MainOrganizations";
 import { Container } from "./Home";

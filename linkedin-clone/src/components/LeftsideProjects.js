@@ -4,9 +4,10 @@ import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { usersRef } from "../firebase/index";
 import { doc, getDoc } from "firebase/firestore";
+import { CountryFilterButton } from "../components/LeftsideOrganizations";
 
 
-const Leftside = (props) => {
+const LeftsideProjects = (props) => {
   const { user, logOut } = useUserAuth();
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
@@ -37,8 +38,8 @@ const Leftside = (props) => {
             <a href="/profile">{user.displayName}</a>
             <a href="/profile"> {name} </a>
           </Link>
-          <img src="./images/danish-flag.svg" alt="" />
-          <img src="./images/german-flag.svg" alt="" />
+          <img src="../images/danish-flag.svg" alt="" />
+          <img src="../images/german-flag.svg" alt="" />
           <br />
           <button onClick={logOut}>Log out</button>
         </UserInfo>
@@ -46,13 +47,15 @@ const Leftside = (props) => {
       <a href="/guide">
         <GuideButton>Guide</GuideButton>
       </a>
-      
+      <CountryFilterButton>Counrty <img src="../images/icons/downarrow-icon.svg" alt="" /></CountryFilterButton>
+      <CountryFilterButton>Volunteers from <img src="../images/icons/downarrow-icon.svg" alt="" /></CountryFilterButton>
+      <CountryFilterButton>Topic <img src="../images/icons/downarrow-icon.svg" alt="" /></CountryFilterButton>
     </Container>
   );
 };
 
 const Container = styled.div`
-  grid-area: leftside;
+  grid-area: leftsideprojects;
 `;
 
 const ArtCard = styled.div`
@@ -146,4 +149,4 @@ const GuideButton = styled.button`
   }
 `;
 
-export default Leftside;
+export default LeftsideProjects;

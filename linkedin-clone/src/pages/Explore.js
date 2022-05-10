@@ -18,15 +18,9 @@ const Explore = () => {
           <Leftside />
           <Explorecontainer>
             <div className="sort-buttons">
-              <Sortbuttons>
-                <button className="sortbuttons">Projects</button>
-              </Sortbuttons>
-              <Sortbuttons>
-                <button className="sortbuttons">NGOs</button>
-              </Sortbuttons>
-              <Sortbuttons>
-                <button className="sortbuttons">People</button>
-              </Sortbuttons>
+              <a href="/explore"><Sortbuttons className="active">People</Sortbuttons></a>
+              <a href="/explore/organizations"><Sortbuttons>Organizations</Sortbuttons></a>
+              <a href="/explore/projects"><Sortbuttons>Projects </Sortbuttons></a>
             </div>
             <Explorecards>
               <ul>
@@ -55,38 +49,45 @@ const Explore = () => {
   );
 };
 
-const Sortbuttons = styled.div`
-  .sortbuttons {
-    margin-right: 2rem;
+const Sortbuttons = styled.button`
+    margin-right: 1.5rem;
     color: #333;
-    background-color: #ececec;
-    box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
-    -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
-    -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+    background-color: #F0F0F0;
+    box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+    -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+    -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
     border: none;
-    border-radius: 12px;
-    padding: 1rem 3rem 1rem 3rem;
+    border-radius: 15px;
+    padding: 10px;
+    width: 150px;
+    margin-top: 1rem;
     align-items: center;
-    font-weight: light;
     cursor: pointer;
 
-    &:hover {
-      /* cursor: pointer;
-      color: #fff; */
-      /* background-color: #1f5b87; */
-      -moz-box-shadow: inset 0 3 6px #000000;
-      -webkit-box-shadow: inset 0 3 6px #000000;
-      box-shadow: inset 0 0 6px #000000;
+    &:hover{
+      background-color: #fff;
+      
     }
-  }
+  
 `;
 
 const Explorecontainer = styled.div`
   grid-area: main;
 
+
   .sort-buttons {
     display: flex;
     flex-direction: row;
+
+
+     .active {
+        -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+        -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+        box-shadow: inset 0px 0px 5px #c1c1c1;
+        outline: none;
+        font-weight: 500;
+  
+    }
   }
 `;
 
