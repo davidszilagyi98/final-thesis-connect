@@ -67,9 +67,36 @@ const Messages = () => {
                   <span>Alexandru Dorulet</span>
                   <p>Come on bro</p>
             </div>
-
-
           </UserContacts>
+          <MessageContainer>
+            <ActiveMessenger1>
+            <img src="/images/zach.jpg" alt=""/>
+            <span>Are you coming?</span>
+            </ActiveMessenger1>
+
+            <ActiveMessenger2>
+            <span>Sure</span>
+            <img src="/images/rasmus.jpg" alt=""/>
+            </ActiveMessenger2>
+
+            <ActiveMessenger1>
+            <img src="/images/zach.jpg" alt=""/>
+            <span>See you tonight!</span>
+            </ActiveMessenger1>
+            
+          </MessageContainer>
+          <WriteMessageContainer>
+            <p>Write a message...</p>
+            <div className="sendContainer">
+              <div className="iconsContainer">
+              <img src="/images/icons/message-image.svg" alt=""/>
+              <img src="/images/icons/message-attach.svg" alt=""/>
+              <img src="/images/icons/message-emoticon.svg" alt=""/>
+              </div>
+              <button>Send</button>
+            </div>
+          </WriteMessageContainer>
+
           </MainMessages>
           
         <Rightside />
@@ -89,7 +116,7 @@ const MainMessages = styled.div`
     "usercontacts writemessage"; 
   background-color: #fff;
   border-radius: 12px;
-  padding: 10px 20px;
+  padding: 0;
   box-shadow: 0px 3px 3px 2px rgba(207, 207, 207, 0.2);
   -webkit-box-shadow: 0px 3px 3px 2px rgba(207, 207, 207, 0.2);
   -moz-box-shadow: 0px 3px 3px 2px rgba(207, 207, 207, 0.2);
@@ -99,17 +126,19 @@ const Search = styled.div`
   grid-area: search;
   display: flex;
   align-items: center;
-  flex-grow: 1;
+  padding-left: 38px;
+  border-right: 1px solid #D5D5D5;
+  border-bottom: 1px solid #D5D5D5;
   position: relative;
   & > div {
-    max-width: 280px;
+    max-width: 170px;
     input {
       border: none;
       box-shadow: none;
-      background-color: #eef3f8;
+      background-color: #F2F2F2;
       border-radius: 10px;
       color: rgba(0, 0, 0, 0.9);
-      width: 90%;
+      max-width: 100%;
       padding: 0 8px 0 40px;
       line-height: 1.5;
       font-weight: 400;
@@ -128,8 +157,8 @@ const SearchIcon = styled.div`
   width: 15px;
   position: absolute;
   z-index: 1;
-  top: 30px;
-  left: 10px;
+  top: 38px;
+  left: 50px;
   margin: 0;
   pointer-events: none;
   display: flex;
@@ -146,6 +175,7 @@ const ActiveUser = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  border-bottom: 1px solid #D5D5D5;
 
   img {
   display: flex;
@@ -164,15 +194,18 @@ const ActiveUser = styled.div`
 
 const UserContacts = styled.div `
   grid-area: usercontacts;
+  border-right: 1px solid #D5D5D5;
+  overflow: scroll;
 
   .activeMessage {
     background: linear-gradient(to left, white 98.5%, #1F5B87 1.5%);
   }
 
   div {
-  margin: 20px 0;
+  padding: 20px 0 20px 10px;
+  border-bottom: 1px solid #D5D5D5;
   display: grid;
-  grid-template-columns: 0.4fr 1fr; 
+  grid-template-columns: 0.3fr 1fr; 
   grid-template-rows: 1fr 1fr; 
   gap: 0px 0px; 
   grid-template-areas: 
@@ -211,6 +244,114 @@ const UserContacts = styled.div `
         align-self: start;
       }
    }
+`
+
+const MessageContainer = styled.div`
+  grid-area: message;
+  border-bottom: 1px solid #D5D5D5;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+`
+
+const WriteMessageContainer = styled.div`
+  grid-area: writemessage;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid #D5D5D5;
+  border-right: 1px solid #D5D5D5;
+
+  p {
+    color: #D5D5D5;
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  .sendContainer {
+    background-color: #F2F2F2;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    .iconsContainer {
+      display: flex;
+      align-content: center;
+      width: 20%;
+      justify-content: space-evenly;
+      margin-left: 5px;
+
+    img {
+      width: 20px;
+      }
+     }
+
+    button {
+      margin-right: 15px;
+      background-image: linear-gradient(to right top, #114265, #15486d, #184e76, #1c557e, #1f5b87);
+      border: none;
+      color: #fff;
+      width: 18%;
+      height: 30px;
+      font-size: 0.8rem;
+      border-radius: 8px;
+      text-decoration: none;
+       box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+      -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+      -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+      &:hover {
+      cursor: pointer;
+      }
+      }
+    }
+  `
+
+const ActiveMessenger1 = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 20px;
+
+  img {
+  display: flex;
+  object-fit: cover;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+}
+`
+
+const ActiveMessenger2 = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 20px;
+
+  img {
+  display: flex;
+  object-fit: cover;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+}
 `
 
 export default Messages;
