@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const MainOrganizations = ({ name }) => {
   const [users, setUsers] = useState([]);
-  const [image, setImage] = useState([]);
   useEffect(() => onSnapshot(collection(db, "users"), (snapshot) => setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))), []);
 
   return (

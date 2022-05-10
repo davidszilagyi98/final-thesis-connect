@@ -20,11 +20,9 @@ const Profile = () => {
   useEffect(() => {
     async function getUser() {
       if (auth.currentUser) {
-        // get more info about the user from users collection
-        const docRef = doc(usersRef, auth.currentUser.uid); // use auth users uid to get user data from users collection
+        const docRef = doc(usersRef, auth.currentUser.uid); 
         const userData = (await getDoc(docRef)).data();
         if (userData) {
-          // if userData exists set states with values from userData (data from firestore)
           setName(userData.name);
           setImage(userData.image);
           setNationality(userData.nationality);
@@ -38,10 +36,9 @@ const Profile = () => {
     }
 
     getUser();
-  }, [auth.currentUser]); // dependencies: useEffect is executed when auth.currentUser changes
+  }, [auth.currentUser]); 
   return (
     <div>
-      {/* <Span /> */}
       <Header />
       <ProfileTop>
         <div className="profiletop-center">
@@ -51,7 +48,7 @@ const Profile = () => {
           <a href="#">
             <img src="/images/icons/facebook-logo-icon.svg" alt=""></img>
           </a>
-          <a>
+          <a href="#">
             <img src="/images/icons/instagram-logo-icon.svg" alt=""></img>
           </a>
         </div>
@@ -87,13 +84,6 @@ const Profile = () => {
   );
 };
 
-// const Span = styled.div`
-//   /* background-color: #d9b233;
-//   width: 80%;
-//   height: 159px;
-//   margin: 0 auto;
-//   border-radius: 12px 12px 0 0; */
-// `;
 const ProfileTop = styled.div`
   background: linear-gradient(to top, #f5f5f5 50%, #d9b233 50%);
   border-radius: 12px 12px 0 0;

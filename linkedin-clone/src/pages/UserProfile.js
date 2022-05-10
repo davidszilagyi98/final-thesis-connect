@@ -30,14 +30,14 @@ const UserProfile = () => {
       <Header />
       <ProfileTop>
         <div className="profiletop-center">
-          <img src={user.image} className="profile-picture" alt=""></img>
+          <img src={user.image} className="profile-picture" alt=""/>
           <h3> {user.displayName} </h3>
           <h3> {user.name} </h3>
-          <a>
-            <img src="/images/icons/facebook-logo-icon.svg"></img>
+          <a href="#">
+            <img src="/images/icons/facebook-logo-icon.svg" alt=""/>
           </a>
-          <a>
-            <img src="/images/icons/instagram-logo-icon.svg"></img>
+          <a href="#">
+            <img src="/images/icons/instagram-logo-icon.svg" alt=""/>
           </a>
         </div>
       </ProfileTop>

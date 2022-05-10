@@ -71,22 +71,11 @@ const NotificationsList = styled.div`
     margin-right: 1rem;
   }
 
-  .noti-card {
-    /* display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f2f2f2;
-
-    border-radius: 12px; */
-  }
-
   .noti-list {
     list-style-type: none;
     border-radius: 12px;
     display: flex;
     margin-bottom: 10px;
-    /* margin-right: 1rem; */
     padding: 1.5rem 2rem;
     align-items: center;
 

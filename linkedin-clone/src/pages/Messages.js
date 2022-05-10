@@ -30,42 +30,56 @@ const Messages = () => {
                  <img src="/images/zach.jpg" alt=""/>
                   <span>Zach Friedman</span>
                   <p>See you tonight!</p>
+                  <span className="time">13:14</span>
             </div>
 
             <div>
                  <img src="/images/erin.jpg" alt=""/>
                   <span>Erin Steed</span>
                   <p>I go to Cyprus too!!</p>
+                  <span className="time">12:58</span>
             </div>
 
             <div>
                  <img src="/images/dee.jpg" alt=""/>
                   <span>Dee McRobie</span>
                   <p>Of course</p>
+                  <span className="time">10:41</span>
             </div>
 
             <div>
                  <img src="/images/elena.jpg" alt=""/>
                   <span>Elena Romanoff</span>
                   <p>Anytime</p>
+                  <span className="time">08:12</span>
             </div>
 
                  <div>
                  <img src="/images/dyt.png" alt=""/>
                   <span>Danish Youth Team</span>
                   <p>No problem</p>
+                  <span className="time">Sat</span>
             </div>
 
             <div>
                   <img src="/images/david.jpg" alt=""/>
                   <span>Dávid Szilágyi</span>
                   <p>Zsamo</p>
+                  <span className="time">Sat</span>
             </div>
 
             <div>
                  <img src="/images/alex.jpg" alt=""/>
                   <span>Alexandru Dorulet</span>
                   <p>Come on bro</p>
+                  <span className="time">Sat</span>
+            </div>
+
+            <div>
+                 <img src="/images/gdoce.png" alt=""/>
+                  <span>GDOCE</span>
+                  <p>We are happy to hear that!</p>
+                  <span className="time">Fri</span>
             </div>
           </UserContacts>
           <MessageContainer>
@@ -108,10 +122,11 @@ const Messages = () => {
 const MainMessages = styled.div`
   display: grid;
   grid-template-columns: 0.6fr 1fr; 
-  grid-template-rows: 0.2fr 1fr 0.4fr; 
+  grid-template-rows: 0.2fr 1fr 0.5fr 0.3fr; 
   gap: 0px 0px; 
   grid-template-areas: 
     "search userinfo"
+    "usercontacts message"
     "usercontacts message"
     "usercontacts writemessage"; 
   background-color: #fff;
@@ -131,7 +146,7 @@ const Search = styled.div`
   border-bottom: 1px solid #D5D5D5;
   position: relative;
   & > div {
-    max-width: 170px;
+    max-width: 200px;
     input {
       border: none;
       box-shadow: none;
@@ -157,7 +172,7 @@ const SearchIcon = styled.div`
   width: 15px;
   position: absolute;
   z-index: 1;
-  top: 38px;
+  top: 34px;
   left: 50px;
   margin: 0;
   pointer-events: none;
@@ -242,6 +257,15 @@ const UserContacts = styled.div `
         color: #555;
         display: flex;
         align-self: start;
+      }
+
+      .time{
+        display: flex;
+        justify-content: end;
+        font-size: 0.7rem;
+        align-self: end;
+        color: #999;
+        margin-right: 10px;
       }
    }
 `
