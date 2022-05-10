@@ -15,27 +15,26 @@ export default function SignUp({ showLoader }) {
 
   function handleSignUp(event) {
     event.preventDefault();
-    const mail = event.target.mail.value; // mail value from inout field in sign in form
-    const password = event.target.password.value; // password value from inout field in sign in form
     const name = event.target.name.value;
+    const mail = event.target.mail.value; 
+    const password = event.target.password.value; 
     const residency = event.target.residency.value;
     const nationality = event.target.nationality.value;
     const interests = event.target.interests.value;
     const bio = event.target.bio.value;
 
-    // read the docs: https://firebase.google.com/docs/auth/web/password-auth#create_a_password-based_account
+
     createUserWithEmailAndPassword(auth, mail, password, name, residency)
       .then((userCredential) => {
-        // Created and signed in
         const user = userCredential.user;
-        const docRef = doc(usersRef, user.uid); // create reference to the user in firestore
-        setDoc(docRef, { name, mail, residency, nationality, interests, bio }); // set/update the user in firestore with the values from userToUpdate/values from input fields
+        const docRef = doc(usersRef, user.uid); 
+        setDoc(docRef, { name, mail, residency, nationality, interests, bio }); 
         navigate("/");
       })
       .catch((error) => {
-        let code = error.code; // saving error code in variable
+        let code = error.code; 
         console.log(code);
-        code = code.replaceAll("-", " "); // some JS string magic to display error message. See the log above in the console
+        code = code.replaceAll("-", " "); 
         code = code.replaceAll("auth/", "");
         setErrorMessage(code);
       });
@@ -49,12 +48,14 @@ export default function SignUp({ showLoader }) {
         </a>
       </Nav>
       <SingUpForm>
-    
-         
-       
         <form onSubmit={handleSignUp} id="signupvolunteers">
-           <h2><a href="signupvolunteers" className="tab active">Register as a volunteer</a>/<a href="signuporganizations" className="tab">Register as an organization</a></h2>
-         
+           <h2>Sign up </h2>
+          <select className="resiterAs">
+            <option value="">Register as</option>
+            <option value="organization">Organization</option>
+            <option value="volunteer">Volunteer</option>
+          </select>
+
           <input required type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Name" />
           <input required type="email" value={mail} onChange={(e) => setMail(e.target.value)} name="mail" placeholder="Email" />
           <input required type="text" name="password" placeholder="Password" />
@@ -71,29 +72,7 @@ export default function SignUp({ showLoader }) {
            <SignUpImage>
           <img src="/images/signup-hello.svg" alt="" />
           </SignUpImage>
-      </SingUpForm>
-
-      <SingUpForm>
-       <SignUpImage>
-          <img src="/images/signup-hello.svg" alt="" />
-          </SignUpImage>
-        <form onSubmit={handleSignUp} id="signuporganizations">
-           <h2><a href="signupvolunteers" className="tab active">Register as a volunteer</a> / <a href="signuporganizations" className="tab">Register as an organization</a></h2>
-          
-          <input required type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Name of the organization" />
-          <input required type="email" value={mail} onChange={(e) => setMail(e.target.value)} name="mail" placeholder="Email" />
-          <input required type="text" name="password" placeholder="Password" />
-          <input required type="text" name="country" placeholder="Country" />
-          <input required type="text" value={bio} onChange={(e) => setBio(e.target.value)} name="bio" placeholder="Tell us about the organization" />
-          <p className="text-error">{errorMessage}</p>
-          <button>Sign Up</button>
-           <AlreadyUser>
-          <p>Already have an account? <a href="/">Sign in</a></p>
-          </AlreadyUser>
-        </form>
-           
-      </SingUpForm>
-     
+      </SingUpForm>     
     </SignUpPage>
   );
 }
@@ -163,12 +142,29 @@ const SingUpForm = styled.div`
     width: 80%;
   }
 
+  select {
+    line-height: 2.3;
+    padding: 10px 5px;
+    background-color: #ececec;
+    color: #333;
+    border: none;
+    margin-bottom: 8px;
+
+    :focus {
+      outline: 1px solid #1F5B87;
+    }
+  }
+
  input {
     line-height: 2.3;
     padding: 5px 10px;
     background-color: #ececec;
     border: none;
     margin-bottom: 8px;
+
+    :focus {
+      outline: 1px solid #1F5B87;
+    }
   }
 
   button {

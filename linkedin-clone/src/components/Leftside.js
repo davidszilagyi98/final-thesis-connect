@@ -5,6 +5,7 @@ import { getAuth } from "firebase/auth";
 import { usersRef } from "../firebase/index";
 import { doc, getDoc } from "firebase/firestore";
 
+
 const Leftside = (props) => {
   const { user, logOut } = useUserAuth();
   const [name, setName] = useState("");
@@ -17,7 +18,7 @@ const Leftside = (props) => {
         const userData = (await getDoc(docRef)).data();
         if (userData) {
           setName(userData.name);
-          setImage(userData.image)
+          setImage(userData.image);
         }
       }
     }
@@ -30,7 +31,7 @@ const Leftside = (props) => {
         <UserInfo>
           <CardBackground />
           <Photo>
-              <img src={image} alt=""/>
+              <img src={image} alt={user.id} />
             </Photo>
           <Link>
             <a href="/profile">{user.displayName}</a>

@@ -48,3 +48,17 @@ a {
   font-family: Poppins, sans-serif;
 }
 
+button {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+}
+
+input {
+  color: #333;
+  font-family: Poppins, sans-serif;
+}
+
+select {
+  color: #333;
+  font-family: Poppins, sans-serif;
+}

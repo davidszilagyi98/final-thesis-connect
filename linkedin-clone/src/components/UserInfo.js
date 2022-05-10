@@ -22,27 +22,36 @@ export default function UserInfo({ uid }) {
 
   return (
     <Avatar>
-      <div className="avatar">
         <img src={user.image} alt={user.id} />
-        <span>
-          <h2>{user.name}</h2>
-        </span>
-      </div>
+        <span>{user.name}</span>
     </Avatar>
   );
 }
 
 const Avatar = styled.div`
+  display: grid; 
+  grid-template-columns: 0.3fr 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "useravatar avatarusername ."; 
+  padding: 0 20px;
+  align-items: center;
+
+
   img {
-    width: 6rem;
-    height: 6rem;
+    grid-area: useravatar;
+    width: 5.5rem;
+    height: 5.5rem;
     border-radius: 50%;
     object-fit: cover;
-    margin-top: 1rem;
   }
 
-  .avatar {
-    display: flex;
-    align-items: center;
+  span {
+    grid-area: avatarusername;
+    justify-self: flex-start;
+    padding-left: 10px;
+    font-weight: 500;
+    color: #333;
   }
 `;
