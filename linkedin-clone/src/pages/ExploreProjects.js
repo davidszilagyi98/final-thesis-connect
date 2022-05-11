@@ -52,12 +52,12 @@ const ExploreProjects = () => {
             </ProjectCard>
 
              <ProjectCard>
-              <img src="../images/porto.jpg" alt="" className="projetcImage"/>
-              <img src="../images/dyt.png" alt="" className="organizationImage"/>
+              <img src="../images/athen.jpg" alt="" className="projetcImage"/>
+              <img src="../images/fajub.png" alt="" className="organizationImage"/>
               <MainInfo>
-                <h3>Born to be alive</h3>
-                <p>Porto, Portugal</p>
-                <p>22-28 May, 2022</p>
+                <h3>Youth Hacker</h3>
+                <p>Athens, Greece</p>
+                <p>11-18 May, 2022</p>
                 <VolunteersFrom>
                   <span>From:</span>
                   <img src="../images/czech-flag.svg" alt="" />
@@ -68,9 +68,9 @@ const ExploreProjects = () => {
                   </VolunteersFrom>
                 </MainInfo>
               <Topics>
-                <div>Mindfulness</div>
+                <div>IT</div>
                 <div>Travel</div>
-                <div>Sustainability</div>
+                <div>E-commerce</div>
               </Topics>
               <ProjectDetailes>
                 Join us in our Youth Exchange where you 
@@ -84,12 +84,12 @@ const ExploreProjects = () => {
             </ProjectCard>
 
              <ProjectCard>
-              <img src="../images/porto.jpg" alt="" className="projetcImage"/>
+              <img src="../images/venice.jpg" alt="" className="projetcImage"/>
               <img src="../images/dyt.png" alt="" className="organizationImage"/>
               <MainInfo>
-                <h3>Born to be alive</h3>
-                <p>Porto, Portugal</p>
-                <p>22-28 May, 2022</p>
+                <h3>Heritage Youth Perspective</h3>
+                <p>Venice, Italy</p>
+                <p>20-27 June, 2022</p>
                 <VolunteersFrom>
                   <span>From:</span>
                   <img src="../images/czech-flag.svg" alt="" />
@@ -100,9 +100,9 @@ const ExploreProjects = () => {
                   </VolunteersFrom>
                 </MainInfo>
               <Topics>
-                <div>Mindfulness</div>
+                <div>Culture</div>
                 <div>Travel</div>
-                <div>Sustainability</div>
+                <div>Heritage</div>
               </Topics>
               <ProjectDetailes>
                 Join us in our Youth Exchange where you 
@@ -116,12 +116,12 @@ const ExploreProjects = () => {
             </ProjectCard>
 
             <ProjectCard>
-              <img src="../images/porto.jpg" alt="" className="projetcImage"/>
-              <img src="../images/dyt.png" alt="" className="organizationImage"/>
+              <img src="../images/cyprus.jpg" alt="" className="projetcImage"/>
+              <img src="../images/gdoce.png" alt="" className="organizationImage"/>
               <MainInfo>
-                <h3>Born to be alive</h3>
-                <p>Porto, Portugal</p>
-                <p>22-28 May, 2022</p>
+                <h3>Youth in art</h3>
+                <p>Limassol, Cyprus</p>
+                <p>08-11 May, 2022</p>
                 <VolunteersFrom>
                   <span>From:</span>
                   <img src="../images/czech-flag.svg" alt="" />
@@ -132,9 +132,74 @@ const ExploreProjects = () => {
                   </VolunteersFrom>
                 </MainInfo>
               <Topics>
-                <div>Mindfulness</div>
+                <div>Art</div>
                 <div>Travel</div>
-                <div>Sustainability</div>
+                <div>Culture</div>
+              </Topics>
+              <ProjectDetailes>
+                Join us in our Youth Exchange where you 
+                can learn more about mind fulness and 
+                time management from out trainers.
+              </ProjectDetailes>
+              <ButtonContainer>
+              <ApplyButton>Apply</ApplyButton>
+              <InfoPackButton>Infopack</InfoPackButton>
+              </ButtonContainer>
+            </ProjectCard>
+
+
+          <ProjectCard>
+              <img src="../images/paris.jpg" alt="" className="projetcImage"/>
+              <img src="../images/dyt.png" alt="" className="organizationImage"/>
+              <MainInfo>
+                <h3>Cultural senses</h3>
+                <p>Paris, France</p>
+                <p>08-15 June, 2022</p>
+                <VolunteersFrom>
+                  <span>From:</span>
+                  <img src="../images/czech-flag.svg" alt="" />
+                  <img src="../images/german-flag.svg" alt="" />
+                  <img src="../images/danish-flag.svg" alt="" />
+                  <img src="../images/romanian-flag.svg" alt="" />
+                  <img src="../images/macedonian-flag.svg" alt="" />
+                  </VolunteersFrom>
+                </MainInfo>
+              <Topics>
+                <div>Culture</div>
+                <div>Travel</div>
+                <div>Gastronomy</div>
+              </Topics>
+              <ProjectDetailes>
+                Join us in our Youth Exchange where you 
+                can learn more about mind fulness and 
+                time management from out trainers.
+              </ProjectDetailes>
+              <ButtonContainer>
+              <ApplyButton>Apply</ApplyButton>
+              <InfoPackButton>Infopack</InfoPackButton>
+              </ButtonContainer>
+            </ProjectCard>
+
+            <ProjectCard>
+              <img src="../images/bp.jpg" alt="" className="projetcImage"/>
+              <img src="../images/Nextgeneration.png" alt="" className="organizationImage"/>
+              <MainInfo>
+                <h3>To-get-there</h3>
+                <p>Budapest, Hungary</p>
+                <p>22-18 July, 2022</p>
+                <VolunteersFrom>
+                  <span>From:</span>
+                  <img src="../images/czech-flag.svg" alt="" />
+                  <img src="../images/german-flag.svg" alt="" />
+                  <img src="../images/danish-flag.svg" alt="" />
+                  <img src="../images/romanian-flag.svg" alt="" />
+                  <img src="../images/macedonian-flag.svg" alt="" />
+                  </VolunteersFrom>
+                </MainInfo>
+              <Topics>
+                <div>Economy</div>
+                <div>Travel</div>
+                <div>Entrepreneurship</div>
               </Topics>
               <ProjectDetailes>
                 Join us in our Youth Exchange where you 
@@ -198,6 +263,7 @@ const Sortbuttons = styled.button`
 
 const Explorecontainer = styled.div`
   grid-area: mainexplore;
+  
 
   .sort-buttons {
     display: flex;
@@ -209,7 +275,6 @@ const Explorecontainer = styled.div`
         box-shadow: inset 0px 0px 5px #c1c1c1;
         outline: none;
         font-weight: 500;
-  
     }
   }
 `;
@@ -222,6 +287,13 @@ const ProjectsContainer = styled.div`
   grid-row-gap: 10px;
   grid-column-gap: 10px;
   grid-template-areas: "projectcard";
+
+    @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
+    margin: 0 auto;
+  }
 
 `
 const ProjectCard = styled.div`
@@ -250,7 +322,7 @@ const ProjectCard = styled.div`
         -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
         -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
         border-radius: 50%;
-        object-fit: cover;
+        object-fit: contain;
         margin-top: -10%;
         margin-left: 80%;
     }
