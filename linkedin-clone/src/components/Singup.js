@@ -59,7 +59,7 @@ export default function SignUp({ showLoader }) {
           <input required type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Name" />
           <input required type="email" value={mail} onChange={(e) => setMail(e.target.value)} name="mail" placeholder="Email" />
           <input required type="text" name="password" placeholder="Password" />
-          <input required type="text" value={nationality} onChange={(e) => setNationality(e.target.value)} name="nationality" placeholder="Nationality" />
+          <input  type="text" value={nationality} onChange={(e) => setNationality(e.target.value)} name="nationality" placeholder="Nationality" />
           <input type="text" value={residency} onChange={(e) => setResidency(e.target.value)} name="residency" placeholder="Country of residency" />
           <input type="text" value={interests} onChange={(e) => setInterests(e.target.value)} name="interests" placeholder="Interests (e.g. traveling, cooking, languages)" />
           <input type="text" value={bio} onChange={(e) => setBio(e.target.value)} name="bio" placeholder="Tell us about yourself" />

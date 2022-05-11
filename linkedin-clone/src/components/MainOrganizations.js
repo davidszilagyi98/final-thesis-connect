@@ -10,7 +10,6 @@ const MainOrganizations = ({ name }) => {
 
   return (
     <Container>
-      <h2>Titel</h2>
       <OrganizationsList>
         <ul>
           {users.map((user) => (
@@ -36,6 +35,7 @@ const Container = styled.div`
 `;
 
 const OrganizationsList = styled.div`
+  margin-top: 1.5rem;
   .img-name-div {
     display: flex;
     align-items: center;
@@ -46,9 +46,13 @@ const OrganizationsList = styled.div`
     height: 4rem;
     border-radius: 360px;
     margin-top: 1rem;
-    object-fit: cover;
+    object-fit: cover ;
     margin: 0 auto;
     margin-right: 0.8rem;
+    background-color: #fff;
+    box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+    -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+    -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
   }
   ul {
     display: grid;

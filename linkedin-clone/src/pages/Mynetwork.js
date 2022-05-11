@@ -1,48 +1,103 @@
-// import React, { useEffect, useState } from "react";
-// import { db } from "../firebase";
-// import { collection, onSnapshot } from "@firebase/firestore";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import { LeftsideOrganizations } from "../components/LeftsideOrganizations";
 import Rightside from "../components/Rightside";
-import MainOrganizations from "../components/MainOrganizations";
-import { Container } from "./Home";
-
-// const Dot = ({ user }) => {
-//   const style = {
-//     height: 25,
-//     width: 25,
-//     margin: "0px 10px",
-//     borderRadius: "50%",
-//     display: "inline-block",
-//   };
-//   return <span style={style}></span>;
-// };
+import { db } from "../firebase";
+import { collection, onSnapshot } from "@firebase/firestore";
+import { Link } from "react-router-dom";
+import { Container } from "../pages/Home";
 
 const Mynetwork = () => {
-  // const [users, setUsers] = useState([]);
-  // console.log(users);
-  // useEffect(() => onSnapshot(collection(db, "users"), (snapshot) => setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))), []);
+  const [users, setUsers] = useState([]);
+  useEffect(() => onSnapshot(collection(db, "users"), (snapshot) => setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))), []);
 
   return (
-    // <ul>
-    //   {users.map((user) => (
-    //     <li key={user.id}>
-    //       <a href="/profile"></a> <Dot user={user.value} /> {user.name}
-    //     </li>
-    //   ))}
-    // </ul>
     <Container>
       <Header />
       <LayoutOrganizations>
         <LeftsideOrganizations />
         <Rightside />
-        <MainOrganizations />
+        <MynetworkList>
+        <ul>
+          {users.map((user) => (
+            <Link to={`/userprofile/${user.id}`}>
+              <li key={user.id}>
+                <div className="img-name-div">
+                  <img src={user.image} className="profile-picture" alt=""></img>
+                  <p>{user.name}</p>
+                  <p>{user.nationality}</p>
+                  <p>{user.residency}</p>
+                </div>
+              </li>
+            </Link>
+          ))}
+        </ul>
+      </MynetworkList>
       </LayoutOrganizations>
     </Container>
   );
 };
+
+
+const MynetworkList = styled.div`
+
+margin-top: 1.5rem;
+  .img-name-div {
+    display: flex;
+    align-items: center;
+    margin-left: 0.8rem;
+  }
+  .profile-picture {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 360px;
+    margin-top: 1rem;
+    object-fit: cover ;
+    margin: 0 auto;
+    margin-right: 0.8rem;
+    background-color: #fff;
+    box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+    -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+    -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  }
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+
+  @media (max-width: 768px) {
+    margin: 20px auto;
+    grid-template-columns: 1fr;
+  }
+
+  li {
+    list-style-type: none;
+    background-color: #fff;
+    background: linear-gradient(to left, white 97%, #D9B233 3%);
+    box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+    -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+    -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+    border-radius: 12px;
+    display: flex;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-right: 1rem;
+    padding: 15px;
+
+    .namewithflag {
+      display: flex;
+      flex-direction: row;
+
+      a {
+        margin-right: 3px;
+      }
+    }
+  }`
+
 const LayoutOrganizations = styled.div`
   display: grid;
   grid-template-areas: "leftsideorganizations main rightside";

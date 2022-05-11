@@ -7,7 +7,7 @@ import { collection, onSnapshot } from "@firebase/firestore";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
-const Explore = () => {
+const ExploreOrganizations = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => onSnapshot(collection(db, "users"), (snapshot) => setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))), []);
   return (
@@ -170,7 +170,7 @@ const Explorecards = styled.div`
   li {
     list-style-type: none;
     background-color: #fff;
-    background: linear-gradient(to top, white 70%, #d9b233 50%);
+    background: linear-gradient(to top, white 70%, #063A54 50%);
     box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
     -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
     -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
@@ -185,4 +185,4 @@ const Explorecards = styled.div`
   }
 `;
 
-export default Explore;
+export default ExploreOrganizations;

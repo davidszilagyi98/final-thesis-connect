@@ -14,6 +14,7 @@ import UserProfile from "./pages/UserProfile";
 import Notifications from "./pages/Notifications";
 import Guide from "./pages/Guide";
 import ExploreProjects from "./pages/ExploreProjects";
+import ExploreOrganizations from "./pages/ExploreOrganizations";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>}/>
         <Route path="/explore" element={<ProtectedRoute><Explore /></ProtectedRoute>}/>
         <Route path="/explore/projects" element={<ProtectedRoute><ExploreProjects /></ProtectedRoute>}/>
+        <Route path="/explore/organizations" element={<ProtectedRoute><ExploreOrganizations /></ProtectedRoute>}/>
         <Route path="/mynetwork" element={<ProtectedRoute><Mynetwork /></ProtectedRoute>}/>
         <Route path="/organizations" element={<ProtectedRoute><Organizations /></ProtectedRoute>}/>
         <Route path="/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
