@@ -20,7 +20,7 @@ const Profile = () => {
   useEffect(() => {
     async function getUser() {
       if (auth.currentUser) {
-        const docRef = doc(usersRef, auth.currentUser.uid); 
+        const docRef = doc(usersRef, auth.currentUser.uid);
         const userData = (await getDoc(docRef)).data();
         if (userData) {
           setName(userData.name);
@@ -36,7 +36,7 @@ const Profile = () => {
     }
 
     getUser();
-  }, [auth.currentUser]); 
+  }, [auth.currentUser]);
   return (
     <div>
       <Header />
@@ -46,7 +46,7 @@ const Profile = () => {
           <h3> {user.displayName} </h3>
           <h3> {name} </h3>
           <div>
-            <a href="#" className="profile-social-icons">
+            <a className="profile-social-icons">
               <img src="/images/icons/facebook-logo-icon.svg" alt=""></img>
             </a>
             <a className="profile-social-icons">
