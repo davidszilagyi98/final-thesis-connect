@@ -6,7 +6,7 @@ import styled from "styled-components";
 export default function UserInfo({ uid }) {
   const [user, setUser] = useState({
     image: placeholder,
-    name: "User's Name",
+    name: "User's name",
   });
 
   useEffect(() => {
@@ -24,6 +24,7 @@ export default function UserInfo({ uid }) {
     <Avatar>
         <img src={user.image} alt={user.id} />
         <span>{user.name}</span>
+        <span>{user.displayName}</span>
     </Avatar>
   );
 }

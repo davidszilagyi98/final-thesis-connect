@@ -12,7 +12,7 @@ const UpdateProfile = () => {
   const [email, setEmail] = useState("");
   const [image, setImage] = useState("");
   const [nationality, setNationality] = useState("");
-  const [residency, setResdidency] = useState("");
+  const [residency, setResidency] = useState("");
   const [bio, setBio] = useState("");
   const [interests, setInterests] = useState("");
   const [projects, setProjects] = useState("");
@@ -29,7 +29,7 @@ const UpdateProfile = () => {
           setImage(userData.image);
           setEmail(userData.email);
           setNationality(userData.nationality);
-          setResdidency(userData.residency);
+          setResidency(userData.residency);
           setBio(userData.bio);
           setInterests(userData.interests);
           setProjects(userData.projects);
@@ -69,70 +69,41 @@ const UpdateProfile = () => {
   return (
     <div className>
       <Header />
-      <Valami>
+      <UpdateProfileFormContainer>
         <form onSubmit={handleSubmit}>
-          <div className="labels">
-            <label>
-              Name
-              <input type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Type name" />
-            </label>
-            <label>
-              Email
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Type email" disabled />
-            </label>
-
-            <label>
-              Image
-              <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
-              <img className="image-preview" src={image} alt="Choose" onError={(event) => event.target.src} />
-            </label>
-            <label>
-              Nationality
-              <input type="text" value={nationality} onChange={(e) => setNationality(e.target.value)} name="nationality" placeholder="Type name" />
-            </label>
-            <label>
-              Residency
-              <input type="text" value={residency} onChange={(e) => setResdidency(e.target.value)} name="residency" placeholder="Type name" />
-            </label>
-            <label>
-              Bio
-              <input type="text" value={bio} onChange={(e) => setBio(e.target.value)} name="bio" placeholder="Type name" />
-            </label>
-            <label>
-              Interests
-              <input type="text" value={interests} onChange={(e) => setInterests(e.target.value)} name="interests" placeholder="Type name" />
-            </label>
-            <label>
-              Projects
-              <input type="text" value={projects} onChange={(e) => setProjects(e.target.value)} name="projects" placeholder="Type name" />
-            </label>
-            <label>
-              Photos
-              <input type="text" value={photos} onChange={(e) => setPhotos(e.target.value)} name="photos" placeholder="Type name" />
-            </label>
+          <img className="image-preview" src={image} alt="Choose" onError={(event) => event.target.src} />
+          <input type="file" className="file-input" accept="image/*" onChange={handleImageChange} />
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Name" />
+          <input type="text" value={nationality} onChange={(e) => setNationality(e.target.value)} name="nationality" placeholder="Nationality" />
+          <input type="text" value={residency} onChange={(e) => setResidency(e.target.value)} name="residency" placeholder="Country of residency" />
+          <input type="text" value={bio} onChange={(e) => setBio(e.target.value)} name="bio" placeholder="Tell us about yourself" />
+           <input type="text" value={interests} onChange={(e) => setInterests(e.target.value)} name="interests" placeholder="Interests (e.g. traveling, cooking, languages)" />
+           <input type="text" value={projects} onChange={(e) => setProjects(e.target.value)} name="projects" placeholder="Previous projects" />
+           <input type="text" value={photos} onChange={(e) => setPhotos(e.target.value)} name="photos" placeholder="Upload photos" />
             <p className="text-error">{errorMessage}</p>
-            <button>Save User</button>
-          </div>
+            <button>Update Profile</button>
         </form>
-      </Valami>
+      </UpdateProfileFormContainer>
     </div>
   );
 };
 
-const Valami = styled.div`
-  margin-top: 7rem;
-  grid-template-columns: 1 1fr;
-  margin-bottom: 2rem;
-
-  .labels {
+const UpdateProfileFormContainer = styled.div`
+  margin: 7rem auto 2rem auto;
+  width: 50%;
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4); 
+  
+  form {
     display: grid;
     margin: 0 auto;
-    width: 75%;
-    /* justify-items: center; */
-   
-  }
-
-  input {
+    width: 70%;
+     
+    input {
     line-height: 2.3;
     padding: 5px 10px;
     background-color: #ececec;
@@ -144,10 +115,18 @@ const Valami = styled.div`
     }
   }
 
+  img {
+    margin: 0 auto 24px auto;
+    width: 13rem;
+    height: 13rem;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
   button {
     display: block;
     font-size: 1rem;
-    background-color: #1f5b87;
+    background-image: linear-gradient(to right top, #114265, #15486d, #184e76, #1c557e, #1f5b87);
     padding: 0 50px;
     height: 40px;
     width: 50%;
@@ -156,12 +135,18 @@ const Valami = styled.div`
     border: none;
     color: #fff;
     text-align: center;
+    box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+   -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+    -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
 
     &:hover {
       background-color: #063a54;
       cursor: pointer;
     }
   }
+  }
+
+
 `;
 
 export default UpdateProfile;

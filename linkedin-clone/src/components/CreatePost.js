@@ -76,7 +76,7 @@ export default function CreatePost({ savePost, post }) {
     <PostBoxContainer>
       <form onSubmit={handleSubmit}>
         <div className="textpost">
-          <img src={userImage} alt=""></img>
+          <img src={userImage} alt=""/>
         <label>
           <input className="posttextinput" type="text" value={body} placeholder="What's in your mind?" onChange={(e) => setBody(e.target.value)} />
         </label>

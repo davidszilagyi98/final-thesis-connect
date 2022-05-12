@@ -32,6 +32,7 @@ const Leftside = (props) => {
           <CardBackground />
           <Photo>
               <img src={image} alt={user.id} />
+              {/* <img src={user.photoURL} alt=""/> */}
             </Photo>
           <Link>
             <a href="/profile">{user.displayName}</a>
@@ -140,9 +141,10 @@ const GuideButton = styled.button`
   box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-  &:hover {
-    cursor: pointer;
-    background-color: #164466;
+  
+    &:hover {
+      background-color: #063a54;
+      cursor: pointer;
   }
 `;
 

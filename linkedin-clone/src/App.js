@@ -15,6 +15,7 @@ import Notifications from "./pages/Notifications";
 import Guide from "./pages/Guide";
 import ExploreProjects from "./pages/ExploreProjects";
 import ExploreOrganizations from "./pages/ExploreOrganizations";
+import UpdateProfile from "./pages/UpdateProfile"
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>}/>
         <Route path="/guide" element={<ProtectedRoute><Guide /></ProtectedRoute>}/>
         <Route path="/userprofile/:uid" element={<ProtectedRoute><UserProfile /></ProtectedRoute>}/>
+        <Route path="/updateprofile" element={<ProtectedRoute><UpdateProfile /></ProtectedRoute>}/>
       </Routes>
     </UserAuthContextProvider>
   );
