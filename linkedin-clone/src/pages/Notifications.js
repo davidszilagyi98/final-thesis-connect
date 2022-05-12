@@ -26,19 +26,19 @@ const Notifications = () => {
                 </li>
                 <li className="noti-list read">
                   <span class="dot"></span>
-                  <img className="notificationsimage" src="./images/natalia.jpg" alt=""></img>
+                  <img className="notificationsimage" src="./images/tereza.jpg" alt=""></img>
                   <div className="name-title-noti">
-                    <h4>Elena Romanoff</h4>
+                    <h4>Tereza Checzh</h4>
                     <p>Posted an article</p>
                   </div>
-                  <p className="time">4h</p>
+                  <p className="time">3h</p>
                 </li>
                 <li className="noti-list read">
                   <span class="dot"></span>
-                  <img className="notificationsimage" src="./images/natalia.jpg" alt=""></img>
+                  <img className="notificationsimage" src="./images/erin.jpg" alt=""></img>
 
                   <div className="name-title-noti">
-                    <h4>Elena Romanoff</h4>
+                    <h4>Erin Steed</h4>
                     <p>Posted an article</p>
                   </div>
                   <p className="time">4h</p>
@@ -59,8 +59,10 @@ const NotificationsList = styled.div`
 
   .notificationsimage {
     width: 5rem;
-    border-radius: 360px;
+    height: 5rem;
+    border-radius: 50%;
     margin-right: 1rem;
+    object-fit: cover;
   }
   .dot {
     background-color: #1f5b87;
