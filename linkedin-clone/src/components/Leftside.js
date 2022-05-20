@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { usersRef } from "../firebase/index";
 import { doc, getDoc } from "firebase/firestore";
-
+import placeholder from "../volunteer-placeholder-image.svg";
 
 const Leftside = (props) => {
   const { user, logOut } = useUserAuth();
@@ -19,6 +19,8 @@ const Leftside = (props) => {
         if (userData) {
           setName(userData.name);
           setImage(userData.image);
+        } else {
+          setImage(placeholder);
         }
       }
     }

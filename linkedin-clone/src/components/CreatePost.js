@@ -4,6 +4,7 @@ import placeholder from "../photo-icon.svg";
 import { usersRef } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import placeholderIMG from "../volunteer-placeholder-image.svg";
 
 export default function CreatePost({ savePost, post }) {
   const [image, setImage] = useState("");
@@ -23,6 +24,8 @@ export default function CreatePost({ savePost, post }) {
         const userData = (await getDoc(docRef)).data();
         if (userData) {
           setUserImage(userData.image);
+        } else {
+          setUserImage(placeholderIMG);
         }
       }
     }
