@@ -4,14 +4,8 @@ import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { usersRef } from "../firebase/index";
 import { doc, getDoc } from "firebase/firestore";
-<<<<<<< Updated upstream
 import placeholder from "../volunteer-placeholder-image.svg";
-=======
-<<<<<<< HEAD
-=======
-import placeholder from "../volunteer-placeholder-image.svg";
->>>>>>> 2d0a6c9567a61838a2dd9d58727f1130c1ba33cc
->>>>>>> Stashed changes
+
 
 const Leftside = (props) => {
   const { user, logOut } = useUserAuth();

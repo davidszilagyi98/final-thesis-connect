@@ -22,16 +22,12 @@ export default function CreatePost({ savePost, post }) {
         const docRef = doc(usersRef, auth.currentUser.uid);  // gets the autentichated user
         const userData = (await getDoc(docRef)).data();  // gets the data of the autentichated user
         if (userData) {
-<<<<<<< HEAD
+
           setUserImage(userData.image);  // shows the image of the autentichated user
-=======
           setUserImage(userData.image);
         } else {
           setUserImage(placeholderIMG);
-<<<<<<< Updated upstream
-=======
->>>>>>> 2d0a6c9567a61838a2dd9d58727f1130c1ba33cc
->>>>>>> Stashed changes
+
         }
       }
     }

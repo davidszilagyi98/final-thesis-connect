@@ -17,3 +17,4 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const usersRef = collection(db, "users"); // reference to users collection i firestore
 export const postsRef = collection(db, "posts"); // reference to posts collection i firestore
+  
