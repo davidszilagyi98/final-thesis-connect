@@ -17,14 +17,15 @@ const Main = (props) => {
   async function handleSubmit(newPost) {
     newPost.createdAt = serverTimestamp();
     newPost.uid = auth.currentUser.uid;
-    await addDoc(postsRef, newPost);
+    await addDoc(postsRef, newPost);  // creates the post in the firestore
     navigate("/home");
   }
 
   useEffect(() => {
-    const q = query(postsRef, orderBy("createdAt", "desc"));
+    const q = query(postsRef, orderBy("createdAt", "desc"));  // shows th elatest post first
     const unsubscribe = onSnapshot(q, (data) => {
       const postsData = data.docs.map((doc) => {
+        // map through all docs from post collection
         return { ...doc.data(), id: doc.id };
       });
       setPosts(postsData);

@@ -11,7 +11,7 @@ import { Container } from "../pages/Home";
 const Mynetwork = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => onSnapshot(collection(db, "users"), (snapshot) => setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))), []);
-
+  // shows all the users we have in the collection in firestore
   return (
     <Container>
       <Header />
@@ -19,30 +19,28 @@ const Mynetwork = () => {
         <LeftsideOrganizations />
         <Rightside />
         <MynetworkList>
-        <ul>
-          {users.map((user) => (
-            <Link to={`/userprofile/${user.id}`}>
-              <li key={user.id}>
-                <div className="img-name-div">
-                  <img src={user.image} className="profile-picture" alt=""></img>
-                  <p>{user.name}</p>
-                  <p>{user.nationality}</p>
-                  <p>{user.residency}</p>
-                </div>
-              </li>
-            </Link>
-          ))}
-        </ul>
-      </MynetworkList>
+          <ul>
+            {users.map((user) => (
+              <Link to={`/userprofile/${user.id}`}>
+                <li key={user.id}>
+                  <div className="img-name-div">
+                    <img src={user.image} className="profile-picture" alt="user"></img>
+                    <p>{user.name}</p>
+                    <p>{user.nationality}</p>
+                    <p>{user.residency}</p>
+                  </div>
+                </li>
+              </Link>
+            ))}
+          </ul>
+        </MynetworkList>
       </LayoutOrganizations>
     </Container>
   );
 };
 
-
 const MynetworkList = styled.div`
-
-margin-top: 1.5rem;
+  margin-top: 1.5rem;
   .img-name-div {
     display: flex;
     align-items: center;
@@ -53,7 +51,7 @@ margin-top: 1.5rem;
     height: 4rem;
     border-radius: 360px;
     margin-top: 1rem;
-    object-fit: cover ;
+    object-fit: cover;
     margin: 0 auto;
     margin-right: 0.8rem;
     background-color: #fff;
@@ -77,7 +75,7 @@ margin-top: 1.5rem;
   li {
     list-style-type: none;
     background-color: #fff;
-    background: linear-gradient(to left, white 97%, #D9B233 3%);
+    background: linear-gradient(to left, white 97%, #d9b233 3%);
     box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
     -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
     -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
@@ -96,7 +94,8 @@ margin-top: 1.5rem;
         margin-right: 3px;
       }
     }
-  }`
+  }
+`;
 
 const LayoutOrganizations = styled.div`
   display: grid;

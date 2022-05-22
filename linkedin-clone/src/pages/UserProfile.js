@@ -13,7 +13,7 @@ const UserProfile = () => {
     image: placerholder,
     name: "User's Name",
   });
-
+// the functions shows the selected user based on their uid
   useEffect(() => {
     async function getUser() {
       const docRef = doc(usersRef, uid);
@@ -30,14 +30,14 @@ const UserProfile = () => {
       <Header />
       <ProfileTop>
         <div className="profiletop-center">
-          <img src={user.image} className="profile-picture" alt=""/>
+          <img src={user.image} className="profile-picture" alt="user" />
           <h3> {user.displayName} </h3>
           <h3> {user.name} </h3>
           <a href="#">
-            <img src="/images/icons/facebook-logo-icon.svg" alt=""/>
+            <img src="/images/icons/facebook-logo-icon.svg" alt="facebook-logo" />
           </a>
           <a href="#">
-            <img src="/images/icons/instagram-logo-icon.svg" alt=""/>
+            <img src="/images/icons/instagram-logo-icon.svg" alt="instagram-logo" />
           </a>
         </div>
       </ProfileTop>

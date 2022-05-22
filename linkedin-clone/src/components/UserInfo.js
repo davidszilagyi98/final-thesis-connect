@@ -7,9 +7,10 @@ export default function UserInfo({ uid }) {
   const [user, setUser] = useState({
     image: placeholder,
     name: "User's name",
-  });
+  }); // initial values defined for properties: image, name
 
   useEffect(() => {
+    // get user detail from firestore
     async function getUser() {
       const docRef = doc(usersRef, uid);
       const docSnap = await getDoc(docRef);
@@ -22,23 +23,21 @@ export default function UserInfo({ uid }) {
 
   return (
     <Avatar>
-        <img src={user.image} alt={user.id} />
-        <span>{user.name}</span>
-        <span>{user.displayName}</span>
+      <img src={user.image} alt={user.id} />
+      <span>{user.name}</span>
+      <span>{user.displayName}</span>
     </Avatar>
   );
 }
 
 const Avatar = styled.div`
-  display: grid; 
-  grid-template-columns: 0.3fr 1fr 1fr; 
-  grid-template-rows: 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    "useravatar avatarusername ."; 
+  display: grid;
+  grid-template-columns: 0.3fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "useravatar avatarusername .";
   padding: 0 20px;
   align-items: center;
-
 
   img {
     grid-area: useravatar;

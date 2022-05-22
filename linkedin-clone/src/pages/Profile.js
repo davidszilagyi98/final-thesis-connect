@@ -21,9 +21,10 @@ const Profile = () => {
   useEffect(() => {
     async function getUser() {
       if (auth.currentUser) {
-        const docRef = doc(usersRef, auth.currentUser.uid);
+        const docRef = doc(usersRef, auth.currentUser.uid); // use auth users uid to get user data from users collection
         const userData = (await getDoc(docRef)).data();
         if (userData) {
+          // if userData exists set states with values from userData (data from firestore)
           setName(userData.name);
           setImage(userData.image);
           setNationality(userData.nationality);
@@ -36,29 +37,37 @@ const Profile = () => {
       }
     }
     getUser();
-  }, [auth.currentUser]);
-  
+  }, [auth.currentUser]); // useEffect is executed
+
   return (
     <div>
       <Header />
       <ProfileTop>
-          <img src={image} className="profile-picture" alt=""></img>
-       </ProfileTop>
-       <ProfileTopInfo>
-          <h3> {user.displayName} </h3>
-          <h3> {name}   
+        <img src={image} className="profile-picture" alt="user"></img>
+      </ProfileTop>
+      <ProfileTopInfo>
+        <h3> {user.displayName} </h3>
+        <h3>
+          {" "}
+          {name}
           <a href="/updateprofile">
-          <svg xmlns="http://www.w3.org/2000/svg" width="26.385" height="23.449" viewBox="0 0 26.385 23.449">
-          <path id="Icon_awesome-edit" data-name="Icon awesome-edit" d="M18.442,3.814l4.132,4.132a.448.448,0,0,1,0,.632l-10,10-4.251.472a.891.891,0,0,1-.985-.985l.472-4.251,10-10A.448.448,0,0,1,18.442,3.814Zm7.421-1.049L23.628.529a1.792,1.792,0,0,0-2.529,0L19.478,2.151a.448.448,0,0,0,0,.632L23.61,6.915a.448.448,0,0,0,.632,0l1.622-1.622a1.792,1.792,0,0,0,0-2.529Zm-8.273,13.1v4.663H2.932V5.866H13.458a.563.563,0,0,0,.389-.16L15.68,3.873a.55.55,0,0,0-.389-.939H2.2A2.2,2.2,0,0,0,0,5.133V21.257a2.2,2.2,0,0,0,2.2,2.2H18.323a2.2,2.2,0,0,0,2.2-2.2V14.029a.551.551,0,0,0-.939-.389l-1.832,1.832A.563.563,0,0,0,17.59,15.861Z" transform="translate(0 -0.007)" fill="#333"/>
-          </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="26.385" height="23.449" viewBox="0 0 26.385 23.449">
+              <path
+                id="Icon_awesome-edit"
+                data-name="Icon awesome-edit"
+                d="M18.442,3.814l4.132,4.132a.448.448,0,0,1,0,.632l-10,10-4.251.472a.891.891,0,0,1-.985-.985l.472-4.251,10-10A.448.448,0,0,1,18.442,3.814Zm7.421-1.049L23.628.529a1.792,1.792,0,0,0-2.529,0L19.478,2.151a.448.448,0,0,0,0,.632L23.61,6.915a.448.448,0,0,0,.632,0l1.622-1.622a1.792,1.792,0,0,0,0-2.529Zm-8.273,13.1v4.663H2.932V5.866H13.458a.563.563,0,0,0,.389-.16L15.68,3.873a.55.55,0,0,0-.389-.939H2.2A2.2,2.2,0,0,0,0,5.133V21.257a2.2,2.2,0,0,0,2.2,2.2H18.323a2.2,2.2,0,0,0,2.2-2.2V14.029a.551.551,0,0,0-.939-.389l-1.832,1.832A.563.563,0,0,0,17.59,15.861Z"
+                transform="translate(0 -0.007)"
+                fill="#333"
+              />
+            </svg>
           </a>
-          </h3>
-          <div className="profile-social-icons">
-              <img src="/images/icons/facebook-logo-icon.svg" alt=""/>
-              <img src="/images/icons/instagram-logo-icon.svg"  alt=""/>
-          </div>
+        </h3>
+        <div className="profile-social-icons">
+          <img src="/images/icons/facebook-logo-icon.svg" alt="facebook-logo" />
+          <img src="/images/icons/instagram-logo-icon.svg" alt="instagram-logo" />
+        </div>
       </ProfileTopInfo>
-     
+
       <InfoHolder>
         <About>
           <div className="countries">
@@ -121,7 +130,7 @@ const ProfileTopInfo = styled.div`
       path {
         &:hover {
           cursor: pointer;
-          fill: #1F5B87;
+          fill: #1f5b87;
         }
       }
     }
@@ -131,12 +140,12 @@ const ProfileTopInfo = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 5px;
-    
+
     img {
       padding: 3px;
     }
   }
-`
+`;
 
 const InfoHolder = styled.div`
   background-color: white;

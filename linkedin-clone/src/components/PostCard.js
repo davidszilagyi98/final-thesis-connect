@@ -9,7 +9,7 @@ export default function PostCard({ post }) {
         <SharedActor>
             <div>
               <p>{post.body}</p>
-              <img src={post.image} alt="" />
+              <img src={post.image} alt="user" />
             </div>
         </SharedActor>
 
@@ -33,11 +33,11 @@ export default function PostCard({ post }) {
             <span>Like</span>
           </button>
           <button>
-            <img src="./images/icons/comment-icon.svg" alt="comments" />
+            <img src="./images/icons/comment-icon.svg" alt="comments-button" />
             <span>Comments</span>
           </button>
           <button>
-            <img src="./images/icons/share-icon.svg" alt="share" />
+            <img src="./images/icons/share-icon.svg" alt="share-button" />
             <span>Share</span>
           </button>
         </SocialActions>

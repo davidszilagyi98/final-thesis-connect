@@ -6,16 +6,15 @@ import { usersRef } from "../firebase/index";
 import { doc, getDoc } from "firebase/firestore";
 import { CountryFilterButton } from "../components/LeftsideOrganizations";
 
-
 const LeftsideProjects = (props) => {
   const { user, logOut } = useUserAuth();
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const auth = getAuth();
   useEffect(() => {
-    async function getUser() {
+    async function getUser() { // shows the autentichated current user
       if (auth.currentUser) {
-        const docRef = doc(usersRef, auth.currentUser.uid); 
+        const docRef = doc(usersRef, auth.currentUser.uid);
         const userData = (await getDoc(docRef)).data();
         if (userData) {
           setName(userData.name);
@@ -24,7 +23,7 @@ const LeftsideProjects = (props) => {
       }
     }
     getUser();
-  }, [auth.currentUser]); 
+  }, [auth.currentUser]);
 
   return (
     <Container>
@@ -32,14 +31,14 @@ const LeftsideProjects = (props) => {
         <UserInfo>
           <CardBackground />
           <Photo>
-              <img src={image} alt={user.id} />
-            </Photo>
+            <img src={image} alt={user.id} />
+          </Photo>
           <Link>
             <a href="/profile">{user.displayName}</a>
             <a href="/profile"> {name} </a>
           </Link>
-          <img src="../images/danish-flag.svg" alt="" />
-          <img src="../images/german-flag.svg" alt="" />
+          <img src="../images/danish-flag.svg" alt="user-flag" />
+          <img src="../images/german-flag.svg" alt="user-flag" />
           <br />
           <button onClick={logOut}>Log out</button>
         </UserInfo>
@@ -47,9 +46,15 @@ const LeftsideProjects = (props) => {
       <a href="/guide">
         <GuideButton>Guide</GuideButton>
       </a>
-      <CountryFilterButton>Counrty <img src="../images/icons/downarrow-icon.svg" alt="" /></CountryFilterButton>
-      <CountryFilterButton>Volunteers from <img src="../images/icons/downarrow-icon.svg" alt="" /></CountryFilterButton>
-      <CountryFilterButton>Topic <img src="../images/icons/downarrow-icon.svg" alt="" /></CountryFilterButton>
+      <CountryFilterButton>
+        Counrty <img src="../images/icons/downarrow-icon.svg" alt="country-filter" />
+      </CountryFilterButton>
+      <CountryFilterButton>
+        Volunteers from <img src="../images/icons/downarrow-icon.svg" alt="country-filter" />
+      </CountryFilterButton>
+      <CountryFilterButton>
+        Topic <img src="../images/icons/downarrow-icon.svg" alt="country-filter" />
+      </CountryFilterButton>
     </Container>
   );
 };
@@ -74,7 +79,6 @@ const ArtCard = styled.div`
 const UserInfo = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   padding-bottom: 30px;
-
 
   button {
     margin-top: 20px;
@@ -104,19 +108,19 @@ const UserInfo = styled.div`
 `;
 
 const CardBackground = styled.div`
-  background: #D9B233;
+  background: #d9b233;
   height: 54px;
 `;
 
 const Photo = styled.div`
   img {
-  width: 72px;
-  height: 72px; 
-  border: 2px solid white;
-  margin: -38px auto 0;
-  border-radius: 50%;
-  object-fit: cover;
-}
+    width: 72px;
+    height: 72px;
+    border: 2px solid white;
+    margin: -38px auto 0;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 `;
 
 const Link = styled.div`

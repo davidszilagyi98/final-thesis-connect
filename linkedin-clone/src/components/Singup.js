@@ -14,26 +14,25 @@ export default function SignUp({ showLoader }) {
 
   function handleSignUp(event) {
     event.preventDefault();
-    const name = event.target.name.value;
-    const mail = event.target.mail.value; 
-    const password = event.target.password.value; 
-    const residency = event.target.residency.value;
-    const nationality = event.target.nationality.value;
-    const interests = event.target.interests.value;
-    const bio = event.target.bio.value;
-
+    const name = event.target.name.value; // name value from input field in sign in form
+    const mail = event.target.mail.value; // mail value from input field in sign in form
+    const password = event.target.password.value; // password value from input field in sign in form
+    const residency = event.target.residency.value; // residency value from input field in sign in form
+    const nationality = event.target.nationality.value; // nationality value from input field in sign in form
+    const interests = event.target.interests.value; // interests value from input field in sign in form
+    const bio = event.target.bio.value; // bio value from input field in sign in form
 
     createUserWithEmailAndPassword(auth, mail, password, name, residency)
       .then((userCredential) => {
         const user = userCredential.user;
-        const docRef = doc(usersRef, user.uid); 
-        setDoc(docRef, { name, mail, residency, nationality, interests, bio }); 
+        const docRef = doc(usersRef, user.uid); //create reference to the user in firestore
+        setDoc(docRef, { name, mail, residency, nationality, interests, bio }); // set or update the user in firestore based on the values from the input fields
         navigate("/");
       })
       .catch((error) => {
-        let code = error.code; 
+        let code = error.code;  // error code
         console.log(code);
-        code = code.replaceAll("-", " "); 
+        code = code.replaceAll("-", " ");
         code = code.replaceAll("auth/", "");
         setErrorMessage(code);
       });
@@ -43,12 +42,12 @@ export default function SignUp({ showLoader }) {
     <SignUpPage>
       <Nav>
         <a href="/">
-          <img src="/images/connect-logo-thick-dot.svg" alt="" />
+          <img src="/images/connect-logo-thick-dot.svg" alt="connect-logo" />
         </a>
       </Nav>
       <SingUpForm>
         <form onSubmit={handleSignUp} id="signupvolunteers">
-           <h2>Sign up </h2>
+          <h2>Sign up </h2>
           <select className="resiterAs">
             <option value="">Register as</option>
             <option value="organization">Organization</option>
@@ -58,32 +57,33 @@ export default function SignUp({ showLoader }) {
           <input required type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Name" />
           <input required type="email" value={mail} onChange={(e) => setMail(e.target.value)} name="mail" placeholder="Email" />
           <input required type="text" name="password" placeholder="Password" />
-          <input  type="text" value={nationality} onChange={(e) => setNationality(e.target.value)} name="nationality" placeholder="Nationality" />
+          <input type="text" value={nationality} onChange={(e) => setNationality(e.target.value)} name="nationality" placeholder="Nationality" />
           <input type="text" value={residency} onChange={(e) => setResidency(e.target.value)} name="residency" placeholder="Country of residency" />
           <input type="text" value={interests} onChange={(e) => setInterests(e.target.value)} name="interests" placeholder="Interests (e.g. traveling, cooking, languages)" />
           <input type="text" value={bio} onChange={(e) => setBio(e.target.value)} name="bio" placeholder="Tell us about yourself" />
           <p className="text-error">{errorMessage}</p>
           <button>Sign Up</button>
-           <AlreadyUser>
-          <p>Already have an account? <a href="/">Sign in</a></p>
+          <AlreadyUser>
+            <p>
+              Already have an account? <a href="/">Sign in</a>
+            </p>
           </AlreadyUser>
         </form>
-           <SignUpImage>
-          <img src="/images/signup-hello.svg" alt="" />
-          </SignUpImage>
-      </SingUpForm>     
+        <SignUpImage>
+          <img src="/images/signup-hello.svg" alt="hello" />
+        </SignUpImage>
+      </SingUpForm>
     </SignUpPage>
   );
 }
 
 const SignUpPage = styled.div`
   background-color: #f5f5f5;
-  
-   @media (max-width: 768px) {
+
+  @media (max-width: 768px) {
     margin: 0 auto;
-    
   }
-`
+`;
 
 const Nav = styled.nav`
   max-width: 70%;
@@ -104,7 +104,6 @@ const Nav = styled.nav`
   }
 `;
 
-
 const SingUpForm = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -123,7 +122,6 @@ const SingUpForm = styled.div`
     margin: 20px auto;
     width: 80%;
     grid-template-columns: 1fr;
-    
   }
 
   h2 {
@@ -133,7 +131,6 @@ const SingUpForm = styled.div`
     text-align: left;
   }
 
-  
   form {
     margin: auto;
     display: flex;
@@ -150,11 +147,11 @@ const SingUpForm = styled.div`
     margin-bottom: 8px;
 
     :focus {
-      outline: 1px solid #1F5B87;
+      outline: 1px solid #1f5b87;
     }
   }
 
- input {
+  input {
     line-height: 2.3;
     padding: 5px 10px;
     background-color: #ececec;
@@ -162,14 +159,14 @@ const SingUpForm = styled.div`
     margin-bottom: 8px;
 
     :focus {
-      outline: 1px solid #1F5B87;
+      outline: 1px solid #1f5b87;
     }
   }
 
   button {
     display: block;
     font-size: 1rem;
-    background-color: #1F5B87;
+    background-color: #1f5b87;
     padding: 0 50px;
     height: 40px;
     width: 100%;
@@ -180,7 +177,7 @@ const SingUpForm = styled.div`
     text-align: center;
 
     &:hover {
-      background-color: #063A54;
+      background-color: #063a54;
       cursor: pointer;
     }
   }
@@ -196,7 +193,7 @@ const AlreadyUser = styled.div`
     text-decoration: underline;
     color: #1f5b87;
   }
-`
+`;
 
 const SignUpImage = styled.div`
   width: 100%;
@@ -205,6 +202,6 @@ const SignUpImage = styled.div`
     width: 58%;
     margin: 0 auto;
   }
-`
+`;
 
 // export default SignUp;

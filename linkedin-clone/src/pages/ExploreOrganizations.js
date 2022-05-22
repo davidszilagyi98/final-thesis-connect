@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 const ExploreOrganizations = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => onSnapshot(collection(db, "users"), (snapshot) => setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))), []);
+  // shows all the users we have in the collection in firestore
   return (
     <div>
       <Container>
@@ -18,9 +19,15 @@ const ExploreOrganizations = () => {
           <Leftside />
           <Explorecontainer>
             <div className="sort-buttons">
-              <a href="/explore"><Sortbuttons className="active">People</Sortbuttons></a>
-              <a href="/explore/organizations"><Sortbuttons>Organizations</Sortbuttons></a>
-              <a href="/explore/projects"><Sortbuttons>Projects </Sortbuttons></a>
+              <a href="/explore">
+                <Sortbuttons className="active">People</Sortbuttons>
+              </a>
+              <a href="/explore/organizations">
+                <Sortbuttons>Organizations</Sortbuttons>
+              </a>
+              <a href="/explore/projects">
+                <Sortbuttons>Projects </Sortbuttons>
+              </a>
             </div>
             <Explorecards>
               <ul>
@@ -28,15 +35,15 @@ const ExploreOrganizations = () => {
                   <Link to={`/userprofile/${user.id}`}>
                     <li key={user.id}>
                       <div className="profiletop-center">
-                        <img src={user.image} className="profile-picture" alt=""></img>
+                        <img src={user.image} className="profile-picture" alt="user"></img>
                         <p>{user.name}</p>
                         <div className="residency-nationality">
                           <p>{user.residency}</p>
                           <p>{user.nationality}</p>
                         </div>
-                         <IconConnections>
-                        <img src="./images/connect-icon.svg" alt=""/>
-                        <span> 9 mutual connections</span>
+                        <IconConnections>
+                          <img src="./images/connect-icon.svg" alt="connect-icon" />
+                          <span> 9 mutual connections</span>
                         </IconConnections>
                         <button className="connect-button">connect</button>
                       </div>
@@ -53,43 +60,38 @@ const ExploreOrganizations = () => {
 };
 
 const Sortbuttons = styled.button`
-    margin-right: 1.5rem;
-    color: #333;
-    background-color: #F0F0F0;
-    box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-    -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-    -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-    border: none;
-    border-radius: 15px;
-    padding: 10px;
-    width: 150px;
-    margin-top: 1rem;
-    align-items: center;
-    cursor: pointer;
+  margin-right: 1.5rem;
+  color: #333;
+  background-color: #f0f0f0;
+  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  width: 150px;
+  margin-top: 1rem;
+  align-items: center;
+  cursor: pointer;
 
-    &:hover{
-      background-color: #fff;
-      
-    }
-  
+  &:hover {
+    background-color: #fff;
+  }
 `;
 
 const Explorecontainer = styled.div`
   grid-area: main;
 
-
   .sort-buttons {
     display: flex;
     flex-direction: row;
 
-
-     .active {
-        -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-        -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-        box-shadow: inset 0px 0px 5px #c1c1c1;
-        outline: none;
-        font-weight: 500;
-  
+    .active {
+      -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+      -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+      box-shadow: inset 0px 0px 5px #c1c1c1;
+      outline: none;
+      font-weight: 500;
     }
   }
 `;
@@ -97,10 +99,10 @@ const Explorecontainer = styled.div`
 const IconConnections = styled.div`
   display: flex;
   flex-direction: row;
-  
+
   span {
     color: #555;
-    font-size: 0.7rem;  
+    font-size: 0.7rem;
     margin-left: 5px;
   }
 `;
@@ -119,7 +121,7 @@ const Explorecards = styled.div`
   }
 
   .profiletop-center {
-    p{
+    p {
       font-size: 1.1rem;
     }
 
@@ -170,7 +172,7 @@ const Explorecards = styled.div`
   li {
     list-style-type: none;
     background-color: #fff;
-    background: linear-gradient(to top, white 70%, #063A54 50%);
+    background: linear-gradient(to top, white 70%, #063a54 50%);
     box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
     -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
     -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);

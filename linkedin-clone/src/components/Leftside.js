@@ -4,18 +4,25 @@ import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { usersRef } from "../firebase/index";
 import { doc, getDoc } from "firebase/firestore";
+<<<<<<< Updated upstream
 import placeholder from "../volunteer-placeholder-image.svg";
+=======
+<<<<<<< HEAD
+=======
+import placeholder from "../volunteer-placeholder-image.svg";
+>>>>>>> 2d0a6c9567a61838a2dd9d58727f1130c1ba33cc
+>>>>>>> Stashed changes
 
 const Leftside = (props) => {
   const { user, logOut } = useUserAuth();
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const auth = getAuth();
-  useEffect(() => {
+  useEffect(() => { //get user detail from firestore
     async function getUser() {
       if (auth.currentUser) {
-        const docRef = doc(usersRef, auth.currentUser.uid); 
-        const userData = (await getDoc(docRef)).data();
+        const docRef = doc(usersRef, auth.currentUser.uid);  //the autentichated user
+        const userData = (await getDoc(docRef)).data(); // values for the autentuchated user
         if (userData) {
           setName(userData.name);
           setImage(userData.image);
@@ -25,7 +32,7 @@ const Leftside = (props) => {
       }
     }
     getUser();
-  }, [auth.currentUser]); 
+  }, [auth.currentUser]);
 
   return (
     <Container>
@@ -33,15 +40,15 @@ const Leftside = (props) => {
         <UserInfo>
           <CardBackground />
           <Photo>
-              <img src={image} alt={user.id} />
-              {/* <img src={user.photoURL} alt=""/> */}
-            </Photo>
+            <img src={image} alt={user.id} />
+            {/* <img src={user.photoURL} alt=""/> */}
+          </Photo>
           <Link>
-            <a href="/profile">{user.displayName}</a>
+            <a href="/profile">{user.displayName}</a> 
             <a href="/profile"> {name} </a>
           </Link>
-          <img src="./images/danish-flag.svg" alt="" />
-          <img src="./images/german-flag.svg" alt="" />
+          <img src="./images/danish-flag.svg" alt="user-flag" />
+          <img src="./images/german-flag.svg" alt="user-flag" />
           <br />
           <button onClick={logOut}>Log out</button>
         </UserInfo>
@@ -49,7 +56,6 @@ const Leftside = (props) => {
       <a href="/guide">
         <GuideButton>Guide</GuideButton>
       </a>
-      
     </Container>
   );
 };
@@ -74,7 +80,6 @@ const ArtCard = styled.div`
 const UserInfo = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   padding-bottom: 30px;
-
 
   button {
     margin-top: 20px;
@@ -104,19 +109,19 @@ const UserInfo = styled.div`
 `;
 
 const CardBackground = styled.div`
-  background: #D9B233;
+  background: #d9b233;
   height: 54px;
 `;
 
 const Photo = styled.div`
   img {
-  width: 72px;
-  height: 72px; 
-  border: 2px solid white;
-  margin: -38px auto 0;
-  border-radius: 50%;
-  object-fit: cover;
-}
+    width: 72px;
+    height: 72px;
+    border: 2px solid white;
+    margin: -38px auto 0;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 `;
 
 const Link = styled.div`
@@ -143,10 +148,10 @@ const GuideButton = styled.button`
   box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-  
-    &:hover {
-      background-color: #063a54;
-      cursor: pointer;
+
+  &:hover {
+    background-color: #063a54;
+    cursor: pointer;
   }
 `;
 

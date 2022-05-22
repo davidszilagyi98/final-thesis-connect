@@ -22,9 +22,10 @@ const UpdateProfile = () => {
   useEffect(() => {
     async function getUser() {
       if (auth.currentUser) {
-        const docRef = doc(usersRef, auth.currentUser.uid);
+        const docRef = doc(usersRef, auth.currentUser.uid); // use auth users uid to get user data from users collection
         const userData = (await getDoc(docRef)).data();
         if (userData) {
+          // if userData exists set states with values from userData (data from firestore)
           setName(userData.name);
           setImage(userData.image);
           setEmail(userData.email);
@@ -39,7 +40,7 @@ const UpdateProfile = () => {
     }
 
     getUser();
-  }, [auth.currentUser]);
+  }, [auth.currentUser]); // useEffect is executed
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -77,11 +78,11 @@ const UpdateProfile = () => {
           <input type="text" value={nationality} onChange={(e) => setNationality(e.target.value)} name="nationality" placeholder="Nationality" />
           <input type="text" value={residency} onChange={(e) => setResidency(e.target.value)} name="residency" placeholder="Country of residency" />
           <input type="text" value={bio} onChange={(e) => setBio(e.target.value)} name="bio" placeholder="Tell us about yourself" />
-           <input type="text" value={interests} onChange={(e) => setInterests(e.target.value)} name="interests" placeholder="Interests (e.g. traveling, cooking, languages)" />
-           <input type="text" value={projects} onChange={(e) => setProjects(e.target.value)} name="projects" placeholder="Previous projects" />
-           <input type="text" value={photos} onChange={(e) => setPhotos(e.target.value)} name="photos" placeholder="Upload photos" />
-            <p className="text-error">{errorMessage}</p>
-            <button>Update Profile</button>
+          <input type="text" value={interests} onChange={(e) => setInterests(e.target.value)} name="interests" placeholder="Interests (e.g. traveling, cooking, languages)" />
+          <input type="text" value={projects} onChange={(e) => setProjects(e.target.value)} name="projects" placeholder="Previous projects" />
+          <input type="text" value={photos} onChange={(e) => setPhotos(e.target.value)} name="photos" placeholder="Upload photos" />
+          <p className="text-error">{errorMessage}</p>
+          <button>Update Profile</button>
         </form>
       </UpdateProfileFormContainer>
     </div>
@@ -96,57 +97,55 @@ const UpdateProfileFormContainer = styled.div`
   border-radius: 24px;
   box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4); 
-  
+  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+
   form {
     display: grid;
     margin: 0 auto;
     width: 70%;
-     
+
     input {
-    line-height: 2.3;
-    padding: 5px 10px;
-    background-color: #ececec;
-    border: none;
-    margin-bottom: 8px;
+      line-height: 2.3;
+      padding: 5px 10px;
+      background-color: #ececec;
+      border: none;
+      margin-bottom: 8px;
 
-    :focus {
-      outline: 1px solid #1f5b87;
+      :focus {
+        outline: 1px solid #1f5b87;
+      }
+    }
+
+    img {
+      margin: 0 auto 24px auto;
+      width: 13rem;
+      height: 13rem;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    button {
+      display: block;
+      font-size: 1rem;
+      background-image: linear-gradient(to right top, #114265, #15486d, #184e76, #1c557e, #1f5b87);
+      padding: 0 50px;
+      height: 40px;
+      width: 50%;
+      margin: 20px auto 0 auto;
+      border-radius: 24px;
+      border: none;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+      -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+      -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
+
+      &:hover {
+        background-color: #063a54;
+        cursor: pointer;
+      }
     }
   }
-
-  img {
-    margin: 0 auto 24px auto;
-    width: 13rem;
-    height: 13rem;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-
-  button {
-    display: block;
-    font-size: 1rem;
-    background-image: linear-gradient(to right top, #114265, #15486d, #184e76, #1c557e, #1f5b87);
-    padding: 0 50px;
-    height: 40px;
-    width: 50%;
-    margin: 20px auto 0 auto;
-    border-radius: 24px;
-    border: none;
-    color: #fff;
-    text-align: center;
-    box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-   -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-    -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
-
-    &:hover {
-      background-color: #063a54;
-      cursor: pointer;
-    }
-  }
-  }
-
-
 `;
 
 export default UpdateProfile;

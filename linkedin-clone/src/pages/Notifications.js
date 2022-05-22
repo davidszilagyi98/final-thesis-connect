@@ -17,7 +17,7 @@ const Notifications = () => {
               <ul>
                 <li className="noti-list unread">
                   <span class="dot"></span>
-                  <img className="notificationsimage" src="./images/natalia.jpg" alt=""></img>
+                  <img className="notificationsimage" src="./images/natalia.jpg" alt="notifications"></img>
                   <div className="name-title-noti">
                     <h4>Elena Romanoff</h4>
                     <p>Posted an article</p>
@@ -26,7 +26,7 @@ const Notifications = () => {
                 </li>
                 <li className="noti-list read">
                   <span class="dot"></span>
-                  <img className="notificationsimage" src="./images/tereza.jpg" alt=""></img>
+                  <img className="notificationsimage" src="./images/tereza.jpg" alt="notifications"></img>
                   <div className="name-title-noti">
                     <h4>Tereza Checzh</h4>
                     <p>Posted an article</p>
@@ -35,7 +35,7 @@ const Notifications = () => {
                 </li>
                 <li className="noti-list read">
                   <span class="dot"></span>
-                  <img className="notificationsimage" src="./images/erin.jpg" alt=""></img>
+                  <img className="notificationsimage" src="./images/erin.jpg" alt="notifications"></img>
 
                   <div className="name-title-noti">
                     <h4>Erin Steed</h4>

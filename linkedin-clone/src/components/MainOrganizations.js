@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const MainOrganizations = ({ name }) => {
   const [users, setUsers] = useState([]);
+  // shows all the users we have in the collection
   useEffect(() => onSnapshot(collection(db, "users"), (snapshot) => setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))), []);
 
   return (
@@ -16,7 +17,7 @@ const MainOrganizations = ({ name }) => {
             <Link to={`/userprofile/${user.id}`}>
               <li key={user.id}>
                 <div className="img-name-div">
-                  <img src={user.image} className="profile-picture" alt=""></img>
+                  <img src={user.image} className="profile-picture" alt="user"></img>
                   <p>{user.name}</p>
                   <p>{user.nationality}</p>
                   <p>{user.residency}</p>
@@ -46,7 +47,7 @@ const OrganizationsList = styled.div`
     height: 4rem;
     border-radius: 360px;
     margin-top: 1rem;
-    object-fit: cover ;
+    object-fit: cover;
     margin: 0 auto;
     margin-right: 0.8rem;
     background-color: #fff;

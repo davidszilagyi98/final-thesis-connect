@@ -5,15 +5,17 @@ import Leftside from "./Leftside";
 const LeftsideOrganizations = (props) => {
   return (
     <Container>
-      <Leftside/>
+      <Leftside />
 
-     <CountryFilterButton>Counrty <img src="./images/icons/downarrow-icon.svg" alt="" /></CountryFilterButton>
+      <CountryFilterButton>
+        Counrty <img src="./images/icons/downarrow-icon.svg" alt="country-filter" />
+      </CountryFilterButton>
     </Container>
   );
 };
 
 const Container = styled.div`
-  grid-area: leftsideorganizations; 
+  grid-area: leftsideorganizations;
 `;
 
 const CountryFilterButton = styled.button`
@@ -41,8 +43,8 @@ const CountryFilterButton = styled.button`
 
   &:hover {
     cursor: pointer;
-    background-color: #EBEBEB;
+    background-color: #ebebeb;
   }
-`
+`;
 
 export { LeftsideOrganizations, CountryFilterButton };

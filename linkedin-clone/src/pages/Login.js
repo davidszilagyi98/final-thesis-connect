@@ -6,7 +6,7 @@ import styled from "styled-components";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [setError] = useState("");
   const { logIn, googleSignIn } = useUserAuth();
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const Login = (props) => {
     setError("");
     try {
       await logIn(email, password);
-      navigate("/home");
+      navigate("/home");  // navigate the user to the main page of the platform
     } catch (err) {
       setError(err.message);
     }
@@ -35,7 +35,7 @@ const Login = (props) => {
     <Container>
       <Nav>
         <a href="/">
-          <img src="/images/connect-logo-thick-dot.svg" alt="" />
+          <img src="/images/connect-logo-thick-dot.svg" alt="connect-logo" />
         </a>
         <div>
           <a href="/signup">
@@ -46,9 +46,9 @@ const Login = (props) => {
       <Section>
         <Hero>
           <h1>A place for volunteers and organizations</h1>
-          <img src="/images/hero-loginpage.svg" alt="" />
+          <img src="/images/hero-loginpage.svg" alt="hero" />
         </Hero>
-        <Form> 
+        <Form>
           <Email onSubmit={handleSubmit}>
             <h2> Login </h2>
             <input placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
@@ -56,16 +56,18 @@ const Login = (props) => {
             <button type="submit">Sign in</button>
           </Email>
           <Hr>
-          <div></div>
-         <div>or</div>
-          <div></div>
+            <div></div>
+            <div>or</div>
+            <div></div>
           </Hr>
           <Google onClick={handleGoogleSignIn}>
-            <img src="/images/google.svg" alt="" />
+            <img src="/images/google.svg" alt="google" />
             <span> Sign in with Google</span>
           </Google>
           <Register>
-          <p>New user? <a href="/signup">Create an account</a></p>
+            <p>
+              New user? <a href="/signup">Create an account</a>
+            </p>
           </Register>
         </Form>
       </Section>
@@ -122,7 +124,6 @@ const Join = styled.a`
   }
 `;
 
-
 const Section = styled.section`
   display: flex;
   align-content: start;
@@ -165,7 +166,7 @@ const Hero = styled.div`
     top: 70px;
     right: -150px;
 
-     @media (max-width: 1291px) {
+    @media (max-width: 1291px) {
       width: 50%;
       right: 0px;
     }
@@ -180,7 +181,7 @@ const Hero = styled.div`
 `;
 
 const Form = styled.div`
-  padding:  50px;
+  padding: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -197,8 +198,6 @@ const Form = styled.div`
     margin: 20px auto;
     width: 80%;
   }
-
-
 `;
 
 const Email = styled.form`
@@ -223,7 +222,7 @@ const Email = styled.form`
     margin-bottom: 8px;
 
     :focus {
-      outline: 1px solid #1F5B87;
+      outline: 1px solid #1f5b87;
     }
   }
 
@@ -248,42 +247,41 @@ const Email = styled.form`
 `;
 
 const Hr = styled.div`
-    display: flex;
-    width: 100%;
-    margin: 20px 0;
+  display: flex;
+  width: 100%;
+  margin: 20px 0;
 
-    div {  
-      font-size: 0.8rem;;
-      color: #555;
-      
-      &:first-child, &:last-child {
-        -webkit-flex: 1;
-        -moz-flex: 1;
-        flex: 1;
-        position: relative;
-        
-        &:before {
-          content: ' ';
-          position: absolute;
-          top: 50%;
-          left: 0px;
-          right: 0px;
-          height: 1px;
-          background-color: #555;
-       
-        }
-      }
-      
-      &:first-child {
-        margin-right: 20px;
-      }
-      
-      &:last-child {
-        margin-left: 20px;
+  div {
+    font-size: 0.8rem;
+    color: #555;
+
+    &:first-child,
+    &:last-child {
+      -webkit-flex: 1;
+      -moz-flex: 1;
+      flex: 1;
+      position: relative;
+
+      &:before {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        right: 0px;
+        height: 1px;
+        background-color: #555;
       }
     }
 
-`
+    &:first-child {
+      margin-right: 20px;
+    }
+
+    &:last-child {
+      margin-left: 20px;
+    }
+  }
+`;
 
 const Google = styled.button`
   display: flex;
@@ -325,6 +323,6 @@ const Register = styled.div`
     text-decoration: underline;
     color: #1f5b87;
   }
-`
+`;
 
 export default Login;

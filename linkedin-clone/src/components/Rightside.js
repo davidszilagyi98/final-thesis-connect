@@ -11,89 +11,96 @@ const Rightside = (props) => {
         <FeedList>
           <li>
             <RightSideExploreCard>
-              <Avatar>  <img src="./images/rasmus2.jpg" alt=""/></Avatar>
-                <div>
-                  <div className="namewithflag">
-                    
-                    <h5>Rasmus Andersen  </h5>
-                    <img src="./images/danish-flag.svg" alt=""/>
-                    <img src="./images/german-flag.svg" alt="" />
-                  </div>
-                  <IconConnections>
-                  <img src="./images/connect-icon.svg" alt=""/>
+              <Avatar>
+                {" "}
+                <img src="./images/rasmus2.jpg" alt="user" />
+              </Avatar>
+              <div>
+                <div className="namewithflag">
+                  <h5>Rasmus Andersen </h5>
+                  <img src="./images/danish-flag.svg" alt="user-country" />
+                  <img src="./images/german-flag.svg" alt="user-country" />
+                </div>
+                <IconConnections>
+                  <img src="./images/connect-icon.svg" alt="" />
                   <span> 5 mutual connections</span>
-                  </IconConnections>
-               </div>
+                </IconConnections>
+              </div>
               <button>connect</button>
             </RightSideExploreCard>
 
-                <RightSideExploreCardOrganization>
-              <Avatar>  <img src="./images/Nextgeneration.png" alt=""/></Avatar>
-                <div>
-                  <div className="namewithflag">
-                    
-                    <h5>Next Generation</h5>
-                    <img src="./images/macedonian-flag.svg" alt=""/>
-                  </div>
-                  <IconConnections>
-                  <img src="./images/connect-icon.svg" alt=""/>
+            <RightSideExploreCardOrganization>
+              <Avatar>
+                {" "}
+                <img src="./images/Nextgeneration.png" alt="ngo-icon" />
+              </Avatar>
+              <div>
+                <div className="namewithflag">
+                  <h5>Next Generation</h5>
+                  <img src="./images/macedonian-flag.svg" alt="country-flag" />
+                </div>
+                <IconConnections>
+                  <img src="./images/connect-icon.svg" alt="connect-icon" />
                   <span> 11 mutual connections</span>
-                  </IconConnections>
-               </div>
+                </IconConnections>
+              </div>
               <button>connect</button>
             </RightSideExploreCardOrganization>
 
             <RightSideExploreCardOrganization>
-              <Avatar>  <img src="./images/gdoce.png" alt=""/></Avatar>
-                <div>
-                  <div className="namewithflag">
-                    
-                    <h5>GDOCE</h5>
-                    <img src="./images/spanish-flag.svg" alt=""/>
-                  </div>
-                  <IconConnections>
-                  <img src="./images/connect-icon.svg" alt=""/>
+              <Avatar>
+                {" "}
+                <img src="./images/gdoce.png" alt="ngo-icon" />
+              </Avatar>
+              <div>
+                <div className="namewithflag">
+                  <h5>GDOCE</h5>
+                  <img src="./images/spanish-flag.svg" alt="country-flag" />
+                </div>
+                <IconConnections>
+                  <img src="./images/connect-icon.svg" alt="connect-icon" />
                   <span> 15 mutual connections</span>
-                  </IconConnections>
-               </div>
+                </IconConnections>
+              </div>
               <button>connect</button>
             </RightSideExploreCardOrganization>
 
             <RightSideExploreCard>
-              <Avatar>  <img src="./images/tereza.jpg" alt=""/></Avatar>
-                <div>
-                  <div className="namewithflag">
-                    
-                    <h5>Tereza Ceczh</h5>
-                    <img src="./images/danish-flag.svg" alt=""/>
-                    <img src="./images/czech-flag.svg" alt="" />
-                  </div>
-                  <IconConnections>
-                  <img src="./images/connect-icon.svg" alt=""/>
+              <Avatar>
+                {" "}
+                <img src="./images/tereza.jpg" alt="user" />
+              </Avatar>
+              <div>
+                <div className="namewithflag">
+                  <h5>Tereza Ceczh</h5>
+                  <img src="./images/danish-flag.svg" alt="country-flag" />
+                  <img src="./images/czech-flag.svg" alt="country-flag" />
+                </div>
+                <IconConnections>
+                  <img src="./images/connect-icon.svg" alt="connect-icon" />
                   <span> 4 mutual connections</span>
-                  </IconConnections>
-               </div>
+                </IconConnections>
+              </div>
               <button>connect</button>
             </RightSideExploreCard>
 
             <RightSideExploreCardOrganization>
-              <Avatar>  <img src="./images/a4action.png" alt=""/></Avatar>
-                <div>
-                  <div className="namewithflag">
-                    
-                    <h5>A4ACTION</h5>
-                    <img src="./images/romanian-flag.svg" alt=""/>
-                  </div>
-                  <IconConnections>
-                  <img src="./images/connect-icon.svg" alt=""/>
+              <Avatar>
+                {" "}
+                <img src="./images/a4action.png" alt="ngo-icon" />
+              </Avatar>
+              <div>
+                <div className="namewithflag">
+                  <h5>A4ACTION</h5>
+                  <img src="./images/romanian-flag.svg" alt="country-icon" />
+                </div>
+                <IconConnections>
+                  <img src="./images/connect-icon.svg" alt="connect-icon" />
                   <span> 9 mutual connections</span>
-                  </IconConnections>
-               </div>
+                </IconConnections>
+              </div>
               <button>connect</button>
             </RightSideExploreCardOrganization>
-
-      
-            
           </li>
         </FeedList>
 
@@ -115,7 +122,7 @@ const FollowCard = styled.div`
   margin-bottom: 8px;
   border-radius: 5px;
   position: relative;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   border-radius: 12px;
   box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
   -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.4);
@@ -137,7 +144,6 @@ const FeedList = styled.ul`
     position: relative;
     font-size: 14px;
 
-  
     button {
       color: #333;
       background-color: #ececec;
@@ -158,9 +164,9 @@ const FeedList = styled.ul`
       text-align: center;
 
       &:hover {
-      cursor: pointer;
-      color: #fff;
-      background-color: #1F5B87;
+        cursor: pointer;
+        color: #fff;
+        background-color: #1f5b87;
       }
     }
   }
@@ -168,7 +174,7 @@ const FeedList = styled.ul`
 
 const RightSideExploreCardOrganization = styled.div`
   background-color: #fff;
-  background: linear-gradient(to left, white 97%, #063A54 3%);
+  background: linear-gradient(to left, white 97%, #063a54 3%);
   box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
   -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
   -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
@@ -178,7 +184,7 @@ const RightSideExploreCardOrganization = styled.div`
   text-align: left;
   margin: 5px auto;
   align-items: center;
-  
+
   padding: 10px;
 
   .namewithflag {
@@ -193,7 +199,7 @@ const RightSideExploreCardOrganization = styled.div`
 
 const RightSideExploreCard = styled.div`
   background-color: #fff;
-  background: linear-gradient(to left, white 97%, #D9B233 3%);
+  background: linear-gradient(to left, white 97%, #d9b233 3%);
   box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
   -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
   -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
@@ -203,7 +209,7 @@ const RightSideExploreCard = styled.div`
   text-align: left;
   margin: 5px auto;
   align-items: center;
-  
+
   padding: 10px;
 
   .namewithflag {
@@ -217,28 +223,28 @@ const RightSideExploreCard = styled.div`
 `;
 
 const Avatar = styled.div`
-img {
-  display: flex;
-  object-fit: cover;
-  border: none;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  margin-left: 10px;
-  margin-right: 10px;
-  box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
-  -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
-  -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
-}
+  img {
+    display: flex;
+    object-fit: cover;
+    border: none;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+    -webkit-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+    -moz-box-shadow: 0px 3px 6px 2px rgba(207, 207, 207, 0.2);
+  }
 `;
 
 const IconConnections = styled.div`
   display: flex;
   flex-direction: row;
-  
+
   span {
     color: #555;
-    font-size: 0.7rem;  
+    font-size: 0.7rem;
     margin-left: 5px;
   }
 `;
@@ -251,17 +257,17 @@ const Recommendation = styled.button`
   padding: 12px 30px;
   align-items: center;
   font-size: 0.9rem;
-  font-weight: 600; 
+  font-weight: 600;
   margin: 15px auto;
   box-shadow: 0px 3px 3px 2px rgba(207, 207, 207, 0.4);
   -webkit-box-shadow: 0px 3px 3px 2px rgba(207, 207, 207, 0.4);
   -moz-box-shadow: 0px 3px 3px 2px rgba(207, 207, 207, 0.4);
 
-   &:hover {
-      cursor: pointer;
-      color: #fff;
-      background-color: #1F5B87;
-      }
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: #1f5b87;
+  }
 `;
 
 export default Rightside;
