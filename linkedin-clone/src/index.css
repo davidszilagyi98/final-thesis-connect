@@ -78,5 +78,21 @@ nav {
 }
 
 .active {
-  border-bottom: 1px solid #1f5b87;
+  border-bottom: 1px solid #063a54;
+}
+
+.active span {
+  color: #063a54;
+}
+
+.active svg path {
+  fill: #063a54;
+}
+
+.active svg text {
+  fill: #063a54;
+}
+
+.active .coloredspan {
+  color: #063a54;
 }

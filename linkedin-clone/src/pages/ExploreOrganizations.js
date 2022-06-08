@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import Header from "../components/Header";
-import Leftside from "../components/Leftside";
+
 import { Container, Layout } from "./Home";
 import { db } from "../firebase";
 import { collection, onSnapshot } from "@firebase/firestore";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { LeftsideOrganizations } from "../components/LeftsideOrganizations";
 
 const ExploreOrganizations = () => {
   const [users, setUsers] = useState([]);
@@ -14,16 +15,16 @@ const ExploreOrganizations = () => {
   return (
     <div>
       <Container>
-        <Layout>
+        <LayoutOrganizations>
           <Header />
-          <Leftside />
+          <LeftsideOrganizations />
           <Explorecontainer>
             <div className="sort-buttons">
               <a href="/explore">
-                <Sortbuttons className="active">People</Sortbuttons>
+                <Sortbuttons >People</Sortbuttons>
               </a>
               <a href="/explore/organizations">
-                <Sortbuttons>Organizations</Sortbuttons>
+                <Sortbuttons className="active">Organizations</Sortbuttons>
               </a>
               <a href="/explore/projects">
                 <Sortbuttons>Projects </Sortbuttons>
@@ -42,7 +43,7 @@ const ExploreOrganizations = () => {
                           <p>{user.nationality}</p>
                         </div>
                         <IconConnections>
-                          <img src="./images/connect-icon.svg" alt="connect-icon" />
+                          <img src="../images/connect-icon.svg" alt="connect-icon" />
                           <span> 9 mutual connections</span>
                         </IconConnections>
                         <button className="connect-button">connect</button>
@@ -53,11 +54,26 @@ const ExploreOrganizations = () => {
               </ul>
             </Explorecards>
           </Explorecontainer>
-        </Layout>
+        </LayoutOrganizations>
       </Container>
     </div>
   );
 };
+
+const LayoutOrganizations = styled.div`
+  display: grid;
+  grid-template-areas: "leftsideorganizations main rightside";
+  grid-template-columns: minmax(0, 5fr) minmax(0, 12fr) minmax(0, 5fr);
+  column-gap: 25px;
+  row-gap: 25px;
+  margin: 25px 0;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
+  }
+`;
 
 const Sortbuttons = styled.button`
   margin-right: 1.5rem;

@@ -32,7 +32,7 @@ const Header = (props) => {
                     fill="#c3c3c3"
                   />
                 </svg>
-                <span>Home</span>
+                <span className="coloredspan">Home</span>
               </NavLink>
             </NavList>
             <NavList>
@@ -53,7 +53,7 @@ const Header = (props) => {
                     </text>
                   </g>
                 </svg>
-                <span>Organisations</span>
+                <span className="coloredspan">Organisations</span>
               </NavLink>
             </NavList>
             <NavList>
@@ -61,7 +61,7 @@ const Header = (props) => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path id="Icon_material-explore" data-name="Icon material-explore" d="M15,13.68A1.32,1.32,0,1,0,16.32,15,1.316,1.316,0,0,0,15,13.68ZM15,3A12,12,0,1,0,27,15,12,12,0,0,0,15,3Zm2.628,14.628L7.8,22.2l4.572-9.828L22.2,7.8Z" transform="translate(-3 -3)" fill="rgba(112,112,112,0.42)" />
                 </svg>
-                <span>Explore</span>
+                <span className="coloredspan">Explore</span>
               </NavLink>
             </NavList>
             <NavList>
@@ -75,11 +75,11 @@ const Header = (props) => {
                     fill="#c3c3c3"
                   />
                 </svg>
-                <span>My network</span>
+                <span className="coloredspan">My network</span>
               </NavLink>
             </NavList>
             <NavList>
-              <NavLink to="/notifications">
+              <NavLink to="/notifications" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18.389" height="23" viewBox="0 0 18.389 23">
                   <g id="Icon_ionic-ios-notifications" data-name="Icon ionic-ios-notifications" transform="translate(0)">
                     <path id="Path_351" data-name="Path 351" d="M17.993,32.062c2.187,0,3.382-1.547,3.382-3.727H14.6C14.6,30.516,15.8,32.062,17.993,32.062Z" transform="translate(-8.808 -9.062)" fill="rgba(112,112,112,0.42)" />
@@ -92,7 +92,7 @@ const Header = (props) => {
                     />
                   </g>
                 </svg>
-                <span>Notifications</span>
+                <span className="coloredspan">Notifications</span>
               </NavLink>
             </NavList>
             <NavList>
@@ -111,7 +111,7 @@ const Header = (props) => {
                     <circle id="Ellipse_61" data-name="Ellipse 61" cx="2" cy="2" r="2" transform="translate(1670.812 42.812)" fill="#fff" />
                   </g>
                 </svg>
-                <span>Messages</span>
+                <span className="coloredspan">Messages</span>
               </NavLink>
             </NavList>
           </nav>
@@ -240,18 +240,20 @@ const NavList = styled.li`
   &:hover {
     a {
       path {
-        fill: #1f5b87;
+        fill: #063a54;
       }
 
       text {
-        fill: #1f5b87;
+        fill: #063a54;
       }
       cursor: pointer;
       span {
-        color: #1f5b87;
+        color: #063a54;
       }
     }
   }
+
+
 `;
 
 export default Header;
